@@ -1,0 +1,117 @@
+body {
+    text-align: center;
+}
+
+.image-cycle {
+    width: 8vmax
+}
+
+.image-logo {
+    width: 20vmax;
+}
+
+.image-motorcycle {
+    width: 8vmax
+}
+
+.chenar-text {
+    margin: auto;
+    background-color: rgb(81, 75, 75);
+}
+
+.intro-title {
+    font-family: 'Ubuntu';
+    font-style: bold;
+    font-size: 6vmin;
+    color: rgb(255, 255, 255);
+}
+
+.intro-text {
+    font-family: 'Ubuntu';
+    font-style: italic;
+    font-size: 3vmin;
+    color: aliceblue;
+}
+
+.trapezium1 {
+    height: 0;
+    width: 12vmin;
+    margin: auto;
+    margin-top: 0;
+    color: rgb(81, 75, 75);
+    border-bottom: 7vmin solid;
+    border-left: 5vmin solid transparent;
+    border-right: 5vmin solid transparent;
+}
+
+.trapezium2 {
+    height: 0;
+    width: 22vmin;
+    margin: auto;
+    margin-top: 0.2%;
+    color: rgb(56, 53, 53);
+    border-bottom: 7vmin solid;
+    border-left: 5vmin solid transparent;
+    border-right: 5vmin solid transparent;
+}
+
+.trapezium3 {
+    height: 0;
+    width: 32vmin;
+    margin: auto;
+    margin-top: 0.3%;
+    color: rgb(0, 0, 0);
+    border-bottom: 7vmin solid;
+    border-left: 5vmin solid transparent;
+    border-right: 5vmin solid transparent;
+}
+
+.programeaza {
+    font-family: 'Ubuntu';
+    font-style: bold;
+    font-weight: 600px;
+    font-size: 3vmin;
+    color: aliceblue;
+}
+
+@media only screen and (max-width: 550px) {
+    .intro-title {
+        font-size: 6vmax;
+    }
+    .intro-text {
+        font-size: 3vmax;
+    }
+    .trapezium1 {
+        height: 0;
+        width: 12vmax;
+        margin: auto;
+        margin-top: 0;
+        color: rgb(81, 75, 75);
+        border-bottom: 7vmax solid;
+        border-left: 5vmax solid transparent;
+        border-right: 5vmax solid transparent;
+    }
+    .trapezium2 {
+        height: 0;
+        width: 22vmax;
+        margin: auto;
+        margin-top: 0.2%;
+        color: rgb(56, 53, 53);
+        border-bottom: 7vmax solid;
+        border-left: 5vmax solid transparent;
+        border-right: 5vmax solid transparent;
+    }
+    .trapezium3 {
+        height: 0;
+        width: 32vmax;
+        margin: auto;
+        margin-top: 0.3%;
+        color: rgb(0, 0, 0);
+        border-bottom: 7vmax solid;
+        border-left: 5vmax solid transparent;
+        border-right: 5vmax solid transparent;
+    }
+    .programeaza {
+        font-size: 3vmax;
+    }
+}

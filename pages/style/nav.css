@@ -1,0 +1,34 @@
+* {
+    margin: 0%;
+}
+
+nav {
+    background: black;
+    width: 100%;
+    height: 10vh;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-text {
+    font-family: 'Ubuntu';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 5vmin;
+    margin: auto;
+    margin-left: 10px;
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 550px) {
+    .navbar-text {
+        font-size: 5vmax;
+    }
+}
+
+@media only screen and (max-height: 550px) {
+    .navbar-text {
+        font-size: 30px;
+    }
+}
