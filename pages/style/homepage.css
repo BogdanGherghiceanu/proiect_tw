@@ -1,5 +1,7 @@
-main {
+body {
     text-align: center;
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(155, 155, 154));
+    ;
 }
 
 .image-cycle {
@@ -16,7 +18,7 @@ main {
 
 .chenar-text {
     margin: auto;
-    background-color: rgb(81, 75, 75);
+    background-color: rgb(0, 0, 0);
 }
 
 .intro-title {
