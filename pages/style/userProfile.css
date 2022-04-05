@@ -1,0 +1,206 @@
+body {
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(155, 155, 154));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+span.usernameBlock {
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-weight: 700;
+    font-size: 2vmin;
+    margin: auto;
+    margin-right: 20px;
+    color: #ffffff
+}
+
+.imagesDiv {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.image-cycle {
+    width: 5vmax
+}
+
+.image-logo {
+    height: 10vmax;
+}
+
+.image-motorcycle {
+    height: 5vmax
+}
+
+.chenar-text {
+    height: 3vmax;
+    text-align: center;
+    margin: auto;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 2.5vmin;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-icon {
+    width: 2vmax;
+    height: 2vmax;
+    margin-right: 1%;
+}
+
+
+/* Tabele */
+
+.tabele {
+    padding: 12px;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
+.tabel_programarile_mele {
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #fff;
+    border-color: rgba(0, 0, 0, .12);
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
+    overflow: scroll;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+table {
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    grid-template-columns: minmax(150px, 1fr) minmax(150px, 1.67fr) minmax(150px, 1.67fr) minmax(150px, 1.67fr) minmax(150px, 3.33fr) minmax(150px, 1.67fr);
+}
+
+thead,
+tbody,
+tr {
+    display: contents;
+}
+
+th,
+td {
+    padding: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: #303136;
+    text-align: left;
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: white;
+}
+
+th:last-child {
+    border: 0;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #4d4d4d;
+}
+
+tr:nth-child(even) td {
+    background: #f0eff5;
+}
+
+
+/* end tabele */
+
+
+/* Butoane */
+
+.programareInregBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 12px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #53a0c9!important;
+}
+
+.programareInLucruBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 23px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #e3ef3f!important;
+}
+
+.programareFinalizataBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 17px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #43a047!important;
+}
+
+.programareAnulataBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 23px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #f54141!important;
+}
+
+.mat-chip-ripple {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    pointer-events: none;
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+@media only screen and (max-width: 550px) {}

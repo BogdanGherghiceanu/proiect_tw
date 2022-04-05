@@ -21,6 +21,11 @@ nav {
     color: #ffffff;
 }
 
+.navbar-icon {
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
 @media only screen and (max-width: 550px) {
     .navbar-text {
         font-size: 5vmax;
