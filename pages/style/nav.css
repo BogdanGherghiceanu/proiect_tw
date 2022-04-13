@@ -12,6 +12,7 @@ nav {
 }
 
 .navbar-text {
+    text-decoration: none;
     font-family: 'Ubuntu';
     font-style: italic;
     font-weight: 700;
