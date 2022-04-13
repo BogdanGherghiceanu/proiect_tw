@@ -6,27 +6,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2 Wheels</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/userProfile.css">
+    <link rel="shortcut icon" href="#">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/userProfile.js"></script>
 </head>
 
-<nav>
-    <a class="navbar-text">2 Wheels</a>
-    <span class="usernameBlock">Cristina-Ecaterina, Tiganasu</span>
-    <img src="resources/navbar/tyre.png" class="navbar-icon" alt="tyre">
-</nav>
-
 <body>
+    <nav>
+        <a class="navbar-text">2 Wheels</a>
+        <span class="usernameBlock">Cristina-Ecaterina, Tiganasu</span>
+
+        <div class="dropdown">
+            <img src="resources/navbar/tyre.png" onclick="openNavBarMenu()" class="navbar-icon" alt="tyre">
+
+            <div class="dropdown-content" id="mydropdown">
+                <button class="dropdownButton" id="myProfileButtonModal" onclick="openMyProfileModal()"><i class="material-icons">account_circle</i> Profilul meu</button>
+                <button class="dropdownButton" id="vehiculeleMeleButton"><i class="material-icons">directions_bike</i> Vehiculele mele</button>
+                <button class="dropdownButton" id="programarileMeleButton"><i class="material-icons">perm_contact_calendar</i> Programarile mele</button>
+                <form><button formaction="homepage.html" class="dropdownButton"><i class="material-icons">highlight_off</i> Log out</button></form>
+            </div>
+        </div>
+    </nav>
+
+    <div id="myProfileModal" class="ProfileModal">
+        <div class="myProfileModal-content">
+            <!-- <span class="close">&times;</span> -->
+            <div class="chenar-text-mmyProfileModal">
+                <br>
+                <img src="resources/userProfile/bike_icon.png" class="bikeProfile-icon" alt="calendarIcon">
+                <p>Profilul meu</p>
+                <br>
+            </div>
+
+            <div class="form-myProfile">
+                <form>
+                    <label for="Nume">
+                        <input type="text" id="Nume" placeholder="Nume" value="Tiganasu">
+                        <span>Nume *</span>
+                    </label>
+
+                    <label for="Prenume">
+                        <input type="text" id="Prenume" placeholder="Prenume" value="Cristina-Ecaterina">
+                        <span>Prenume *</span>
+                    </label>
+
+                    <label for="email">
+                        <input type="email" id="email" placeholder="Email" value="Tiganasu@Cristina-Ecaterina">
+                        <span>Email * </span>
+                    </label>
+
+                    <label for="telefon">
+                        <input type="text" id="telefon" placeholder="Telefon" value="123456789">
+                        <span>Phone * </span>
+                    </label>
+
+                    <label for="parola">
+
+                        <input type="password" id="password" name="password" placeholder="Parola">
+                        <span>Parola * </span>
+                    </label>
+
+                    <label for="confirmaParola">
+                        <input type="password" id="confirmaParola" placeholder="ConfirmaParola">
+                        <span>Confirmare Parola * </span>
+                        <!-- <i class="material-icons">highlight_off</i> -->
+                    </label>
+
+                    <button type="button">Finalizeaza</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
     <div class="imagesDiv">
         <img src="resources/index/1.png" class="image-cycle" alt="cycle">
         <img src="resources/index/2.png" class="image-logo" alt="logo">
         <img src="resources/index/3.png" class="image-motorcycle" alt="motorcycle">
     </div>
-
-    <!-- <div id="Page2" style="display:none">
-    Content of page 2
-    <a href="#" onclick="return show('Page1','Page2');">Show page 1</a>
-    </div> -->
 
     <div id="programarileMeleBlock">
         <div class="chenar-text">
@@ -52,23 +113,18 @@
                     <tbody>
                         <tr>
                             <td>Zhang Yanquan</td>
-
                             <td>18</td>
-
                             <td>
-                                <button class="programareInregBtn"><div class="mat-chip-ripple"></div><span>Inregistrata</span></button>
+                                <button class="programareInregBtn"><span>Inregistrata</span></button>
                             </td>
-
                             <td>
                                 <input type="date" value="2017-06-01" readonly>
                             </td>
-
                             <td>
-                                <input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                                <input type="datetime-local" id="meeting-time132" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
                             </td>
-
                             <td>
-                                <button>Detalii</button>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
@@ -76,12 +132,12 @@
                             <td>Zhang Yanquan</td>
                             <td>18</td>
                             <td>
-                                <button class="programareInLucruBtn"><div class="mat-chip-ripple"></div><span>In lucru</span></button>
+                                <button class="programareInLucruBtn"><span>In lucru</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time2765" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
@@ -89,12 +145,12 @@
                             <td>Zhang Yanquan</td>
                             <td>18</td>
                             <td>
-                                <button class="programareFinalizataBtn"><div class="mat-chip-ripple"></div><span>Finalizata</span></button>
+                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time3" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
@@ -102,78 +158,90 @@
                             <td>Zhang Yanquan</td>
                             <td>18</td>
                             <td>
-                                <button class="programareAnulataBtn"><div class="mat-chip-ripple"></div><span>Anulata</span></button>
+                                <button class="programareAnulataBtn"><span>Anulata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time4" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>China</td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
-                            <td>
-                                <button>Detalii</button>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Zhang Yanquan</td>
                             <td>18</td>
-                            <td>China</td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
+                                <button class="programareAnulataBtn"><span>Anulata</span></button>
+                            </td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time5" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Zhang Yanquan</td>
                             <td>18</td>
-                            <td>China</td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
+                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
+                            </td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time6" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Zhang Yanquan</td>
                             <td>18</td>
-                            <td>China</td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
+                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
+                            </td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time7" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Zhang Yanquan</td>
                             <td>18</td>
-                            <td>China</td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
+                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
+                            </td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time8" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
                         <tr>
                             <td>Zhang Yanquan</td>
                             <td>18</td>
-                            <td>China</td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
                             <td>
-                                <button>Detalii</button>
+                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
+                            </td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time9" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Zhang Yanquan</td>
+                            <td>18</td>
+                            <td>
+                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
+                            </td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
                             </td>
                         </tr>
 
@@ -182,6 +250,164 @@
                 </table>
             </div>
         </div>
+    </div>
+
+    <div id="vehiculeleMeleBlock">
+        <div class="chenar-text">
+            <br>
+            <img src="resources/userProfile/bike_icon.png" class="bike-icon" alt="calendarIcon">
+            <p>Vehiculele mele</p>
+            <br>
+        </div>
+
+        <div class="tabele_trotinete">
+            <div class="tabel_vehiculele_mele_trotinete">
+                <table class="sortable">
+                    <thead>
+                        <tr>
+                            <th>Tip TROTINETA</th>
+                            <th>Serie</th>
+                            <th>Tip suspensie</th>
+                            <th>Tip frana</th>
+                            <th>Tip pliere</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="hideextra">Nu sunt TROTINETE inregistrate</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="tabele_biciclete">
+            <div class="tabel_vehiculele_mele_biciclete">
+                <table class="sortable">
+                    <thead>
+                        <tr>
+                            <th>Tip BICICLETA</th>
+                            <th>Brand</th>
+                            <th>Serie</th>
+                            <th>Dimensiune roata</th>
+                            <th>Tip Cadru</th>
+                            <th>Nr. Viteze</th>
+                            <th>Nr. Discuri</th>
+                            <th>Tip Furca</th>
+                            <th>Tip Suspensie</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>MTB</td>
+                            <td>BTWIN</td>
+                            <td>1234567890</td>
+                            <td>26"</td>
+                            <td>Aluminiu</td>
+                            <td>9 viteze</td>
+                            <td>3 foi</td>
+                            <td>Aluminiu</td>
+                            <td>Cu suspensie</td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>MTB</td>
+                            <td>BTWIN</td>
+                            <td>1234567890</td>
+                            <td>26"</td>
+                            <td>Aluminiu</td>
+                            <td>9 viteze</td>
+                            <td>3 foi</td>
+                            <td>Aluminiu</td>
+                            <td>Cu suspensie</td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="tabele_motociclete">
+            <div class="tabel_vehiculele_mele_motociclete">
+                <table class="sortable">
+                    <thead>
+                        <tr>
+                            <th>Tip MOTOR</th>
+                            <th>Brand</th>
+                            <th>Serie</th>
+                            <th>An</th>
+                            <th>Motor</th>
+                            <th>Putere</th>
+                            <th>Capacitate</th>
+                            <th>Combustibil</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Zhang Yanquan</td>
+                            <td>BMW</td>
+                            <td>12345678</td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td>1 cilindru, 4 timpi, 4 valve, DOHC</td>
+                            <td>33.5 CP</td>
+                            <td>300 cmc</td>
+                            <td>benzina</td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zhang Yanquan</td>
+                            <td>BMW</td>
+                            <td>12345678</td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td>1 cilindru, 4 timpi, 4 valve, DOHC</td>
+                            <td>33.5 CP</td>
+                            <td>300 cmc</td>
+                            <td>benzina</td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zhang Yanquan</td>
+                            <td>BMW</td>
+                            <td>12345678</td>
+                            <td><input type="date" value="2017-06-01" readonly></td>
+                            <td>1 cilindru, 4 timpi, 4 valve, DOHC</td>
+                            <td>33.5 CP</td>
+                            <td>300 cmc</td>
+                            <td>benzina</td>
+                            <td>
+                                <button class="detailsButton">Detalii</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
     </div>
 
     <footer>
