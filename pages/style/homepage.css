@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+
 body {
     text-align: center;
     background-image: linear-gradient(rgb(255, 255, 255), rgb(155, 155, 154));
@@ -56,6 +59,7 @@ body {
     border-bottom: 7vmin solid;
     border-left: 5vmin solid transparent;
     border-right: 5vmin solid transparent;
+    vertical-align: middle;
 }
 
 .trapezium3 {
@@ -75,6 +79,7 @@ body {
     font-weight: 600px;
     font-size: 3vmin;
     color: aliceblue;
+    cursor: pointer;
 }
 
 /* Login Modal */
@@ -152,7 +157,7 @@ body {
 }
 
 .form-myProfile input {
-    width: 49vw;
+    width: 43vw;
     padding: 10px 0px;
     margin-top: 20px;
     border: none;
@@ -214,7 +219,158 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
 /* Login Modal */
+
+/* Programeaza Modal */
+.calendar-icon {
+    width: 2vmax;
+    height: 2vmax;
+    margin-right: 1%;
+}
+
+
+.ProgrameazaModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.myprogrameazaModal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.chenar-text-myprogrameazaModal {
+    height: 3vmax;
+    text-align: center;
+    margin: auto;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 2.5vmin;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+/* Programeaza Modal */
+
+/* Calendar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--primary-font);
+}
+
+:root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray: #949495;
+    --blue: #244ab4;
+    --pink: #e43f5a;
+    --lightpink: #ec4b66;
+    --blackish: #232931;
+    --primary-font: "Poppins", sans-serif;
+}
+
+.containerCalendar {
+    display: block;
+    justify-content: center;
+    width: 60%;
+    min-width: 32rem;
+    margin: 0 auto;
+    color: var(--gray);
+}
+
+.calendar {
+    background: var(--white);
+    border-radius: 10px;
+}
+
+.month {
+    display: flex;
+    height: 3em;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 3em;
+}
+
+.arrows {
+    width: 3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.arrows i {
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+}
+
+.arrows i:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    transition: 0.3s ease-in;
+    border-radius: 50%;
+}
+
+.weekdays {
+    margin-bottom: 2rem;
+    font-size: 2em;
+    background-color: var(--gray);
+    color: var(--blackish);
+}
+
+.day {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.days div {
+    width: 4rem;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.days .day:hover {
+    background-color: var(--pink);
+    color: var(--white);
+    transition: 0.3s ease-in;
+    border-radius: 50%;
+    cursor: default;
+}
+
+.today {
+    background-color: var(--lightpink);
+    color: white;
+    border-radius: 0.5em;
+}
+
+.weekdays {
+    font-size: 1.5rem;
+}
+
+
+/* Calendar */
 
 footer {
     background-color: #777;
