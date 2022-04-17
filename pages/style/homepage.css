@@ -322,7 +322,7 @@ body {
 }
 
 .arrows i:hover {
-    background-color: var(--blue);
+    background-color: var(--black);
     color: var(--white);
     transition: 0.3s ease-in;
     border-radius: 50%;
