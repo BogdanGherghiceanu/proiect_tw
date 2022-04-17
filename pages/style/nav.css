@@ -23,6 +23,8 @@ nav {
 }
 
 .navbar-icon {
+    width: 6.5vmax;
+    height: 6.5vmax;
     margin-top: 0.5%;
     margin-bottom: 0.5%;
 }
