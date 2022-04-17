@@ -1,0 +1,534 @@
+body {
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(155, 155, 154));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* Hide horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+span.usernameBlock {
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-weight: 700;
+    font-size: 2vmin;
+    margin: auto;
+    margin-right: 20px;
+    color: #ffffff
+}
+
+
+/* dropdown */
+
+.dropdown {
+    float: left;
+    /* overflow: hidden; */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    margin-left: -95px;
+    background-color: #fdfdfd;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.show {
+    display: block;
+    z-index: 11;
+}
+
+.dropdownButton {
+    user-select: none;
+    outline: none;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    height: 48px;
+    padding: 0 16px;
+    text-decoration: none;
+    max-width: 100%;
+    position: relative;
+    background: transparent;
+    width: 100%;
+    overflow: visible;
+    font-family: sans-serif;
+    line-height: 1.15;
+    font-family: Muli, Helvetica Neue, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left !important;
+}
+
+.dropdownButton:hover {
+    background-color: #e7e7e7;
+    font-weight: 700;
+}
+
+.material-icons {
+    vertical-align: middle;
+    padding: 5%;
+}
+
+
+/* end dropdown */
+
+.imagesDiv {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.image-cycle {
+    width: 5vmax
+}
+
+.image-logo {
+    height: 10vmax;
+}
+
+.image-motorcycle {
+    height: 5vmax
+}
+
+.chenar-text {
+    height: 3vmax;
+    text-align: center;
+    margin: auto;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 2.5vmin;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-icon {
+    width: 2vmax;
+    height: 2vmax;
+    margin-right: 1%;
+    z-index: 10;
+}
+
+.bike-icon,
+.bikeProfile-icon {
+    width: 3vmax;
+    height: 3vmax;
+    margin-right: 1%;
+}
+
+.warehouse_icon {
+    width: 2vmax;
+    height: 2vmax;
+    margin-right: 1%;
+}
+
+.supplier_icon {
+    width: 2vmax;
+    height: 2vmax;
+    margin-right: 1%;
+}
+
+
+/* .bikeProfile-icon {
+    width: 3vmax;
+    height: 3vmax;
+    margin-right: 1%;
+} */
+
+
+/* Tabele */
+
+.hideextra {
+    width: 500px
+}
+
+.tabele {
+    padding: 12px;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.tabele_stocIntern,
+.tabele_comenzi {
+    padding: 12px;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: just make scrollbar invisible */
+}
+
+.tabel_programarile_mele,
+.tabel_tabele_stocIntern,
+.tabel_tabele_comenzi {
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    background: #fff;
+    border-color: rgba(0, 0, 0, .12);
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
+    overflow: scroll;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+.tabel_programarile_mele table {
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+.tabel_tabele_stocIntern table {
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    grid-template-columns: auto auto auto auto auto auto auto;
+}
+
+.tabel_tabele_comenzi table {
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+
+/* table {
+    display: grid;
+    border-collapse: collapse;
+    min-width: 100%;
+    grid-template-columns: 1fr 2fr;
+} */
+
+thead,
+tbody,
+tr {
+    display: contents;
+}
+
+th,
+td {
+    padding: 15px;
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: #303136;
+    text-align: left;
+    font-weight: normal;
+    font-size: 1.1rem;
+    color: white;
+}
+
+th:last-child {
+    border: 0;
+}
+
+td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #4d4d4d;
+}
+
+tr:nth-child(even) td {
+    background: #f0eff5;
+}
+
+
+/* end tabele */
+
+
+/* Butoane */
+
+.programareInregBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 12px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #53a0c9!important;
+}
+
+.programareInLucruBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 23px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #e3ef3f!important;
+}
+
+.programareFinalizataBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 17px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #43a047!important;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.programareAnulataBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 23px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #f54141!important;
+}
+
+.show_stocInternBlock {
+    display: block;
+    z-index: 11;
+}
+
+.show_programarileMeleBlock {
+    display: block;
+    z-index: 11;
+}
+
+#stocInternBlock,
+#comenziBlock {
+    display: none;
+}
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+
+/* Modal */
+
+.ProfileModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.myProfileModal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.chenar-text-mmyProfileModal {
+    height: 3vmax;
+    text-align: center;
+    margin: auto;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 2.5vmin;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+
+/* Form */
+
+.form-myProfile {
+    display: grid;
+    place-content: center;
+    font-family: sans-serif;
+    color: #6b6b6b;
+}
+
+.form-myProfile form {
+    width: 50vw;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.form-myProfile label {
+    margin-bottom: 15px;
+    position: relative;
+    /*  */
+    border-radius: 5px;
+    border: 2px solid #dbdbdb;
+}
+
+.form-myProfile input {
+    width: 49vw;
+    padding: 10px 0px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    text-indent: 20px;
+}
+
+.form-myProfile input::placeholder {
+    opacity: 0;
+}
+
+.form-myProfile span {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transform: translateY(30px);
+    font-size: 0.9em;
+    font-weight: 500;
+    transition-duration: 300ms;
+}
+
+.form-myProfile button {
+    padding: 15px 0px;
+    margin-top: 20px;
+    background: rgb(27, 27, 27);
+    color: #fff;
+    border: 1px solid rgb(27, 27, 27);
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 1em;
+}
+
+.form-myProfile label:focus-within>span,
+.form-myProfile input:not(:placeholder-shown)+span {
+    background-color: white;
+    font-weight: 600;
+    color: rgb(27, 27, 27);
+    transform: translateY(-9px);
+}
+
+
+/* End Form */
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.detailsButton {
+    padding: 10px 15px;
+    background: rgb(27, 27, 27);
+    color: #fff;
+    border: 1px solid rgb(27, 27, 27);
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 1em;
+}
+
+
+/* Paginare */
+
+.pagination-container {
+    display: inline;
+    width: 100%;
+}
+
+.pagination-group {
+    padding: 10px;
+    float: left;
+}
+
+.pagination-group2 {
+    padding: 10px;
+    margin: auto;
+    /* float: right; */
+}
+
+.pagination-content-hide {
+    display: none;
+}
+
+.pagination-content li {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    display: inline;
+}
+
+.pagination-content li:hover {
+    cursor: pointer;
+}
+
+.pagination-content li.active {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #3b3b3b;
+}
+
+.pagination-content li:hover:not(.active) {
+    background-color: #ddd;
+}
+
+
+/* Paginare */
+
+
+/* Modal end */
+
+@media only screen and (max-width: 550px) {
+    .usernameBlock {
+        display: none;
+    }
+}
