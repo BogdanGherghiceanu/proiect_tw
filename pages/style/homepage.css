@@ -1,6 +1,8 @@
 body {
     text-align: center;
     background-image: linear-gradient(rgb(255, 255, 255), rgb(155, 155, 154));
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .image-cycle {
@@ -75,13 +77,166 @@ body {
     color: aliceblue;
 }
 
+/* Login Modal */
+/* Modal */
+
+.bikeProfile-icon {
+    width: 3vmax;
+    height: 3vmax;
+    margin-right: 1%;
+}
+
+
+.LoginModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.myLoginModal-content {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.chenar-text-myLoginModal {
+    height: 3vmax;
+    text-align: center;
+    margin: auto;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 2.5vmin;
+    color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+
+/* Form */
+
+.form-myProfile {
+    display: grid;
+    place-content: center;
+    font-family: sans-serif;
+    color: #6b6b6b;
+}
+
+.form-myProfile form {
+    width: 50vw;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.form-myProfile label {
+    margin-bottom: 15px;
+    position: relative;
+    /*  */
+    border-radius: 5px;
+    border: 2px solid #dbdbdb;
+}
+
+.form-myProfile input {
+    width: 49vw;
+    padding: 10px 0px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    text-indent: 20px;
+}
+
+.form-myProfile input::placeholder {
+    opacity: 0;
+}
+
+.form-myProfile span {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transform: translateY(30px);
+    font-size: 0.9em;
+    font-weight: 500;
+    transition-duration: 300ms;
+}
+
+.form-myProfile button {
+    padding: 15px 0px;
+    margin-top: 20px;
+    background: rgb(27, 27, 27);
+    color: #fff;
+    border: 1px solid rgb(27, 27, 27);
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 1em;
+}
+
+.form-myProfile label:focus-within>span,
+.form-myProfile input:not(:placeholder-shown)+span {
+    background-color: white;
+    font-weight: 600;
+    color: rgb(27, 27, 27);
+    transform: translateY(-9px);
+}
+
+
+/* End Form */
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Login Modal */
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    flex-shrink: 0;
+    margin-top: auto;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
 @media only screen and (max-width: 550px) {
     .intro-title {
         font-size: 6vmax;
     }
+
     .intro-text {
         font-size: 3vmax;
     }
+
     .trapezium1 {
         height: 0;
         width: 12vmax;
@@ -92,6 +247,7 @@ body {
         border-left: 5vmax solid transparent;
         border-right: 5vmax solid transparent;
     }
+
     .trapezium2 {
         height: 0;
         width: 22vmax;
@@ -102,6 +258,7 @@ body {
         border-left: 5vmax solid transparent;
         border-right: 5vmax solid transparent;
     }
+
     .trapezium3 {
         height: 0;
         width: 32vmax;
@@ -112,6 +269,7 @@ body {
         border-left: 5vmax solid transparent;
         border-right: 5vmax solid transparent;
     }
+
     .programeaza {
         font-size: 3vmax;
     }

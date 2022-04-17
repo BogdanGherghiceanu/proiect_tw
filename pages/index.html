@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2 Wheels</title>
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="style/nav.css">
     <link rel="stylesheet" href="style/homepage.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/homePage.js"></script>
 </head>
 
 
@@ -24,21 +28,56 @@
         <img src="resources/index/2.png" class="image-logo" alt="logo">
         <img src="resources/index/3.png" class="image-motorcycle" alt="motorcycle">
     </div>
-    <div>
+    <div class="continut_pagina">
         <div class="chenar-text">
             <br>
             <a class="intro-title">Te punem pe 2 roti! </a><br>
             <a class="intro-text">
-                  Orice probleme ai avea la motorul tau, programeaza-te 
+                Orice probleme ai avea la motorul tau, programeaza-te
                 si de restul ne ocupam noi</a>
             <br><br>
         </div>
         <div class="trapezium1"></div>
         <div class="trapezium2">
-            <a class="programeaza" href="login.html">Am cont</a>
+            <a class="programeaza" onclick="openLoginModal()">Am cont</a>
         </div>
         <div class="trapezium3">
             <a class="programeaza" href="programeazate.html">Programeaza-te</a>
         </div>
     </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="LoginModal">
+        <div class="myLoginModal-content">
+            <div class="chenar-text-myLoginModal">
+                <br>
+                <img src="resources/userProfile/bike_icon.png" class="bikeProfile-icon" alt="calendarIcon">
+                <p>Am cont</p>
+                <br>
+            </div>
+
+            <div class="form-myProfile">
+                <form>
+                    <label for="email">
+                        <input type="email" id="email" placeholder="Email" value="Tiganasu@Cristina-Ecaterina">
+                        <span>Email * </span>
+                    </label>
+
+                    <label for="parola">
+                        <input type="password" id="password" name="password" placeholder="Parola">
+                        <span>Parola * </span>
+                    </label>
+
+                    <button type="button">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal -->
+
+    <footer>
+        <p>Contact us at: contact@2Wheels.com</p>
+    </footer>
 </body>
+
+</html>
