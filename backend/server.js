@@ -55,7 +55,7 @@ var server = httpModule.createServer((req, res) => {
                 break;
             }
 
-        case signup:
+        case 'signup':
             try {
                 if (req.method != 'GET' || req.headers.username == null || req.headers.password == null) {
                     errorRequest.err400(res);
@@ -64,46 +64,40 @@ var server = httpModule.createServer((req, res) => {
                 var user = new User();
                 user.username = req.headers.username;
                 user.password = req.headers.password;
-                user.nume = nume;
-                user.prenume = prenume;
-                user.email = email;
-                user.telefon = telefon;
-                login.signUp(MySQLGoogle,user,(status,user)=>{
-                    
-                    switch (status) {
-                        case -1:
-                            console.log(`[SIGNUP]${user.username}, parola sau alte date contin caractere invalide`);
-                            errorRequest.err400(res)
-                            break;
-                        case 0:
-                            console.log(`[SIGNUP]${user.username} exista deja `)
-                            errorRequest.err401(res)
-                            break;
-                        case 1:
-                            console.log(`[SIGNUP] ${user.username} a fost creat`)
-                            userReturn.password = ""
-
-                            res.writeHead(200, { 'Content-Type': 'text/json' });
-                            res.write(JSON.stringify(userReturn))
-                            res.end();
-                            break;
-
+                user.nume = req.headers.nume;
+                user.prenume = req.headers.prenume;
+                user.email = req.headers.email;
+                user.telefon = req.headers.telefon;
+                mySQLGoogle.check(mySQLGoogle,user,(user,status)=>{
+                    if(status==1){
+                        console.log("Exista");
                     }
-                })  
-            }catch (err) {
-                console.log(err);
-                errorRequest.err400(res);
-            }
+                    else{
+                        console.log("nu exista");
+                        mySQLGoogle.signUp(user,(status,user)=>{
+                            console.log("mergeee!!!!!!!!!!");
 
-            break;
+                        })
+                    }
+                })
+
+           
+
+         
+            } catch (err) {
+    console.log(err);
+    errorRequest.err400(res);
+}
+
+break;
 
         default:
-            console.log("default");
-            break;
+console.log("default");
+break;
 
     }
 
 });
-
+mySQLGoogle.getAllUsers();
 server.listen(config.PORT);
 console.log(`Serverul ruleaza la ${config.URL}:${config.PORT}`);

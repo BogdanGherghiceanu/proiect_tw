@@ -12,31 +12,92 @@ class MysqlGoogle {
         });
     }
 
+    check(mysql, user, callbackSignUp) {
+        var usernameOrEmailIsUsed = -1
+        var sql = `SELECT username FROM users WHERE username = '${user.username}' OR email = '${user.email}'`
+        console.log(sql);
+        this.con.query(sql, function (err, result, fields) {
+            if (err) throw err;
+            try {
+                var resultJson = JSON.stringify(result)
+                var max = JSON.parse(resultJson)[0].users;
+                callbackSignUp(user,1)
+            }
+            catch (e) {
+                usernameOrEmailIsUsed = 0
+            }
 
-    addNewUser(user,callbackSignUp) {
-        var sql = ` \
-      INSERT INTO 'users' ( \
-    	'id','username','password','nume' ,'prenume' ,'email','telefon') \
-        VALUES \
-        ('${this.getNextUserId()}','${user.username}','${user.password}','${user.nume}','${user.prenume}','${user.email}','${user.telefon}')`;
-
-        con.query(sql, function (err, result) {
-            if (err) 
-            callbackSignUp(0,user)
-            return 0;
-            console.log(`[MySQL] A fost inregistrat ultilizatorul : ${user.username}','${user.password}','${user.nume}','${user.prenume}','${user.email}','${user.telefon}')`);
-            return 1;
-            callbackSignUp(1,user)
+            if (usernameOrEmailIsUsed == 0) {
+                callbackSignUp(user,0)
+            }
+            else {
+                callbackSignUp(user,1)
+            }
         });
+    }
+    checkForExistingAccount(user, callbackSignUp) {
+        var usernameOrEmailIsUsed = -1
+        var sql = `SELECT username FROM users WHERE username = '${user.username}' OR email = '${user.email}'`
+        console.log(sql);
+        this.con.query(sql, function (err, result, fields) {
+            if (err) throw err;
+            try {
+                var resultJson = JSON.stringify(result)
+                var max = JSON.parse(resultJson)[0].users;
+                callbackSignUp(1)
+            }
+            catch (e) {
+                usernameOrEmailIsUsed = 0
+            }
+
+            if (usernameOrEmailIsUsed == 0) {
+                callbackSignUp(0)
+            }
+            else {
+                callbackSignUp(1)
+            }
+
+        });
+
+    }
+    signUp(user, callbackSignUp) {
+
+
+
+
+        var sql = ` \
+            INSERT INTO users ( \
+              username,password,nume ,prenume ,email,telefon) \
+              VALUES \
+              ('${user.username}','${user.password}','${user.nume}','${user.prenume}','${user.email}','${user.telefon}')`;
+
+        console.log(sql);
+        this.con.query(sql, function (err, result) {
+            if (err) {
+                console.log(err);
+                callbackSignUp(0, user)
+                return 0;
+            }
+
+
+            console.log(`[MySQL] A fost inregistrat ultilizatorul : ${user.username}','${user.password}','${user.nume}','${user.prenume}','${user.email}','${user.telefon}')`);
+
+            callbackSignUp(1, user)
+            return 1;
+        });
+
+
+
 
         return 0;
     }
-    getNextUserId() {
+    getNumberOfUsers() {
         this.con.query("SELECT MAX(id) as max FROM users", function (err, result, fields) {
             if (err) throw err;
             var resultJson = JSON.stringify(result)
             var max = JSON.parse(resultJson)[0].max;
-            return max + 1;
+            max = max + 1
+            return max;
         });
     }
     login(username, password, callbackLogin) {
@@ -47,7 +108,7 @@ class MysqlGoogle {
             var resultJson = JSON.parse(resultString)
 
             var user = new User.User()
-            var found=0
+            var found = 0
             try {
                 user.id = resultJson[0].id;
                 user.username = resultJson[0].username;
@@ -57,17 +118,26 @@ class MysqlGoogle {
                 user.email = resultJson[0].email;
                 user.telefon = resultJson[0].telefon;
                 user.connected = 1;
-                found=1
+                found = 1
             } catch {
                 console.log("[MySQL]Userul nu a fost gasit");
             }
-            callbackLogin(found,user)
+            callbackLogin(found, user)
         });
 
 
     }
+    getAllUsers() {
+        this.con.query("SELECT * FROM users", function (err, result, fields) {
+            if (err) throw err;
+            console.log(result);
+        });
+    }
+    createNewTable() {
+
+    }
 }
-module.exports.MySQLGoogle=MysqlGoogle
+module.exports.MySQLGoogle = MysqlGoogle
 
 // var con = mysql.createConnection({
 //     host: "35.223.121.14",

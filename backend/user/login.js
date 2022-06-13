@@ -9,7 +9,7 @@ function login(MySqlGoogle, username, password, callbackLogin) {
     }
 
 }
-function signUp(MySQLGoogle, user, callbackSignUp) {
+function signUp(MySqlGoogle, user, callbackSignUp) {
     if (verificaUsername(user.username) &&
         verificaParola(user.password) &&
         verificaText(user.nume) &&
@@ -33,7 +33,11 @@ function signUp(MySQLGoogle, user, callbackSignUp) {
             }
 
         }
-        MySqlGoogle.signUp(user, callbackSignUp)
+        if(MySqlGoogle.checkForExistingAccount(user)==0)
+        {
+            MySqlGoogle.signUp(user,callbackSignUp)
+        }
+        
     } else {
         callbackSignUp(-1, 0);
     }
