@@ -1,13 +1,43 @@
 const { setUncaughtExceptionCaptureCallback } = require("process");
 const config = require("../plugins/config")
 require('../database/mysqlGoogle')
-function login(MySqlGoogle,username, password, callbackLogin) {
-    if(verificaUsername(username) && verificaParola(password)){
-        return MySqlGoogle.login(username, password, callbackLogin) 
-    }else{
-        callbackLogin(-1,0)
+function login(MySqlGoogle, username, password, callbackLogin) {
+    if (verificaUsername(username) && verificaParola(password)) {
+        MySqlGoogle.login(username, password, callbackLogin)
+    } else {
+        callbackLogin(-1, 0)
     }
 
+}
+function signUp(MySQLGoogle, user, callbackSignUp) {
+    if (verificaUsername(user.username) &&
+        verificaParola(user.password) &&
+        verificaText(user.nume) &&
+        verificaText(user.prenume)) {
+        //verificam telefon
+        var numerePermise = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+        for (const chr of user.telefon) {
+            if (numerePermise.includes(chr.charCodeAt()) == false) {
+                callbackSignUp(-1, 0);
+                return -1;
+            }
+        }
+        var caracterePermiseEmail = caracterePermise
+        caracterePermiseEmail.push(64) // character @
+        caracterePermiseEmail.push(46) // character .
+
+        for (const chr of user.email) {
+            if (caracterePermiseEmail.includes(chr.charCodeAt()) == false) {
+                callbackSignUp(-1, 0);
+                return -1
+            }
+
+        }
+        MySqlGoogle.signUp(user, callbackSignUp)
+    } else {
+        callbackSignUp(-1, 0);
+    }
+    
 }
 
 //contine toate caractere de la a-z A-Z 0-9
@@ -37,15 +67,15 @@ function verificaUsername(username) {
 function verificaParola(parola) {
     var caracterePermiseCopy = caracterePermise;
     var caractereSpecialePermise = config.caracterePermiseParola
-    var i=0
-    while(i<caractereSpecialePermise.length){
-        
-      
+    var i = 0
+    while (i < caractereSpecialePermise.length) {
+
+
         const asciiCodeofChar = caractereSpecialePermise[i].charCodeAt()
         caracterePermiseCopy.push(asciiCodeofChar)
-        i=i+1
+        i = i + 1
     }
- 
+
     for (const chr of parola) {
         if (caracterePermiseCopy.includes(chr.charCodeAt()) == false)
             return 0;
@@ -96,4 +126,5 @@ function genereazaaZ09() {
 
 
 
-module.exports.login=login;
+module.exports.login = login;
+module.exports.signUp = signUp;

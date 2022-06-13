@@ -12,17 +12,21 @@ class MysqlGoogle {
         });
     }
 
-    addNewUser(username, password, nume, prenume, email, telefon) {
+
+    addNewUser(user,callbackSignUp) {
         var sql = ` \
       INSERT INTO 'users' ( \
     	'id','username','password','nume' ,'prenume' ,'email','telefon') \
         VALUES \
-        ('${this.getNextUserId()}','${username}','${password}','${nume}','${prenume}','${email}','${telefon}')`;
+        ('${this.getNextUserId()}','${user.username}','${user.password}','${user.nume}','${user.prenume}','${user.email}','${user.telefon}')`;
 
         con.query(sql, function (err, result) {
-            if (err) return 0;
-            console.log(`[MySQL] A fost inregistrat ultilizatorul : ${username}','${password}','${nume}','${prenume}','${email}','${telefon}')`);
+            if (err) 
+            callbackSignUp(0,user)
+            return 0;
+            console.log(`[MySQL] A fost inregistrat ultilizatorul : ${user.username}','${user.password}','${user.nume}','${user.prenume}','${user.email}','${user.telefon}')`);
             return 1;
+            callbackSignUp(1,user)
         });
 
         return 0;
