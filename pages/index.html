@@ -7,28 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2 Wheels</title>
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="style/nav.css">
-    <link rel="stylesheet" href="style/homepage.css">
+    <link rel="stylesheet" href="../pages/style/nav.css">
+    <link rel="stylesheet" href="../pages/style/homepage.css">
 
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous"/>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="js/homePage.js"></script>
+    <script src="../pages/js/homePage.js"></script>
+    <script defer src="../pages/js/login.js"></script>
 </head>
 
 
 <nav>
     <a class="navbar-text" href="index.html">2 Wheels</a>
-    <img src="resources/navbar/tyre.png" class="navbar-icon" alt="tyre">
+    <img src="../pages/resources/navbar/tyre.png" class="navbar-icon" alt="tyre">
 </nav>
 
 
 <body>
     <div class="imagesDiv">
-        <img src="resources/index/1.png" class="image-cycle" alt="cycle">
-        <img src="resources/index/2.png" class="image-logo" alt="logo">
-        <img src="resources/index/3.png" class="image-motorcycle" alt="motorcycle">
+        <img src="../pages/resources/index/1.png" class="image-cycle" alt="cycle">
+        <img src="../pages/resources/index/2.png" class="image-logo" alt="logo">
+        <img src="../pages/resources/index/3.png" class="image-motorcycle" alt="motorcycle">
     </div>
     <div class="continut_pagina">
         <div class="chenar-text">
@@ -53,24 +54,24 @@
         <div class="myLoginModal-content">
             <div class="chenar-text-myLoginModal">
                 <br>
-                <img src="resources/userProfile/bike_icon.png" class="bikeProfile-icon" alt="calendarIcon">
+                <img src="../pages/resources/userProfile/bike_icon.png" class="bikeProfile-icon" alt="calendarIcon">
                 <p>Am cont</p>
                 <br>
             </div>
 
-            <div class="form-myProfile">
+            <div id="loginModalForm" class="form-myProfile">
                 <form>
                     <label for="email">
-                        <input type="email" id="email" placeholder="Email" value="Tiganasu@Cristina-Ecaterina">
+                        <input type="email" id="login_email" name="email" placeholder="Email">
                         <span>Email * </span>
                     </label>
 
                     <label for="parola">
-                        <input type="password" id="password" name="password" placeholder="Parola">
+                        <input type="password" id="login_password" name="password" placeholder="Parola">
                         <span>Parola * </span>
                     </label>
 
-                    <button formaction="userProfile.html" onclick="openPages()">Login</button>
+                    <button type="submit">Login</button>
                 </form>
             </div>
         </div>
@@ -82,7 +83,7 @@
         <div class="myprogrameazaModal-content">
             <div class="chenar-text-myprogrameazaModal">
                 <br>
-                <img src="resources/userProfile/calendar_icon.png" class="calendar-icon" alt="calendarIcon">
+                <img src="../pages/resources/userProfile/calendar_icon.png" class="calendar-icon" alt="calendarIcon">
                 <p>Programeaza-te</p>
                 <br>
             </div>
@@ -167,7 +168,7 @@
                     </label>
 
                     <label for="email">
-                        <input type="email" id="email" placeholder="Email" value="user@name">
+                        <input type="email" id="programeaza_email" placeholder="Email" value="user@name">
                         <span>Email * </span>
                     </label>
 
@@ -182,7 +183,7 @@
                     </label>
 
                     <label for="parola">
-                        <input type="password" id="password" name="password" placeholder="Parola">
+                        <input type="password" id="programeaza_password" name="password" placeholder="Parola">
                         <span>Parola * </span>
                     </label>
 

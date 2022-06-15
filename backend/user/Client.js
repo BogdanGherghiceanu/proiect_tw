@@ -5,4 +5,3 @@ class Client extends User {
     super(nume, prenume, telefon, email, parola);
     userID
 }
-}
