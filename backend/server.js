@@ -104,6 +104,13 @@
 
 var httpModule = require('http');
 const config = require('./plugins/config');
+
+const { MySQLGoogle } = require('./database/mysqlGoogle');
+
 const router = require('./Router/router')
 httpModule.createServer(router.handle).listen(config.PORT)
+
+var mySQLGoogle = new MySQLGoogle()
+mySQLGoogle.getAllUsers();
+
 console.log(`Serverul ruleaza la ${config.URL}:${config.PORT}`);
