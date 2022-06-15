@@ -36,13 +36,8 @@ exports.loginController = (req, res) => {
                     break;
                 case 1:
                     console.log(`[LOGIN] ${db_user.username} a fost gasit`)
-                    userReturn.password = ""
-
-                    res.writeHead(200, { 'Content-Type': 'text/json' });
-                    res.write(JSON.stringify(userReturn))
-                    res.end();
+                    sendResponse(res, { code: 200, error: false, msg: "Success"})
                     break;
-
             }
         })
     })
