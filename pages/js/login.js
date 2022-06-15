@@ -16,12 +16,20 @@ async function modalLoginHandle(e) {
         },
         body: JSON.stringify(formData),
     })
-        // .then(response => {
-        //     return response.json()
-        // })
-        // .catch((error) => {
-        //     console.error('Error:', error);
-        // });
+        .then(response => {
+            return response.json()
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    resp = resp.data
+    if (resp.code === 200) {
+        console.log(resp.msg)
+    }
+    else {
+        console.log(resp.msg)
+    }
 }
 
 var loginModalForm = document.querySelector('#loginModalForm form')
