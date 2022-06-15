@@ -22,7 +22,7 @@ function err401(res) {
 
 }
 
-module.exports.err400= err400;
-module.exports.err401=err401;
-module.exports.err404=err404;
-module.exports.err500=err500;
+module.exports.err400 = err400;
+module.exports.err401 = err401;
+module.exports.err404 = err404;
+module.exports.err500 = err500;
