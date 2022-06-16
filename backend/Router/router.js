@@ -1,4 +1,5 @@
 const homeController = require("../Controller/homeController");
+const userProfileController = require("../Controller/userProfileController");
 const login = require("../Controller/loginController");
 
 const {getFile} = require("../Utils/utils");
@@ -18,18 +19,24 @@ route_post = (url, action, middleware) => {
 
 //GET routes
 route_get("/", homeController);
+route_get("/pages/index.html", homeController);
+route_get("/pages/userProfile.html", userProfileController);
 
 //POST routes
 route_post("/api/login", login.loginController);
+route_post("/pages/userProfile.html", userProfileController);
+
 
 //STATIC FILES
 //CSS
 route_get("/pages/style/nav.css", (req, res) => getFile("../pages/style/nav.css", res));
 route_get("/pages/style/homepage.css", (req, res) => getFile("../pages/style/homepage.css", res));
+route_get("/pages/style/userProfile.css", (req, res) => getFile("../pages/style/userProfile.css", res));
 
 //JS
 route_get("/pages/js/homePage.js", (req, res) => getFile("../pages/js/homePage.js", res));
 route_get("/pages/js/login.js", (req, res) => getFile("../pages/js/login.js", res));
+route_get("/pages/js/userProfile.js", (req, res) => getFile("../pages/js/userProfile.js", res));
 
 //IMAGES
 route_get("/pages/resources/index/1.png", (req, res) => getFile("../pages/resources/index/1.png", res));
@@ -53,11 +60,10 @@ const url_param_check = (url) => {
 
 exports.handle = (req, res) => {
     try {
-        //TODO : REFACTOR THIS
         const url_param = url_param_check(req.url);
 
         if (url_param.id) req.url = url_param.url;
-        // END
+
         if (routes[req.method][req.url]) {
             routes[req.method][req.url](req, res, url_param.id);
         } else {

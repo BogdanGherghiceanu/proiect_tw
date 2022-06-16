@@ -17,7 +17,7 @@ exports.loginController = (req, res) => {
         console.log(req_user)
 
         if (req_user.email.length === 0 || req_user.password.length === 0) {
-            sendResponse(res, { code: 400, error: true, msg: `Completeaza toate campurile.` })
+            sendResponse(res, { code: 400, error: true, msg: "Completeaza toate campurile." })
         }
 
         var db_user = new User();
@@ -28,15 +28,17 @@ exports.loginController = (req, res) => {
             switch (found) {
                 case -1:
                     console.log(`[LOGIN]${db_user.username} sau parola contin caractere invalide`);
-                    errorRequest.err400(res)
+                    sendResponse(res, { code: 400, error: true, msg: "Bad Request" })
+                    // errorRequest.err400(res)
                     break;
                 case 0:
                     console.log(`[LOGIN]${db_user.username} nu a fost gasit sau a introdus o parola gresita`)
-                    errorRequest.err401(res)
+                    sendResponse(res, { code: 401, error: true, msg: "Unauthorized" })
+                    // errorRequest.err401(res)
                     break;
                 case 1:
                     console.log(`[LOGIN] ${db_user.username} a fost gasit`)
-                    sendResponse(res, { code: 200, error: false, msg: "Success"})
+                    sendResponse(res, { code: 200, error: false, msg: "Success", body: JSON.stringify(userReturn) })
                     break;
             }
         })

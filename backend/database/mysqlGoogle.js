@@ -1,7 +1,6 @@
 var mysql = require('mysql');
 var User = require('../user/User')
 
-
 class MysqlGoogle {
     constructor() {
         this.con = mysql.createConnection({
@@ -21,20 +20,21 @@ class MysqlGoogle {
             try {
                 var resultJson = JSON.stringify(result)
                 var max = JSON.parse(resultJson)[0].users;
-                callbackSignUp(user,1)
+                callbackSignUp(user, 1)
             }
             catch (e) {
                 usernameOrEmailIsUsed = 0
             }
 
             if (usernameOrEmailIsUsed == 0) {
-                callbackSignUp(user,0)
+                callbackSignUp(user, 0)
             }
             else {
-                callbackSignUp(user,1)
+                callbackSignUp(user, 1)
             }
         });
     }
+
     checkForExistingAccount(user, callbackSignUp) {
         var usernameOrEmailIsUsed = -1
         var sql = `SELECT username FROM users WHERE username = '${user.username}' OR email = '${user.email}'`
@@ -60,11 +60,8 @@ class MysqlGoogle {
         });
 
     }
+
     signUp(user, callbackSignUp) {
-
-
-
-
         var sql = ` \
             INSERT INTO users ( \
               username,password,nume ,prenume ,email,telefon) \
@@ -79,18 +76,15 @@ class MysqlGoogle {
                 return 0;
             }
 
-
             console.log(`[MySQL] A fost inregistrat ultilizatorul : ${user.username}','${user.password}','${user.nume}','${user.prenume}','${user.email}','${user.telefon}')`);
 
             callbackSignUp(1, user)
             return 1;
         });
 
-
-
-
         return 0;
     }
+
     getNumberOfUsers() {
         this.con.query("SELECT MAX(id) as max FROM users", function (err, result, fields) {
             if (err) throw err;
@@ -100,6 +94,7 @@ class MysqlGoogle {
             return max;
         });
     }
+
     login(username, password, callbackLogin) {
         this.con.query(`SELECT id,username,password,nume ,prenume , email , telefon FROM users WHERE username = '${username}' AND password = '${password}'`, function (err, result, fields) {
             if (err) throw err;
@@ -112,7 +107,7 @@ class MysqlGoogle {
             try {
                 user.id = resultJson[0].id;
                 user.username = resultJson[0].username;
-                user.password = resultJson[0].password;
+                // user.password = resultJson[0].password;
                 user.nume = resultJson[0].nume;
                 user.prenume = resultJson[0].prenume;
                 user.email = resultJson[0].email;
@@ -124,15 +119,15 @@ class MysqlGoogle {
             }
             callbackLogin(found, user)
         });
-
-
     }
+
     getAllUsers() {
         this.con.query("SELECT * FROM users", function (err, result, fields) {
             if (err) throw err;
             console.log(result);
         });
     }
+
     createNewTable() {
 
     }

@@ -1,6 +1,7 @@
 const { setUncaughtExceptionCaptureCallback } = require("process");
 const config = require("../plugins/config")
 require('../database/mysqlGoogle')
+
 function login(MySqlGoogle, username, password, callbackLogin) {
     if (verificaUsername(username) && verificaParola(password)) {
         MySqlGoogle.login(username, password, callbackLogin)
@@ -9,6 +10,7 @@ function login(MySqlGoogle, username, password, callbackLogin) {
     }
 
 }
+
 function signUp(MySqlGoogle, user, callbackSignUp) {
     if (verificaUsername(user.username) &&
         verificaParola(user.password) &&
@@ -33,15 +35,14 @@ function signUp(MySqlGoogle, user, callbackSignUp) {
             }
 
         }
-        if(MySqlGoogle.checkForExistingAccount(user)==0)
-        {
-            MySqlGoogle.signUp(user,callbackSignUp)
+        if (MySqlGoogle.checkForExistingAccount(user) == 0) {
+            MySqlGoogle.signUp(user, callbackSignUp)
         }
-        
+
     } else {
         callbackSignUp(-1, 0);
     }
-    
+
 }
 
 //contine toate caractere de la a-z A-Z 0-9
@@ -53,6 +54,7 @@ var caracterePermise = [
     83, 84, 85, 86, 87, 88, 89, 90, 48, 49, 50,
     51, 52, 53, 54, 55, 56, 57
 ]
+
 //vericam daca username si parola folosesc doar caracterele permise [0-9], [a-z], [A-Z] si cele din fisierul de configurare
 function verificaUsername(username) {
     var caracterePermiseCopy = caracterePermise;
@@ -127,8 +129,6 @@ function genereazaaZ09() {
         startLoop += 1;
     }
 }
-
-
 
 module.exports.login = login;
 module.exports.signUp = signUp;

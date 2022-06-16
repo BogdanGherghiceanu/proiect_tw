@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="../pages/style/nav.css">
     <link rel="stylesheet" href="../pages/style/homepage.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous"/>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="../pages/js/homePage.js"></script>
@@ -20,7 +22,7 @@
 
 
 <nav>
-    <a class="navbar-text" href="index.html">2 Wheels</a>
+    <a class="navbar-text" href="../pages/index.html">2 Wheels</a>
     <img src="../pages/resources/navbar/tyre.png" class="navbar-icon" alt="tyre">
 </nav>
 
@@ -63,7 +65,7 @@
                 <form>
                     <label for="email">
                         <input type="text" id="login_email" name="email" placeholder="Email">
-                        <span>Email / Username * </span>
+                        <span>Username * </span>
                     </label>
 
                     <label for="parola">
@@ -74,9 +76,24 @@
                     <button type="submit">Login</button>
                 </form>
             </div>
+            <div class="overlay hidden"></div>
         </div>
+
+        <!-- Login Modal Response-->
+        <div class="login-modal-response">
+            <div class="login-modal-content">
+                <div class="modal-header">
+                    <h1 class="header-msg"></h1>
+                </div>
+                <div class="modal-body">
+                    <p class="body-msg"></p>
+                </div>
+            </div>
+        </div>
+        <!-- Login Modal -->
     </div>
-    <!-- Login Modal -->
+
+
 
     <!-- Programeaza Modal -->
     <div id="programeazaModal" class="ProgrameazaModal">

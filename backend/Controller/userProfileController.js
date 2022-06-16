@@ -1,9 +1,9 @@
 const utils = require("../Utils/utils");
 
-const homeController = (req, res) => {
+const userProfileController = (req, res) => {
     // console.log(req.headers.cookie);
     res.writeHead(200, { "Content-Type": "text/html" });
-    utils.getFile("../pages/index.html", res);
+    utils.getFile("../pages/userProfile.html", res);
 };
 
-module.exports = homeController;
+module.exports = userProfileController;

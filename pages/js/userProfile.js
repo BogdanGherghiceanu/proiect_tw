@@ -3,6 +3,10 @@ function openNavBarMenu() {
     $('#mydropdown').toggleClass('show');
 }
 
+const form = exampleForm.querySelector("#loginPost");
+console.log(form)
+
+
 window.onclick = function(event) {
     if (!event.target.matches('.navbar-icon')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");

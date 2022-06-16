@@ -9,8 +9,6 @@ class User {
         this.telefon = "";
         this.connected = 0
     }
-
-
 }
 
 module.exports.User = User;
