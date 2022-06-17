@@ -10,8 +10,6 @@ class User {
         this.last_active="";
         this.grad=2;
     }
-
-
 }
 
 module.exports.User = User;

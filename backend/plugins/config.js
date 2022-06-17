@@ -3,7 +3,7 @@ const fs = require('fs');
 //Citim fisierul cu configurari
 let config = {
     "url": "http://127.0.0.1",
-    "port": "300"
+    "port": "80"
 }
 try {
 
