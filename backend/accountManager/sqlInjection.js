@@ -1,16 +1,5 @@
 const { setUncaughtExceptionCaptureCallback } = require("process");
 const config = require("../plugins/config")
-<<<<<<< HEAD:backend/accountManager/sqlInjection.js
-=======
-require('../database/mysqlGoogle')
-
-function login(MySqlGoogle, username, password, callbackLogin) {
-    if (verificaUsername(username) && verificaParola(password)) {
-        MySqlGoogle.login(username, password, callbackLogin)
-    } else {
-        callbackLogin(-1, 0)
-    }
->>>>>>> 16d55bd61a6b804e58c1406005b7f9aa7e3c710e:backend/user/login.js
 
 
 //verificam daca datele contin doar caracterele permise
@@ -23,11 +12,7 @@ function protectionSignIn(user) {
     }
 }
 
-<<<<<<< HEAD:backend/accountManager/sqlInjection.js
 function protectionSignUp(user) {
-=======
-function signUp(MySqlGoogle, user, callbackSignUp) {
->>>>>>> 16d55bd61a6b804e58c1406005b7f9aa7e3c710e:backend/user/login.js
     if (verificaUsername(user.username) &&
         verificaParola(user.password) &&
         verificaText(user.nume) &&
@@ -49,21 +34,10 @@ function signUp(MySqlGoogle, user, callbackSignUp) {
                 return 0
             }
         }
-<<<<<<< HEAD:backend/accountManager/sqlInjection.js
         return 1
-=======
-        if (MySqlGoogle.checkForExistingAccount(user) == 0) {
-            MySqlGoogle.signUp(user, callbackSignUp)
-        }
-
->>>>>>> 16d55bd61a6b804e58c1406005b7f9aa7e3c710e:backend/user/login.js
     } else {
         return 0
     }
-<<<<<<< HEAD:backend/accountManager/sqlInjection.js
-=======
-
->>>>>>> 16d55bd61a6b804e58c1406005b7f9aa7e3c710e:backend/user/login.js
 }
 
 function protectionFisaService(fisaService) {
@@ -174,7 +148,6 @@ function genereazaaZ09() {
     }
 }
 
-<<<<<<< HEAD:backend/accountManager/sqlInjection.js
 
 
 // module.exports.login = login;
@@ -182,7 +155,3 @@ module.exports.protectionSignIn = protectionSignIn;
 module.exports.protectionSignUp = protectionSignUp;
 module.exports.protectionFisaService = protectionFisaService;
 module.exports.verificaToken = verificaToken;
-=======
-module.exports.login = login;
-module.exports.signUp = signUp;
->>>>>>> 16d55bd61a6b804e58c1406005b7f9aa7e3c710e:backend/user/login.js
