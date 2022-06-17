@@ -6,6 +6,7 @@ let config = {
     "port": "300"
 }
 try {
+
     let rawJson = fs.readFileSync('./config.json');
     config = JSON.parse(rawJson);
 } catch (e) {

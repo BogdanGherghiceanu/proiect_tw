@@ -1,15 +1,18 @@
 const { setUncaughtExceptionCaptureCallback } = require("process");
 const config = require("../plugins/config")
-require('../database/mysqlGoogle')
-function login(MySqlGoogle, username, password, callbackLogin) {
-    if (verificaUsername(username) && verificaParola(password)) {
-        MySqlGoogle.login(username, password, callbackLogin)
-    } else {
-        callbackLogin(-1, 0)
-    }
 
+
+//verificam daca datele contin doar caracterele permise
+function protectionSignIn(user) {
+    if (verificaUsername(user.username) && verificaParola(user.password)) {
+        return 1
+    }
+    else {
+        return 0
+    }
 }
-function signUp(MySqlGoogle, user, callbackSignUp) {
+
+function protectionSignUp(user) {
     if (verificaUsername(user.username) &&
         verificaParola(user.password) &&
         verificaText(user.nume) &&
@@ -18,32 +21,47 @@ function signUp(MySqlGoogle, user, callbackSignUp) {
         var numerePermise = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
         for (const chr of user.telefon) {
             if (numerePermise.includes(chr.charCodeAt()) == false) {
-                callbackSignUp(-1, 0);
-                return -1;
+                return 0;
             }
         }
         var caracterePermiseEmail = caracterePermise
         caracterePermiseEmail.push(64) // character @
         caracterePermiseEmail.push(46) // character .
 
+        //verificam email
         for (const chr of user.email) {
             if (caracterePermiseEmail.includes(chr.charCodeAt()) == false) {
-                callbackSignUp(-1, 0);
-                return -1
+                return 0
             }
-
         }
-        if(MySqlGoogle.checkForExistingAccount(user)==0)
-        {
-            MySqlGoogle.signUp(user,callbackSignUp)
-        }
-        
+        return 1
     } else {
-        callbackSignUp(-1, 0);
+        return 0
     }
-    
 }
 
+function protectionFisaService(fisaService) {
+    if (verificaText(fisaService.tip_vehicul) &&
+        verificaText(fisaService.marca) &&
+        verificaText(fisaService.model) 
+        ) {
+
+        return 1;
+    } else {
+        
+        return 0;
+    }
+
+}
+
+function verificaToken(token) {
+    if (verificaUsername(token)) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
 //contine toate caractere de la a-z A-Z 0-9
 var caracterePermise = [
     97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107,
@@ -88,6 +106,7 @@ function verificaParola(parola) {
 }
 
 function verificaText(text) {
+
     var caracterePermiseCopy = caracterePermise;
     var caractereSpecialePermise = config.caracterePermiseText
     for (const chr in caractereSpecialePermise) {
@@ -130,5 +149,8 @@ function genereazaaZ09() {
 
 
 
-module.exports.login = login;
-module.exports.signUp = signUp;
+// module.exports.login = login;
+module.exports.protectionSignIn = protectionSignIn;
+module.exports.protectionSignUp = protectionSignUp;
+module.exports.protectionFisaService = protectionFisaService;
+module.exports.verificaToken = verificaToken;

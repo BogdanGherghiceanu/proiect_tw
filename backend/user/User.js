@@ -7,7 +7,8 @@ class User {
         this.prenume = "";
         this.email = "";
         this.telefon = "";
-        this.connected = 0
+        this.last_active="";
+        this.grad=2;
     }
 
 
