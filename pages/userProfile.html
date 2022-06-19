@@ -12,22 +12,26 @@
     <link rel="shortcut icon" href="#">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="../pages/js/userProfile.js"></script>
+    <script defer src="../pages/js/userProfile.js"></script>
 </head>
 
 <body>
     <nav>
         <a class="navbar-text">2 Wheels</a>
-        <span class="usernameBlock">Cristina-Ecaterina, Tiganasu</span>
+        <span class="usernameBlock" id="usernameBlock"></span>
 
         <div class="dropdown">
             <img src="../pages/resources/navbar/tyre.png" onclick="openNavBarMenu()" class="navbar-icon" alt="tyre">
 
             <div class="dropdown-content" id="mydropdown">
-                <button class="dropdownButton" id="myProfileButtonModal" onclick="openMyProfileModal()"><i class="material-icons">account_circle</i> Profilul meu</button>
-                <button class="dropdownButton" id="vehiculeleMeleButton"><i class="material-icons">directions_bike</i> Vehiculele mele</button>
-                <button class="dropdownButton" id="programarileMeleButton"><i class="material-icons">perm_contact_calendar</i> Programarile mele</button>
-                <form><button formaction="index.html" class="dropdownButton"><i class="material-icons">highlight_off</i> Log out</button></form>
+                <button class="dropdownButton" id="myProfileButtonModal" onclick="openMyProfileModal()"><i
+                        class="material-icons">account_circle</i> Profilul meu</button>
+                <button class="dropdownButton" id="vehiculeleMeleButton"><i class="material-icons">directions_bike</i>
+                    Vehiculele mele</button>
+                <button class="dropdownButton" id="programarileMeleButton"><i
+                        class="material-icons">perm_contact_calendar</i> Programarile mele</button>
+                <button class="dropdownButton" onclick="callLogout()"><i class="material-icons">highlight_off</i> Log
+                    out</button>
             </div>
         </div>
     </nav>
@@ -44,23 +48,28 @@
 
             <div class="form-myProfile">
                 <form>
+                    <label for="Username">
+                        <input type="text" id="Username" placeholder="Username">
+                        <span>Username *</span>
+                    </label>
+
                     <label for="Nume">
-                        <input type="text" id="Nume" placeholder="Nume" value="Tiganasu">
+                        <input type="text" id="Nume" placeholder="Nume">
                         <span>Nume *</span>
                     </label>
 
                     <label for="Prenume">
-                        <input type="text" id="Prenume" placeholder="Prenume" value="Cristina-Ecaterina">
+                        <input type="text" id="Prenume" placeholder="Prenume">
                         <span>Prenume *</span>
                     </label>
 
                     <label for="email">
-                        <input type="email" id="email" placeholder="Email" value="Tiganasu@Cristina-Ecaterina">
+                        <input type="email" id="email" placeholder="Email">
                         <span>Email * </span>
                     </label>
 
                     <label for="telefon">
-                        <input type="text" id="telefon" placeholder="Telefon" value="123456789">
+                        <input type="text" id="telefon" placeholder="Telefon">
                         <span>Phone * </span>
                     </label>
 
@@ -121,7 +130,8 @@
                                 <input type="date" value="2017-06-01" readonly>
                             </td>
                             <td>
-                                <input type="datetime-local" id="meeting-time132" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                                <input type="datetime-local" id="meeting-time132" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
                             </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
@@ -135,7 +145,9 @@
                                 <button class="programareInLucruBtn"><span>In lucru</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time2765" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time2765" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -148,7 +160,9 @@
                                 <button class="programareFinalizataBtn"><span>Finalizata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time3" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time3" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -161,7 +175,9 @@
                                 <button class="programareAnulataBtn"><span>Anulata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time4" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time4" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -174,7 +190,9 @@
                                 <button class="programareAnulataBtn"><span>Anulata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time5" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time5" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -187,7 +205,9 @@
                                 <button class="programareFinalizataBtn"><span>Finalizata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time6" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time6" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -200,7 +220,9 @@
                                 <button class="programareFinalizataBtn"><span>Finalizata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time7" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time7" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -213,7 +235,9 @@
                                 <button class="programareFinalizataBtn"><span>Finalizata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time8" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time8" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -226,7 +250,9 @@
                                 <button class="programareFinalizataBtn"><span>Finalizata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time9" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time9" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -239,7 +265,9 @@
                                 <button class="programareFinalizataBtn"><span>Finalizata</span></button>
                             </td>
                             <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly></td>
+                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time"
+                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                            </td>
                             <td>
                                 <button class="detailsButton">Detalii</button>
                             </td>
@@ -253,15 +281,15 @@
                 <div class="pagination-container">
                     <div class="pagination-group">
                         <select class="pagination-control" name="state" id="maxRows">
-                        <option value="5000">Show ALL Rows</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="15">15</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                        <option value="70">70</option>
-                        <option value="100">100</option>
-                    </select>
+                            <option value="5000">Show ALL Rows</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="70">70</option>
+                            <option value="100">100</option>
+                        </select>
                     </div>
 
                     <div class="pagination-group2">
