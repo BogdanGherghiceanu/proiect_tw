@@ -3,11 +3,21 @@ function openNavBarMenu() {
     $('#mydropdown').toggleClass('show');
 }
 
-const form = exampleForm.querySelector("#loginPost");
-console.log(form)
+loginData = localStorage.getItem("loginData");
+loginDataJson = JSON.parse(loginData)
+console.log(loginDataJson)
+
+const usernameBlockSpan = document.getElementById('usernameBlock');
+usernameBlockSpan.innerHTML = "Hi " + loginDataJson.username
+
+document.getElementById('Nume').value = loginDataJson.nume
+document.getElementById('Prenume').value = loginDataJson.prenume
+document.getElementById('email').value = loginDataJson.email
+document.getElementById('telefon').value = loginDataJson.telefon
 
 
-window.onclick = function(event) {
+
+window.onclick = function (event) {
     if (!event.target.matches('.navbar-icon')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         var i;
@@ -20,8 +30,8 @@ window.onclick = function(event) {
     }
 }
 
-$(function() {
-    $('#vehiculeleMeleButton').click(function() {
+$(function () {
+    $('#vehiculeleMeleButton').click(function () {
         var x_vehiculeleMeleBlock = document.getElementById("vehiculeleMeleBlock");
         var x_programarileMeleBlock = document.getElementById("programarileMeleBlock");
 
@@ -29,7 +39,7 @@ $(function() {
         x_vehiculeleMeleBlock.style.display = "block";
     })
 
-    $('#programarileMeleButton').click(function() {
+    $('#programarileMeleButton').click(function () {
         var x_vehiculeleMeleBlock = document.getElementById("vehiculeleMeleBlock");
         var x_programarileMeleBlock = document.getElementById("programarileMeleBlock");
 
@@ -52,7 +62,7 @@ function openMyProfileModal() {
     //     modal.style.display = "none";
     // }
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
@@ -70,93 +80,93 @@ function openMyProfileModal() {
     }
 }
 
-window.onload = function() {
+window.onload = function () {
     getPagination('#programarile_mele');
 
     function getPagination(table) {
         var x = document.getElementById(table.split('#')[1]).parentNode;
         var parentNodeName = x.className
 
-        $('.' + parentNodeName + ' #maxRows').on('change', function(evt) {
-                lastPage = 1;
+        $('.' + parentNodeName + ' #maxRows').on('change', function (evt) {
+            lastPage = 1;
 
-                // var x = document.getElementById(table.split('#')[1]).parentNode;
-                // var parentNodeName = x.className
+            // var x = document.getElementById(table.split('#')[1]).parentNode;
+            // var parentNodeName = x.className
 
-                $('.' + parentNodeName + ' .pagination-content').find('li').slice(1, -1).remove();
-                var trnum = 0;
+            $('.' + parentNodeName + ' .pagination-content').find('li').slice(1, -1).remove();
+            var trnum = 0;
 
-                var maxRows = parseInt($(this).val());
+            var maxRows = parseInt($(this).val());
 
-                var totalRows = $(table + ' tbody tr').length;
+            var totalRows = $(table + ' tbody tr').length;
 
-                if (maxRows >= totalRows || maxRows === 5000) {
-                    $('.' + parentNodeName + ' .pagination-content').hide();
-                } else {
-                    $('.' + parentNodeName + ' .pagination-content').show();
+            if (maxRows >= totalRows || maxRows === 5000) {
+                $('.' + parentNodeName + ' .pagination-content').hide();
+            } else {
+                $('.' + parentNodeName + ' .pagination-content').show();
+            }
+
+            $(table + ' tr:gt(0)').each(function () {
+                trnum++;
+                if (trnum > maxRows) {
+                    $(this).hide();
+                }
+                if (trnum <= maxRows) {
+                    $(this).show();
+                }
+            });
+
+            if (totalRows > maxRows) {
+                var pagenum = Math.ceil(totalRows / maxRows);
+                for (var i = 1; i <= pagenum; i++) {
+                    $('.' + parentNodeName + ' .pagination-content #prev').before('<li data-page="' + i + '">\<span>' + i + '<span class="sr-only"></span></span>\</li>').show();
+                }
+            }
+
+            $('.' + parentNodeName + ' .pagination-content [data-page="1"]').addClass('active');
+
+            $('.' + parentNodeName + ' .pagination-content li').on('click', function (evt) {
+                evt.stopImmediatePropagation();
+                evt.preventDefault();
+                var pageNum = $(this).attr('data-page');
+
+                var maxRows = parseInt($('.' + parentNodeName + ' #maxRows').val());
+
+                if (pageNum == 'prev') {
+                    if (lastPage == 1) {
+                        return;
+                    }
+                    pageNum = --lastPage;
                 }
 
-                $(table + ' tr:gt(0)').each(function() {
-                    trnum++;
-                    if (trnum > maxRows) {
-                        $(this).hide();
+                if (pageNum == 'next') {
+                    if (lastPage == $('.' + parentNodeName + ' .pagination-content li').length - 2 || lastPage == $('.' + parentNodeName + ' .pagination-content li').length - 1) {
+                        return;
                     }
-                    if (trnum <= maxRows) {
+                    pageNum = ++lastPage;
+                }
+
+                lastPage = pageNum;
+                var trIndex = 0;
+                $('.' + parentNodeName + ' .pagination-content li').removeClass('active');
+                $('.' + parentNodeName + ' .pagination-content [data-page="' + lastPage + '"]').addClass('active');
+
+                limitPagging(parentNodeName);
+                $(table + ' tr:gt(0)').each(function () {
+                    trIndex++;
+
+                    if (
+                        trIndex > maxRows * pageNum ||
+                        trIndex <= maxRows * pageNum - maxRows
+                    ) {
+                        $(this).hide();
+                    } else {
                         $(this).show();
                     }
                 });
+            });
 
-                if (totalRows > maxRows) {
-                    var pagenum = Math.ceil(totalRows / maxRows);
-                    for (var i = 1; i <= pagenum; i++) {
-                        $('.' + parentNodeName + ' .pagination-content #prev').before('<li data-page="' + i + '">\<span>' + i + '<span class="sr-only"></span></span>\</li>').show();
-                    }
-                }
-
-                $('.' + parentNodeName + ' .pagination-content [data-page="1"]').addClass('active');
-
-                $('.' + parentNodeName + ' .pagination-content li').on('click', function(evt) {
-                    evt.stopImmediatePropagation();
-                    evt.preventDefault();
-                    var pageNum = $(this).attr('data-page');
-
-                    var maxRows = parseInt($('.' + parentNodeName + ' #maxRows').val());
-
-                    if (pageNum == 'prev') {
-                        if (lastPage == 1) {
-                            return;
-                        }
-                        pageNum = --lastPage;
-                    }
-
-                    if (pageNum == 'next') {
-                        if (lastPage == $('.' + parentNodeName + ' .pagination-content li').length - 2 || lastPage == $('.' + parentNodeName + ' .pagination-content li').length - 1) {
-                            return;
-                        }
-                        pageNum = ++lastPage;
-                    }
-
-                    lastPage = pageNum;
-                    var trIndex = 0;
-                    $('.' + parentNodeName + ' .pagination-content li').removeClass('active');
-                    $('.' + parentNodeName + ' .pagination-content [data-page="' + lastPage + '"]').addClass('active');
-
-                    limitPagging(parentNodeName);
-                    $(table + ' tr:gt(0)').each(function() {
-                        trIndex++;
-
-                        if (
-                            trIndex > maxRows * pageNum ||
-                            trIndex <= maxRows * pageNum - maxRows
-                        ) {
-                            $(this).hide();
-                        } else {
-                            $(this).show();
-                        }
-                    });
-                });
-
-            }).val(10)
+        }).val(10)
             .change();;
     }
 
@@ -176,4 +186,9 @@ window.onload = function() {
             }
         }
     }
+}
+
+function callLogout() {
+    window.location.href = 'http://127.0.0.1:81/';
+    window.localStorage.clear();
 }
