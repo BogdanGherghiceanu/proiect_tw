@@ -6,7 +6,7 @@ function callLoginApi(req, res, mySQL) {
     try {
 
         //verificam metoda si sa fie completate headerele
-        if (req.method != 'GET' || req.headers.username == null || req.headers.password == null) {
+        if (req.method != 'POST' || req.headers.username == null || req.headers.password == null) {
             errorRequest.err400(res);
         } else {
             //extragem datele din Headers
