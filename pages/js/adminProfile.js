@@ -2,6 +2,18 @@ function openNavBarMenu() {
     document.getElementById("mydropdown").classList.toggle('show');
 }
 
+loginData = localStorage.getItem("loginData");
+loginDataJson = JSON.parse(loginData)
+console.log(loginDataJson)
+
+const usernameBlockSpan = document.getElementById('usernameBlock');
+usernameBlockSpan.innerHTML = "Hi " + loginDataJson.username
+
+document.getElementById('Nume').value = loginDataJson.nume
+document.getElementById('Prenume').value = loginDataJson.prenume
+document.getElementById('email').value = loginDataJson.email
+document.getElementById('telefon').value = loginDataJson.telefon
+
 window.onclick = function(event) {
     if (!event.target.matches('.navbar-icon')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -356,4 +368,9 @@ function openMyProfileModal() {
             }
         }
     }
+}
+
+function callLogout(){
+    window.location.href = 'http://127.0.0.1:81/';
+    window.localStorage.clear();
 }
