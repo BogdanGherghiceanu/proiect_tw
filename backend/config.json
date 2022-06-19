@@ -7,7 +7,7 @@
         "@"
     ],
     "caracterePermiseParola": ["!", "?", "@"],
-    "caracterePermiseText": []
+    "caracterePermiseText": "?-"
 
 
 }

@@ -1,3 +1,4 @@
+const { Module } = require("module");
 const { setUncaughtExceptionCaptureCallback } = require("process");
 const config = require("../plugins/config")
 
@@ -40,15 +41,31 @@ function protectionSignUp(user) {
     }
 }
 
+function protectionActualizareFisaService(actualizareFisaService) {
+    console.log(actualizareFisaService);
+    console.log(verificaText(actualizareFisaService.titlu));
+    console.log(verificaText(actualizareFisaService.descriere))
+    console.log(verificaText(actualizareFisaService.status))
+    if (verificaText(actualizareFisaService.titlu) &&
+        verificaText(actualizareFisaService.descriere) &&
+        verificaText(actualizareFisaService.status)
+    ) {
+        console.log('hatzi');
+        return 1
+    }
+    console.log('hatzzzi');
+    return 0
+}
+
 function protectionFisaService(fisaService) {
     if (verificaText(fisaService.tip_vehicul) &&
         verificaText(fisaService.marca) &&
-        verificaText(fisaService.model) 
-        ) {
+        verificaText(fisaService.model)
+    ) {
 
         return 1;
     } else {
-        
+
         return 0;
     }
 
@@ -74,7 +91,7 @@ var caracterePermise = [
 
 //vericam daca username si parola folosesc doar caracterele permise [0-9], [a-z], [A-Z] si cele din fisierul de configurare
 function verificaUsername(username) {
-    var caracterePermiseCopy = caracterePermise;
+   var caracterePermiseCopy = caracterePermise;
     var caractereSpecialePermise = config.caracterePermiseUsername
     for (const chr in caractereSpecialePermise) {
         const asciiCodeofChar = chr.charCodeAt()
@@ -82,9 +99,11 @@ function verificaUsername(username) {
     }
     for (const chr of username) {
         if (caracterePermiseCopy.includes(chr.charCodeAt()) == false)
+            
             return 0;
     }
     return 1;
+ 
 }
 
 function verificaParola(parola) {
@@ -110,10 +129,13 @@ function verificaText(text) {
 
     var caracterePermiseCopy = caracterePermise;
     var caractereSpecialePermise = config.caracterePermiseText
+    console.log(caractereSpecialePermise);
     for (const chr in caractereSpecialePermise) {
+        console.log(chr.charCodeAt());
         const asciiCodeofChar = chr.charCodeAt()
         caracterePermiseCopy.push(asciiCodeofChar)
     }
+    caracterePermiseCopy.push(32);
     for (const chr of text) {
         if (caracterePermiseCopy.includes(chr.charCodeAt()) == false)
             return 0;
@@ -155,3 +177,4 @@ module.exports.protectionSignIn = protectionSignIn;
 module.exports.protectionSignUp = protectionSignUp;
 module.exports.protectionFisaService = protectionFisaService;
 module.exports.verificaToken = verificaToken;
+module.exports.protectionActualizareFisaService=protectionActualizareFisaService

@@ -221,12 +221,6 @@ class MySQLAccountManager {
         });
     }
 
-    deconectareDePeAcestDispozitiv() {
-
-    }
-    deconectareDePeToateDispozitivele() {
-
-    }
 
 
     //extra

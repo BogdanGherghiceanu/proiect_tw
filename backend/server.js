@@ -11,6 +11,8 @@ const login = require('./accountManager/sqlInjection');
 const { User } = require('./user/User');
 const { FisaServiceAPI } = require('./fisaService/fisaService');
 const { fromClientToAngajat, fromAngajatToClient, getListaClienti, deleteUserById } = require('./accountManager/levelOfAccesControl');
+const { MySQLActualizariFisaService } = require('./database/MysqlActualizariFisaService');
+const { ActualizareFisaServiceAPI } = require('./fisaService/actualizariFisaService');
 require('./user/User');
 
 
@@ -20,6 +22,8 @@ require('./user/User');
 var mySQLAccountManager = new MySQLAccountManager()
 var mySQLFisaService = new MySQLFisaService()
 var fisaServiceAPI = new FisaServiceAPI()
+var mySQLActualizareFisaService = new MySQLActualizariFisaService()
+var actualizareFisaServiceAPI = new ActualizareFisaServiceAPI()
 
 // server router
 var server = httpModule.createServer((req, res) => {
@@ -100,7 +104,28 @@ var server = httpModule.createServer((req, res) => {
             }
             break;
 
-        
+        case 'actualizareFisaService':
+            switch (path.path2) {
+
+                // /fisaService/inregistrare
+                // POST, headers = {token, tip_vehicul,marca,model,titlu,descriere,}
+                // 200 succes, 400 bad request(contine caractere nepermise sau nu sunt completate toate campurile), 
+                //401 nu aveti acces (token invalid).
+
+                case 'inregistrare':
+                    actualizareFisaServiceAPI.inregistrareAPI(req, res, mySQLActualizareFisaService, mySQLAccountManager);
+                    break;
+                case 'actualizari':
+                    actualizareFisaServiceAPI.getById(req, res, mySQLActualizareFisaService, mySQLAccountManager)
+                break;
+                    default:
+                    errorRequest.err400(res);
+                    console.log(`[400] ${req.url} pagina nu a fost gasita`);
+                    break;
+            }
+
+
+            break;
         case 'administrator':
             switch (path.path2) {
                 // Upgrade de la client la angajat 
