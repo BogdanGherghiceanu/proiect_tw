@@ -73,6 +73,16 @@ body {
     border-right: 5vmin solid transparent;
 }
 
+/* .trapezium3 #inregistreaza_font{
+    height: 0;
+    border: 1px solid red; 
+    margin: auto;
+    padding-top: 25px;
+    margin-top: 0.3%;
+    border-bottom: 7vmin solid;
+
+} */
+
 .programeaza {
     font-family: 'Ubuntu';
     font-style: bold;
@@ -186,8 +196,10 @@ body {
     border: 1px solid rgb(27, 27, 27);
     cursor: pointer;
     border-radius: 3px;
-    font-family: Roboto, Helvetica Neue, sans-serif;
+    /* font-family: Roboto, Helvetica Neue, sans-serif; */
     font-size: 1em;
+    font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+
 }
 
 .form-myProfile label:focus-within>span,
@@ -262,111 +274,23 @@ body {
     margin-bottom: 1%;
 }
 
-/* Programeaza Modal */
-
-/* Calendar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--primary-font);
+/* Signup Modal */
+#inregistreaza_font {
+    font-family: Arial Black, Arial Bold, Gadget, sans-serif;
 }
 
-:root {
-    --black: #0a0a0a;
-    --white: #ffffff;
-    --gray: #949495;
-    --blue: #244ab4;
-    --pink: #e43f5a;
-    --lightpink: #ec4b66;
-    --blackish: #232931;
-    --primary-font: "Poppins", sans-serif;
+.header-msg,
+.body-msg,
+.signup-header-msg,
+.signup-body-msg {
+    font-family: Arial Black, Arial Bold, Gadget, sans-serif;
 }
 
-.containerCalendar {
-    display: block;
-    justify-content: center;
-    width: 60%;
-    min-width: 32rem;
-    margin: 0 auto;
-    color: var(--gray);
-}
-
-.calendar {
-    background: var(--white);
-    border-radius: 10px;
-}
-
-.month {
-    display: flex;
-    height: 3em;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 3em;
-}
-
-.arrows {
-    width: 3em;
-    display: flex;
-    justify-content: space-between;
-}
-
-.arrows i {
-    width: 3rem;
-    height: 3rem;
-    text-align: center;
-}
-
-.arrows i:hover {
-    background-color: var(--black);
-    color: var(--white);
-    transition: 0.3s ease-in;
-    border-radius: 50%;
-}
-
-.weekdays {
-    margin-bottom: 2rem;
-    font-size: 2em;
-    background-color: var(--gray);
-    color: var(--blackish);
-}
-
-.day {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    justify-items: center;
-    align-items: center;
-}
-
-.days div {
-    width: 4rem;
-    height: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5em;
-}
-
-.days .day:hover {
-    background-color: var(--pink);
-    color: var(--white);
-    transition: 0.3s ease-in;
-    border-radius: 50%;
-    cursor: default;
-}
-
-.today {
-    background-color: var(--lightpink);
-    color: white;
-    border-radius: 0.5em;
-}
-
-.weekdays {
-    font-size: 1.5rem;
-}
+/* Signup Modal */
 
 /* Login Response Modal */
-.login-modal-response {
+.login-modal-response,
+.signup-modal-response {
     display: none;
     z-index: 22;
     position: relative;
@@ -381,18 +305,21 @@ body {
 
 }
 
-.login-modal-content {
+.login-modal-content,
+.signup-modal-content {
     width: 70%;
     margin: 0 auto;
     background-color: #757575;
 }
 
-.modal-header {
+.modal-header,
+.signup-modal-header {
     text-align: center;
     font-size: 15px;
 }
 
-.modal-body {
+.modal-body,
+.signup-modal-body {
     padding: 3px 15px;
     background-color: #32353665;
 }
@@ -406,9 +333,6 @@ body {
 }
 
 /* Login Response Modal */
-
-
-/* Calendar */
 
 footer {
     background-color: #777;

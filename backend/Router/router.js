@@ -37,8 +37,10 @@ route_get("/pages/style/adminProfile.css", (req, res) => getFile("../pages/style
 //JS
 route_get("/pages/js/homePage.js", (req, res) => getFile("../pages/js/homePage.js", res));
 route_get("/pages/js/login.js", (req, res) => getFile("../pages/js/login.js", res));
+route_get("/pages/js/signup.js", (req, res) => getFile("../pages/js/signup.js", res));
 route_get("/pages/js/userProfile.js", (req, res) => getFile("../pages/js/userProfile.js", res));
 route_get("/pages/js/adminProfile.js", (req, res) => getFile("../pages/js/adminProfile.js", res));
+route_get("/pages/js/calendar.js", (req, res) => getFile("../pages/js/calendar.js", res));
 
 //IMAGES
 route_get("/pages/resources/index/1.png", (req, res) => getFile("../pages/resources/index/1.png", res));

@@ -44,9 +44,3 @@ function openProgrameazaModal() {
         }
     }
 }
-
-function openPages()
-{
-    console.log("fasrdg");
-    window.open("adminProfile.html");
-}
