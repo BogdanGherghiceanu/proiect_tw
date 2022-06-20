@@ -125,12 +125,13 @@ function verificaText(text) {
 
     var caracterePermiseCopy = caracterePermise;
     var caractereSpecialePermise = config.caracterePermiseText
-  
+    
     for (const chr in caractereSpecialePermise) {
   
         const asciiCodeofChar = chr.charCodeAt()
         caracterePermiseCopy.push(asciiCodeofChar)
     }
+    return 1;
     caracterePermiseCopy.push(32);
     for (const chr of text) {
         if (caracterePermiseCopy.includes(chr.charCodeAt()) == false)
