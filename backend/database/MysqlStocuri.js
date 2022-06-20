@@ -140,7 +140,7 @@ class MySQLStocuri {
         });
     }
 
-    comandaFurnizorgetAllDocuments(callbackGetDocuments) {
+    stocGetALL(callbackGetDocuments) {
         var found = 1
         this.con.query(`SELECT * FROM stocuri `, function (err, result, fields) {
 
