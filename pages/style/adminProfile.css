@@ -760,6 +760,25 @@ footer {
     font-size: 1em;
 }
 
+.exportJSONButton {
+    margin-left: 10px;
+    background: rgb(163, 47, 47);
+    border: 1px solid rgb(27, 27, 27);
+    color: #fff;
+    cursor: pointer;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 18px;
+}
+
+.importJSONButton {
+    margin-left: 10px;
+    background: rgb(163, 47, 47);
+    border: 1px solid rgb(27, 27, 27);
+    color: #fff;
+    cursor: pointer;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 18px;
+}
 
 /* Paginare */
 
@@ -883,3 +902,17 @@ footer {
 .flex-child:first-child {
     margin-right: 20px;
 } 
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    margin-left: 10px;
+    background: rgb(163, 47, 47);
+    border: 1px solid rgb(27, 27, 27);
+    color: #fff;
+    cursor: pointer;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 20px;
+}

@@ -1,5 +1,5 @@
 // const { text } = require("stream/consumers");
-
+var globalProgramariResponseArray = ""
 function openNavBarMenu() {
     document.getElementById("mydropdown").classList.toggle('show');
 }
@@ -36,6 +36,7 @@ async function modalProgramariHandle() {
 
     programariResponseArray = await programariResp.json()
     programariResponseArray = programariResponseArray.reverse();
+    globalProgramariResponseArray = programariResponseArray;
 
     text = "";
     var count = 0
@@ -258,6 +259,40 @@ async function modalProgramariHandle2() {
         $('.actualizeazaButton').click(function () {
             actualizeazaProgramare(this.id)
         });
+
+        $('.exportJSONButton').click(function () {
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(new Blob([JSON.stringify(globalProgramariResponseArray, null, 2)], {
+                type: "text/plain"
+            }));
+            a.setAttribute("download", "data.json");
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+
+        // $('.importJSONButton').click(function () {
+        //     console.log("importJSONButton")
+        //     $.getJSON("data.json", function (json) {
+        //         console.log(json);
+        //     });
+        // });
+
+        $('input[type=file]').change(function () {
+            console.log(this.files[0]);
+
+            const reader = new FileReader();
+            reader.readAsText(this.files[0]);
+
+            reader.onload = function () {
+                console.log(reader.result);
+            };
+
+            reader.onerror = function () {
+                console.log(reader.error);
+            };
+        });
+
     });
 }
 

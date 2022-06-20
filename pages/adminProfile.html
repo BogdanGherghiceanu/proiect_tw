@@ -122,6 +122,13 @@
             <img src="../pages/resources/adminProfile/calendar_icon.png" class="calendar-icon" alt="calendarIcon">
             <p>Programari</p>
             <br>
+            <button class="exportJSONButton">Export JSON</button>
+            <!-- <button class="importJSONButton">Import JSON</button> -->
+
+            <label for="file-upload" class="custom-file-upload">
+                <i class="fa fa-cloud-upload"></i>Import JSON</label>
+            <input id="file-upload" type="file" accept=".json"/>
+
         </div>
         <div class="tabele">
             <table id="tabel_programarileMele" class="equal-width">
@@ -137,7 +144,7 @@
                 </thead>
 
                 <tbody id="programarile_mele_continut">
-                    
+
                 </tbody>
             </table>
 

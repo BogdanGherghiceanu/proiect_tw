@@ -19,6 +19,8 @@ route_get("/pages/index.html", homeController);
 route_get("/pages/userProfile.html", userProfileController);
 route_get("/pages/adminProfile.html", adminProfileController);
 
+// route_get("/pages/data.json.html", adminProfileController);
+
 //STATIC FILES
 //CSS
 route_get("/pages/style/nav.css", (req, res) => getFile("../pages/style/nav.css", res));
