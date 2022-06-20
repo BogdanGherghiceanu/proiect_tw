@@ -42,18 +42,14 @@ function protectionSignUp(user) {
 }
 
 function protectionActualizareFisaService(actualizareFisaService) {
-    console.log(actualizareFisaService);
-    console.log(verificaText(actualizareFisaService.titlu));
-    console.log(verificaText(actualizareFisaService.descriere))
-    console.log(verificaText(actualizareFisaService.status))
-    if (verificaText(actualizareFisaService.titlu) &&
+       if (verificaText(actualizareFisaService.titlu) &&
         verificaText(actualizareFisaService.descriere) &&
         verificaText(actualizareFisaService.status)
     ) {
-        console.log('hatzi');
+   
         return 1
     }
-    console.log('hatzzzi');
+
     return 0
 }
 
@@ -129,9 +125,9 @@ function verificaText(text) {
 
     var caracterePermiseCopy = caracterePermise;
     var caractereSpecialePermise = config.caracterePermiseText
-    console.log(caractereSpecialePermise);
+  
     for (const chr in caractereSpecialePermise) {
-        console.log(chr.charCodeAt());
+  
         const asciiCodeofChar = chr.charCodeAt()
         caracterePermiseCopy.push(asciiCodeofChar)
     }

@@ -46,7 +46,6 @@ var server = httpModule.createServer((req, res) => {
             // trimitem detalii despre utilizator si un token(campul password) pentru viitoare requesturi
             //raspuns : 200 succes, 400 bad request(contine caractere nepermise sau nu sunt completate toate campurile), 
             //          401 Parola/username gresit.
-
             callLoginApi(req, res, mySQLAccountManager)
             break;
 

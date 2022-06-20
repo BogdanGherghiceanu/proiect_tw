@@ -13,6 +13,7 @@ function callLoginApi(req, res, mySQL) {
             var user = new User();
             user.username = req.headers.username;
             user.password = req.headers.password
+        
             //verificam ca datele sa nu contina caractere nepermise
             if (sqlInjection.protectionSignIn(user)) {
 
