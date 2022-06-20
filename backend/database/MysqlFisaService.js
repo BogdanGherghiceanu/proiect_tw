@@ -102,7 +102,7 @@ class MySQLFisaService {
     }
 
     getByIdAngajat( document_id,callbackGetById){
-        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date,dataProgramare,status FROM fisaService WHERE id = ${document_id} `, function (err, result, fields) {
+        this.con.query(`SELECT id, id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date,dataProgramare,status FROM fisaService WHERE id = ${document_id} `, function (err, result, fields) {
             if (err) throw err;
 
             var resultString = JSON.stringify(result)
