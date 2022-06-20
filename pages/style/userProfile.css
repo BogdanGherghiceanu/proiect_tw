@@ -129,15 +129,23 @@ span.usernameBlock {
 
 
 /* Tabele */
-
-.hideextra {
-    width: 500px
-}
-
 .tabele {
+    table-layout: fixed;
     padding: 12px;
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
+
+/* td.fitwidth {
+    width: 5px;
+    white-space: normal;
+    border: 1px solid #53a0c9;
+} */
+
+/* td.fitwidth {
+    max-width: 50px;
+    width: 100%;
+    min-width: 10px;
+} */
+
 
 .tabele_trotinete,
 .tabele_biciclete,
@@ -146,14 +154,12 @@ span.usernameBlock {
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 0;
-    /* Remove scrollbar space */
     background: transparent;
-    /* Optional: just make scrollbar invisible */
-}
+} */
 
-.tabel_programarile_mele {
+.tabele table {
     display: block;
     padding: 10px;
     box-sizing: border-box;
@@ -163,6 +169,13 @@ span.usernameBlock {
     overflow: scroll;
     z-index: 10;
     border-radius: 10px;
+
+    table-layout: fixed;
+    width: 100%;
+    padding: 12px;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .tabel_vehiculele_mele_trotinete,
@@ -177,63 +190,80 @@ span.usernameBlock {
     overflow: scroll;
     z-index: 10;
     border-radius: 10px;
+
+    table-layout: fixed;
+    width: 100%;
+    padding: 12px;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-.tabel_programarile_mele table {
+table {
     display: grid;
     border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: auto auto auto auto auto auto;
 }
+
 
 .tabel_vehiculele_mele_trotinete table {
     display: grid;
     border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: auto auto auto auto auto auto;
+    /* min-width: 100%;
+    grid-template-columns: auto auto auto auto auto auto; */
 }
 
 .tabel_vehiculele_mele_biciclete table {
     display: grid;
     border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    /* min-width: 100%;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto; */
 }
 
 .tabel_vehiculele_mele_motociclete table {
     display: grid;
     border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    /* min-width: 100%;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto; */
 }
 
+thead tr th:first-child,
+tbody tr td:first-child {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
 
-/* table {
-    display: grid;
-    border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: 1fr 2fr;
-} */
+thead tr th:nth-child(2),
+tbody tr td:nth-child(2) {
+    width: 8em;
+    min-width: 8em;
+    max-width: 8em;
+    word-break: break-all;
+}
 
-thead,
-tbody,
-tr {
-    display: contents;
+thead tr th:nth-child(3),
+tbody tr td:nth-child(3) {
+    width: 10em;
+    min-width: 10em;
+    max-width: 10em;
+    word-break: break-all;
 }
 
 th,
 td {
+    width: 100%;
     padding: 15px;
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
-    /* white-space: nowrap; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 th {
     position: sticky;
     top: 0;
     background: #303136;
-    text-align: left;
+    /* text-align: left; */
     font-weight: normal;
     font-size: 1.1rem;
     color: white;
@@ -243,16 +273,25 @@ th:last-child {
     border: 0;
 }
 
+.equal-width td {
+    width: 100%;
+}
+
 td {
+    white-space: nowrap;
     padding-top: 10px;
     padding-bottom: 10px;
     color: #4d4d4d;
+    /* text-align: center; */
+    /* text-align: left; */
+
+    /* float: left; */
+    /* width: 16%; */
 }
 
 tr:nth-child(even) td {
     background: #f0eff5;
 }
-
 
 /* end tabele */
 
@@ -269,7 +308,7 @@ tr:nth-child(even) td {
     height: 1px;
     position: relative;
     border: none;
-    background-color: #53a0c9!important;
+    background-color: #53a0c9 !important;
 }
 
 .programareInLucruBtn {
@@ -282,7 +321,7 @@ tr:nth-child(even) td {
     height: 1px;
     position: relative;
     border: none;
-    background-color: #e3ef3f!important;
+    background-color: #e3ef3f !important;
 }
 
 .programareFinalizataBtn {
@@ -295,7 +334,7 @@ tr:nth-child(even) td {
     height: 1px;
     position: relative;
     border: none;
-    background-color: #43a047!important;
+    background-color: #43a047 !important;
     transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -309,7 +348,7 @@ tr:nth-child(even) td {
     height: 1px;
     position: relative;
     border: none;
-    background-color: #f54141!important;
+    background-color: #f54141 !important;
 }
 
 .show_vehiculeleMeleBlock {
@@ -338,7 +377,8 @@ footer {
 
 /* Modal */
 
-.ProfileModal {
+.ProfileModal,
+.ProgramareNouaModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -352,7 +392,8 @@ footer {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.myProfileModal-content {
+.myProfileModal-content,
+.myProgramareNouaModal-content {
     background-color: #ffffff;
     margin: auto;
     padding: 10px;
@@ -360,7 +401,8 @@ footer {
     width: 80%;
 }
 
-.chenar-text-mmyProfileModal {
+.chenar-text-mmyProfileModal,
+.chenar-text-mmyProgramareNouaModal {
     height: 3vmax;
     text-align: center;
     margin: auto;
@@ -377,14 +419,16 @@ footer {
 
 /* Form */
 
-.form-myProfile {
+.form-myProfile,
+.form-myProgramareNoua {
     display: grid;
     place-content: center;
     font-family: sans-serif;
     color: #6b6b6b;
 }
 
-.form-myProfile form {
+.form-myProfile form,
+.form-myProgramareNoua form {
     width: 50vw;
     border: 1px solid rgb(255, 255, 255);
     padding: 3vw;
@@ -394,7 +438,8 @@ footer {
     background-color: #ffffff;
 }
 
-.form-myProfile label {
+.form-myProfile label,
+.form-myProgramareNoua label {
     margin-bottom: 15px;
     position: relative;
     /*  */
@@ -402,7 +447,8 @@ footer {
     border: 2px solid #dbdbdb;
 }
 
-.form-myProfile input {
+.form-myProfile input,
+.form-myProgramareNoua input {
     width: 49vw;
     padding: 10px 0px;
     margin-top: 20px;
@@ -411,11 +457,26 @@ footer {
     text-indent: 20px;
 }
 
-.form-myProfile input::placeholder {
+.form-myProgramareNoua select {
+    width: 49vw;
+    padding: 10px 0px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    text-indent: 20px;
+}
+
+.form-myProfile input::placeholder,
+.form-myProgramareNoua input::placeholder {
     opacity: 0;
 }
 
-.form-myProfile span {
+.form-myProgramareNoua select::placeholder {
+    opacity: 0;
+}
+
+.form-myProfile span,
+.form-myProgramareNoua span {
     position: absolute;
     top: 0;
     left: 10px;
@@ -425,7 +486,8 @@ footer {
     transition-duration: 300ms;
 }
 
-.form-myProfile button {
+.form-myProfile button,
+.form-myProgramareNoua button {
     padding: 15px 0px;
     margin-top: 20px;
     background: rgb(27, 27, 27);
@@ -439,6 +501,30 @@ footer {
 
 .form-myProfile label:focus-within>span,
 .form-myProfile input:not(:placeholder-shown)+span {
+    background-color: white;
+    font-weight: 600;
+    color: rgb(27, 27, 27);
+    transform: translateY(-9px);
+}
+
+.form-myProfile label:focus-within>span,
+.form-myProfile select:not(:placeholder-shown)+span {
+    background-color: white;
+    font-weight: 600;
+    color: rgb(27, 27, 27);
+    transform: translateY(-9px);
+}
+
+.form-myProgramareNoua label:focus-within>span,
+.form-myProgramareNoua input:not(:placeholder-shown)+span {
+    background-color: white;
+    font-weight: 600;
+    color: rgb(27, 27, 27);
+    transform: translateY(-9px);
+}
+
+.form-myProgramareNoua label:focus-within>span,
+.form-myProgramareNoua select:not(:placeholder-shown)+span {
     background-color: white;
     font-weight: 600;
     color: rgb(27, 27, 27);
@@ -467,6 +553,17 @@ footer {
 }
 
 .detailsButton {
+    padding: 10px 15px;
+    background: rgb(27, 27, 27);
+    color: #fff;
+    border: 1px solid rgb(27, 27, 27);
+    cursor: pointer;
+    border-radius: 3px;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 1em;
+}
+
+.stergereButton {
     padding: 10px 15px;
     background: rgb(27, 27, 27);
     color: #fff;
@@ -531,8 +628,283 @@ footer {
 
 /* Modal end */
 
+*.hidden {
+    display: none !important;
+}
+
+div.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(16, 16, 16, 0.5);
+    z-index: 100;
+}
+
+.uil-ring-css {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+}
+
+@-webkit-keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes uil-ring-anim {
+    0% {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.uil-ring-css>div {
+    position: absolute;
+    display: block;
+    width: 160px;
+    height: 160px;
+    top: 20px;
+    left: 20px;
+    border-radius: 80px;
+    box-shadow: 0 6px 0 0 #ffffff;
+    -ms-animation: uil-ring-anim 1s linear infinite;
+    -moz-animation: uil-ring-anim 1s linear infinite;
+    -webkit-animation: uil-ring-anim 1s linear infinite;
+    -o-animation: uil-ring-anim 1s linear infinite;
+    animation: uil-ring-anim 1s linear infinite;
+}
+
 @media only screen and (max-width: 550px) {
     .usernameBlock {
         display: none;
     }
+
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+
+    .tabele table {
+        overflow-y: scroll;
+        overflow-x: scroll;
+    }
 }
+
+.detailsDiv {
+    /* white-space: normal; */
+}
+
+p,
+dt {
+    font-weight: bold;
+}
+
+dl,
+dd {
+    font-size: .9rem;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+dt {
+    float: left;
+    width: 10%;
+    padding: 0;
+    margin: 0
+}
+
+dd {
+    float: left;
+    text-align: left;
+    width: 90%;
+    padding: 0;
+    margin: 0
+}
+
+/* Programeaza Response Modal */
+.programeaza-modal-response {
+    display: none;
+    z-index: 22;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    padding-top: 150px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+}
+
+.programeaza-modal-content {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #757575;
+}
+
+.modal-header {
+    text-align: center;
+    font-size: 15px;
+}
+
+.modal-body {
+    text-align: center;
+    padding: 3px 15px;
+    background-color: #7a838665;
+}
+
+.error {
+    background-color: #c0392b;
+}
+
+.success {
+    background-color: #27ae60;
+}
+
+.header-msg,
+.body-msg {
+    font-family: Arial Black, Arial Bold, Gadget, sans-serif;
+}
+
+/* Programeaza Response Modal */

@@ -30,6 +30,11 @@
                     Vehiculele mele</button>
                 <button class="dropdownButton" id="programarileMeleButton"><i
                         class="material-icons">perm_contact_calendar</i> Programarile mele</button>
+                <!-- <button class="dropdownButton" id="programarileMeleButton"><i class="material-icons">event</i>Programare noua</button> -->
+
+                <button class="dropdownButton" id="programareNouaButtonModal" onclick="openProgramareNouaModal()"><i
+                        class="material-icons">event</i> Programare noua</button>
+
                 <button class="dropdownButton" onclick="callLogout()"><i class="material-icons">highlight_off</i> Log
                     out</button>
             </div>
@@ -89,13 +94,80 @@
                 </form>
             </div>
         </div>
+    </div>
 
+    <div id="myProgramareNouaModal" class="ProgramareNouaModal">
+        <div class="myProgramareNouaModal-content">
+            <!-- <span class="close">&times;</span> -->
+            <div class="chenar-text-mmyProgramareNouaModal">
+                <br>
+                <img src="../pages/resources/userProfile/calendar_icon.png" class="bikeProfile-icon" alt="calendarIcon">
+                <p>Programare Noua</p>
+                <br>
+            </div>
+
+            <div id="ProgramareNouaModalForm" class="form-myProgramareNoua">
+                <form>
+                    <label for="TipVehicul">
+                        <select id="TipVehicul" name="TipVehicul">
+                            <option></option>
+                            <option value="Bicicleta">Bicicleta</option>
+                            <option value="Trotineta">Trotineta</option>
+                            <option value="Trotineta Electrica">Trotineta Electrica</option>
+                            <option value="Motocicleta">Motocicleta</option>
+                        </select>
+                        <!-- <input type="text" id="TipVehicul" placeholder="TipVehicul"> -->
+                        <span>Tip Vehicul *</span>
+                    </label>
+
+                    <label for="Marca">
+                        <input type="text" id="Marca" placeholder="Marca">
+                        <span>Marca *</span>
+                    </label>
+
+                    <label for="Model">
+                        <input type="text" id="Model" placeholder="Model">
+                        <span>Model *</span>
+                    </label>
+
+                    <label for="Titlu">
+                        <input type="text" id="Titlu" placeholder="Titlu">
+                        <span>Titlu * </span>
+                    </label>
+
+                    <label for="Descriere">
+                        <input type="text" id="Descriere" placeholder="Descriere">
+                        <span>Descriere * </span>
+                    </label>
+
+                    <button type="submit">Finalizeaza</button>
+                </form>
+            </div>
+        </div>
+        <!-- Programeaza Modal Response-->
+        <div class="programeaza-modal-response">
+            <div class="programeaza-modal-content">
+                <div class="modal-header">
+                    <h1 class="header-msg"></h1>
+                </div>
+                <div class="modal-body">
+                    <p class="body-msg"></p>
+                </div>
+            </div>
+        </div>
+        <!-- Programeaza Modal Response-->
     </div>
 
     <div class="imagesDiv">
         <img src="../pages/resources/index/1.png" class="image-cycle" alt="cycle">
         <img src="../pages/resources/index/2.png" class="image-logo" alt="logo">
         <img src="../pages/resources/index/3.png" class="image-motorcycle" alt="motorcycle">
+    </div>
+
+    <div class="loading">
+        <div class='uil-ring-css' style='transform:scale(0.79);'>
+            <div></div>
+        </div>
     </div>
 
     <div id="programarileMeleBlock">
@@ -105,208 +177,136 @@
             <p>Programarile mele</p>
             <br>
         </div>
+
         <div class="tabele">
-            <div class="tabel_programarile_mele">
-                <table id="programarile_mele">
-                    <thead>
-                        <tr>
-                            <th>Tip vehicul</th>
-                            <th>Serie</th>
-                            <th>Status programare</th>
-                            <th>Data programării</th>
-                            <th>Ultima actualizare</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+            <table id="programarile_mele" class="equal-width">
+                <thead>
+                    <tr>
+                        <th>Tip vehicul</th>
+                        <th>Serie</th>
+                        <th>Status programare</th>
+                        <th>Data programării</th>
+                        <th>Ultima actualizare</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareInregBtn"><span>Inregistrata</span></button>
-                            </td>
-                            <td>
-                                <input type="date" value="2017-06-01" readonly>
-                            </td>
-                            <td>
-                                <input type="datetime-local" id="meeting-time132" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                <tbody id="programarile_mele_continut">
+                    <!-- <tr>
+                        <td>Zhang Yanquan</td>
+                        <td>18</td>
+                        <td>
+                            <button class="programareInregBtn"><span>Inregistrata</span></button>
+                        </td>
+                        <td><input type="date" value="2017-06-01" readonly></td>
+                        <td>
+                            <input type="datetime-local" id="meeting-time132" name="meeting-time"
+                                value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                        </td>
+                        <td><button class="detailsButton">Detalii</button></td>
+                    </tr>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareInLucruBtn"><span>In lucru</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time2765" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                    <tr id="hidden_row2" class="hidden_row">
+                        <td colspan="6">
+                            <div>
+                                <p>Detalii:</p>
+                                <dl>
+                                    <dt>ID Fisa:</dt>
+                                    <dd>48</dd>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time3" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                                    <dt>Descriere:</dt>
+                                    <dd>
+                                        <textarea id="story" name="story" rows="5" cols="60" readonly>It was a dark and stormy night...It was a dark and stormy night...It was a dark and stormy night...</textarea>
+                                    </dd>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareAnulataBtn"><span>Anulata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time4" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                                    <dt>Actiuni:</dt>
+                                    <dd><button>Sterge</button></dd>
+                                </dl>
+                            </div>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareAnulataBtn"><span>Anulata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time5" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Zhang Yanquan</td>
+                        <td>18</td>
+                        <td>
+                            <button class="programareInLucruBtn"><span>In lucru</span></button>
+                        </td>
+                        <td><input type="date" value="2017-06-01" readonly></td>
+                        <td><input type="datetime-local" id="meeting-time2765" name="meeting-time"
+                                value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                        </td>
+                        <td>
+                            <button class="detailsButton">Detalii</button>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time6" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                    <tr id="hidden_row4" class="hidden_row">
+                        <td colspan="6">
+                            Person-1 is 24 years old and he is a computer programmer
+                            he earns 60000 per month Person-1 is 24 years old and he is a computer programmer
+                            he earns 60000 per month Person-1 is 24 years old and he is a computer programmer
+                            he earns 60000 per month Person-1 is 24 years old and he is a computer programmer
+                            he earns 60000 per month Person-1 is 24 years old and he is a computer programmer
+                            he earns 60000 per month Person-1 is 24 years old and he is a computer programmer
+                            he earns 60000 per month
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zhang Yanquan</td>
+                        <td>18</td>
+                        <td>
+                            <button class="programareFinalizataBtn"><span>Finalizata</span></button>
+                        </td>
+                        <td><input type="date" value="2017-06-01" readonly></td>
+                        <td><input type="datetime-local" id="meeting-time3" name="meeting-time" value="2018-06-12T19:30"
+                                min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                        </td>
+                        <td>
+                            <button class="detailsButton">Detalii</button>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time7" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time8" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time9" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-                <!-- Pagination -->
-                <div class="pagination-container">
-                    <div class="pagination-group">
-                        <select class="pagination-control" name="state" id="maxRows">
-                            <option value="5000">Show ALL Rows</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                            <option value="70">70</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
-
-                    <div class="pagination-group2">
-                        <ul class="pagination-content pagination-content-hide">
-                            <li data-page="prev">
-                                <span> &laquo; <span class="sr-only"></span></span>
-                            </li>
-
-                            <li data-page="next" id="prev">
-                                <span> &raquo; <span class="sr-only"></span></span>
-                            </li>
-                        </ul>
-                    </div>
+                    <tr id="hidden_row6" class="hidden_row">
+                        <td colspan="6">
+                            Person-1 is 24 years old and
+                            he is a computer programmer
+                            he earns 60000 per month
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+            <!-- Pagination -->
+            <!-- <div class="pagination-container">
+                <div class="pagination-group">
+                    <select class="pagination-control" name="state" id="maxRows">
+                        <option value="5000">Show ALL Rows</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="70">70</option>
+                        <option value="100">100</option>
+                    </select>
                 </div>
-                <!-- Pagination -->
-            </div>
+
+                <div class="pagination-group2">
+                    <ul class="pagination-content pagination-content-hide">
+                        <li data-page="prev">
+                            <span> &laquo; <span class="sr-only"></span></span>
+                        </li>
+
+                        <li data-page="next" id="prev">
+                            <span> &raquo; <span class="sr-only"></span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+            <!-- Pagination -->
+            <button class="collapseAll">Expand all</button>
         </div>
+
     </div>
 
     <div id="vehiculeleMeleBlock">
@@ -333,12 +333,7 @@
 
                     <tbody>
                         <tr>
-                            <td class="hideextra">Nu sunt TROTINETE inregistrate</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="6">Nu sunt TROTINETE inregistrate</td>
                         </tr>
                     </tbody>
 
@@ -466,6 +461,8 @@
         </div>
 
     </div>
+
+
 
     <footer>
         <p>Contact us at: contact@2Wheels.com</p>
