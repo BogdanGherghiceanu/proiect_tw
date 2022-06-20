@@ -83,7 +83,7 @@ async function modalProgramariHandle() {
         text += "<p>Actualizari: " + programariResponseArray[i].titlu + "<\/p>"
         text += "<dl>"
         text += "<dt>Status<\/dt>"
-        text += "<dd>" + "<select name=\"status\" id=\"status_" + programariResponseArray[i].id + "\"><option value=\"default\"></option><option value=\"inregistrata\">Inregistrata</option><option value=\"acceptata\">Acceptata</option><option value=\"finalizata\">Finalizata</option><option value=\"inLucru\">In Lucru</option></select>" + "<\/dd>"
+        text += "<dd>" + "<select name=\"status\" id=\"status_" + programariResponseArray[i].id + "\"><option value=\"default\"></option><option value=\"inregistrata\">Inregistrata</option><option value=\"acceptata\">Acceptata</option><option value=\"finalizata\">Finalizata</option><option value=\"inLucru\">In Lucru</option><option value=\"respinsa\">Respinsa</option></select>" + "<\/dd>"
         text += "<dt>Descriere:<\/dt>"
         text += "<dd>"
         text += "<textarea id=\"updateTextarea_" + programariResponseArray[i].id + "\" name=\"updateTextarea_" + programariResponseArray[i].id + "\" rows=\"5\" cols=\"40\"><\/textarea>"
