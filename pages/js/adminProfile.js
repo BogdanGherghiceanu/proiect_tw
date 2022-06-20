@@ -85,7 +85,7 @@ async function modalProgramariHandle() {
         text += "<dd>" + "<select name=\"status\" id=\"status_" + programariResponseArray[i].id + "\"><option value=\"default\"></option><option value=\"inregistrata\">Inregistrata</option><option value=\"acceptata\">Acceptata</option><option value=\"finalizata\">Finalizata</option><option value=\"inLucru\">In Lucru</option></select>" + "<\/dd>"
         text += "<dt>Descriere:<\/dt>"
         text += "<dd>"
-        text += "<textarea id=\"story\" name=\"updateTextarea_" + programariResponseArray[i].id + "\" rows=\"5\" cols=\"40\"><\/textarea>"
+        text += "<textarea id=\"updateTextarea_" + programariResponseArray[i].id + "\" name=\"updateTextarea_" + programariResponseArray[i].id + "\" rows=\"5\" cols=\"40\"><\/textarea>"
         text += "<\/dd>"
         text += "<dt>Actiuni:<\/dt>"
         text += "<dd><button class=\"actualizeazaButton\" id=\"" + programariResponseArray[i].id + "\">Actualizeaza<\/button><\/dd>"
@@ -153,7 +153,7 @@ async function actualizeazaProgramare(id) {
     programariHeaders.append("id_user", loginDataJson.id);
     programariHeaders.append("status", document.querySelector('#status_' + id).value);
     programariHeaders.append("titlu", "Modificare status");
-    programariHeaders.append("descriere", "update");
+    programariHeaders.append("descriere", document.querySelector('#updateTextarea_' + id).value);
     programariHeaders.append("dataProgramare", today);
 
     var requestprogramariOptions = {
@@ -208,6 +208,7 @@ function ProgrameazaResponse(headerMsg, msg, customClass, responseModal, headerM
 }
 
 function addUpdateStatus(obj, idFisa) {
+    obj = obj.reverse()
     text = ''
     for (i = 0; i < obj.length; i++) {
         text += "Titlu: " + obj[i].titlu + "\r\n"

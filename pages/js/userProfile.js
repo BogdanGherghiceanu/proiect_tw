@@ -96,6 +96,7 @@ async function modalProgramariHandle() {
 }
 
 function addUpdateStatus(obj, idFisa) {
+    obj = obj.reverse()
     text = ''
     for (i = 0; i < obj.length; i++) {
         text += "Titlu: " + obj[i].titlu + "\r\n"
@@ -323,6 +324,8 @@ function ProgrameazaResponse(headerMsg, msg, customClass) {
         }
         location.reload();
     }
+    setTimeout(() => { responseModal.style.display = "none"; }, 1000);
+    setTimeout(() => { location.reload(); }, 1000);
 }
 //Programeaza-te
 
