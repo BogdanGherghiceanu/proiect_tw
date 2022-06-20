@@ -574,7 +574,8 @@ footer {
 /* Modal */
 
 .ProfileModal,
-.StocInternModal {
+.StocInternModal,
+.ComenziModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -589,7 +590,8 @@ footer {
 }
 
 .myProfileModal-content,
-.myStocInternModal-content {
+.myStocInternModal-content,
+.myComenziModal-content {
     background-color: #ffffff;
     margin: auto;
     padding: 10px;
@@ -598,7 +600,8 @@ footer {
 }
 
 .chenar-text-mmyProfileModal,
-.chenar-text-mmyStocInternModal {
+.chenar-text-mmyStocInternModal,
+.chenar-text-mmyComenziModal  {
     height: 3vmax;
     text-align: center;
     margin: auto;
@@ -616,7 +619,8 @@ footer {
 /* Form */
 
 .form-myProfile,
-.form-myStocIntern {
+.form-myStocIntern,
+.form-myComenzi {
     display: grid;
     place-content: center;
     font-family: sans-serif;
@@ -624,7 +628,8 @@ footer {
 }
 
 .form-myProfile form,
-.form-myStocIntern form {
+.form-myStocIntern form,
+.form-myComenzi form {
     width: 50vw;
     border: 1px solid rgb(255, 255, 255);
     padding: 3vw;
@@ -635,7 +640,8 @@ footer {
 }
 
 .form-myProfile label,
-.form-myStocIntern label {
+.form-myStocIntern label,
+.form-myComenzi label {
     margin-bottom: 15px;
     position: relative;
     /*  */
@@ -644,7 +650,8 @@ footer {
 }
 
 .form-myProfile input,
-.form-myStocIntern input {
+.form-myStocIntern input,
+.form-myComenzi input {
     width: 49vw;
     padding: 10px 0px;
     margin-top: 20px;
@@ -654,12 +661,14 @@ footer {
 }
 
 .form-myProfile input::placeholder,
-.form-myStocIntern input::placeholder {
+.form-myStocIntern input::placeholder,
+.form-myComenzi input::placeholder {
     opacity: 0;
 }
 
 .form-myProfile span,
-.form-myStocIntern span {
+.form-myStocIntern span,
+.form-myComenzi span {
     position: absolute;
     top: 0;
     left: 10px;
@@ -670,7 +679,8 @@ footer {
 }
 
 .form-myProfile button,
-.form-myStocIntern button {
+.form-myStocIntern button,
+.form-myComenzi button {
     padding: 15px 0px;
     margin-top: 20px;
     background: rgb(27, 27, 27);
@@ -692,6 +702,14 @@ footer {
 
 .form-myStocIntern label:focus-within>span,
 .form-myStocIntern input:not(:placeholder-shown)+span {
+    background-color: white;
+    font-weight: 600;
+    color: rgb(27, 27, 27);
+    transform: translateY(-9px);
+}
+
+.form-myComenzi label:focus-within>span,
+.form-myComenzi input:not(:placeholder-shown)+span {
     background-color: white;
     font-weight: 600;
     color: rgb(27, 27, 27);
@@ -764,6 +782,16 @@ footer {
 }
 
 .adaugaProdusButton {
+    margin-left: 10px;
+    background: rgb(163, 47, 47);
+    border: 1px solid rgb(27, 27, 27);
+    color: #fff;
+    cursor: pointer;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 18px;
+}
+
+.creeazaComandaButton {
     margin-left: 10px;
     background: rgb(163, 47, 47);
     border: 1px solid rgb(27, 27, 27);

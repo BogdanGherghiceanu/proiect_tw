@@ -258,194 +258,51 @@
             <img src="../pages/resources/adminProfile/supplier_icon.png" class="supplier_icon" alt="supplierIcon">
             <p>Comenzi</p>
             <br>
+            <button class="creeazaComandaButton" id="creeazaComandaModal"
+                onclick="openCreeazaComandaModalModal()">Creeaza comanda</button>
         </div>
 
-        <div class="tabele_comenzi">
-            <div class="tabel_tabele_comenzi">
-                <table id="tabel_comenzi">
-                    <thead>
-                        <tr>
-                            <th>Nr. Comanda</th>
-                            <th>Furnizor</th>
-                            <th>Cod</th>
-                            <th>Pret</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+        <div class="tabele">
+            <table id="tabel_comenzi" class="equal-width">
+                <thead>
+                    <tr>
+                        <th>Nr. Comanda</th>
+                        <th>Furnizor</th>
+                        <th>Detalii</th>
+                        <th>Data Comanda</th>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <tbody id="comenzi_continut">
 
-                <!-- Pagination -->
-                <div class="pagination-container">
-                    <div class="pagination-group">
-                        <select class="pagination-control" name="state" id="maxRows">
-                            <option value="5000">Show ALL Rows</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                            <option value="70">70</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-                    <div class="pagination-group2">
-                        <ul class="pagination-content pagination-content-hide">
-                            <li data-page="prev">
-                                <span> &laquo; <span class="sr-only"></span></span>
-                            </li>
+    <div id="myComenziModal" class="ComenziModal">
+        <div class="myComenziModal-content">
+            <div class="chenar-text-mmyComenziModal">
+                <br>
+                <img src="../pages/resources/userProfile/calendar_icon.png" class="bikeProfile-icon" alt="calendarIcon">
+                <p>Creeaza comanda</p>
+                <br>
+            </div>
 
-                            <li data-page="next" id="prev">
-                                <span> &raquo; <span class="sr-only"></span></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Pagination -->
+            <div id="ComenziModalForm" class="form-myComenzi">
+                <form>
+                    <label for="Nume_Furnizor">
+                        <input type="text" id="Nume_Furnizor" placeholder="Nume_Furnizor">
+                        <span>Nume Furnizor *</span>
+                    </label>
+
+                    <label for="Detalii_Comanda">
+                        <input type="text" id="Detalii_Comanda" placeholder="Detalii_Comanda">
+                        <span>Detalii *</span>
+                    </label>
+
+                    <button type="submit">Plaseaza</button>
+                </form>
             </div>
         </div>
     </div>

@@ -165,6 +165,45 @@ async function modalStocHandle() {
     document.getElementById("stocIntern_continut").innerHTML = text;
 }
 
+async function modalComenziHandle() {
+
+    var requestStocOptions = {
+        method: 'GET',
+    };
+
+    var stocResp = await fetch('http://127.0.0.1:80/comandaFurnizor/getAllDocuments', requestStocOptions)
+        .then(response => {
+            return response
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    stocResponseArray = await stocResp.json()
+    stocResponseArray = stocResponseArray.reverse();
+    stocResponseArray = stocResponseArray;
+
+    text = "";
+    var count = 0
+    for (let i = 0; i < stocResponseArray.length; i++) {
+        // console.log(stocResponseArray[i])
+        count += 1
+        text += "<tr id = \"" + stocResponseArray[i].id + "\">";
+        text += "<td>" + stocResponseArray[i].id + "<\/td>" //Cod Produs
+        text += "<td>" + "<textarea id=\"updateTextarea_" + stocResponseArray[i].id + "\" name=\"updateTextarea_" + stocResponseArray[i].id + "\" rows=\"3\" cols=\"17\">" + stocResponseArray[i].numeFurnizor + "<\/textarea>" + "<\/td>" //Cod Produs
+        // text += "<td>" + stocResponseArray[i].numeFurnizor + "<\/td>" //Cod Produs
+        text += "<td>" + stocResponseArray[i].detalii + "<\/td>" //Marca
+
+        creationDateArr = stocResponseArray[i].dataComanda.split('/')
+        creationDate = creationDateArr[0] + ':' + creationDateArr[1] + ' ' + creationDateArr[2] + '-' + creationDateArr[3] + '-' + creationDateArr[4]
+
+        text += "<td>" + creationDate + "<\/td>" //Stoc
+        text += "<\/tr>"
+    }
+
+    document.getElementById("comenzi_continut").innerHTML = text;
+}
+
 async function stergeProgramare(id) {
     var programariHeaders = new Headers();
     programariHeaders.append("token", loginDataJson.password);
@@ -429,6 +468,81 @@ var stocInternDescriere = document.querySelector('#DescriereStocIntern')
 stocInternModalForm.addEventListener('submit', modalAdaugaProdusHandle)
 //Adauga produs stoc
 
+//Adauga produs stoc
+function openCreeazaComandaModalModal() {
+    var modal = document.getElementById("myComenziModal");
+
+    $('#mydropdown').toggleClass('show');
+    modal.style.display = "block";
+    document.querySelector('.myComenziModal-content').classList.remove('hidden')
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+
+        if (!event.target.matches('.navbar-icon')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+}
+
+async function modalCreeazaComenziHandle(e) {
+    e.preventDefault();
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var minutes = today.getMinutes();
+    var hour = today.getHours();
+
+    today = hour + '/' + minutes + '/' + dd + '/' + mm + '/' + yyyy;
+
+    var myHeaders = new Headers();
+    myHeaders.append("numeFurnizor", comandaNume_Furnizor.value);
+    myHeaders.append("detalii", comandaDetalii_Comanda.value);
+    myHeaders.append("dataComanda", today);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders
+    };
+
+    var resp = await fetch('http://127.0.0.1:80/comandaFurnizor/inregistrare', requestOptions)
+        .then(response => {
+            return response
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    var responseModal = document.querySelector('.modal-response')
+    var headerModal = document.querySelector('.header-msg')
+    var headerClassModal = document.querySelector('.modal-header')
+    var bodyModal = document.querySelector('.body-msg')
+
+    if (resp.status === 200) {
+        ProgrameazaResponse("Success!", "Stoc actualizat", "success", responseModal, headerModal, headerClassModal, bodyModal)
+    }
+    else {
+        ProgrameazaResponse("Something went wrong. . .", "Ceva nu a functionat ok....", "error", responseModal, headerModal, headerClassModal, bodyModal)
+    }
+}
+
+var comandaModalForm = document.querySelector('#ComenziModalForm form')
+var comandaNume_Furnizor = document.querySelector('#Nume_Furnizor')
+var comandaDetalii_Comanda = document.querySelector('#Detalii_Comanda')
+
+comandaModalForm.addEventListener('submit', modalCreeazaComenziHandle)
+//Adauga Comenzi
+
 window.onclick = function (event) {
     if (!event.target.matches('.navbar-icon')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -446,6 +560,7 @@ window.onload = function () {
 
     modalProgramariHandle();
     modalStocHandle();
+    modalComenziHandle();
 
     document.getElementById('stocInternButton').onclick = function () {
         var x_stocInternBlock = document.getElementById("stocInternBlock");
