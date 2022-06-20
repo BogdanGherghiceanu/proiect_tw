@@ -144,7 +144,7 @@ class MySQLFisaService {
         });
     }
     getAllDocumentsClient( user_id,callbackGetDocuments){
-        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date , statusFROM fisaService where id_client=${user_id}`, function (err, result, fields) {
+        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date , status FROM fisaService where id_client=${user_id}`, function (err, result, fields) {
             if (err) throw err;
 
             var resultString = JSON.stringify(result)
