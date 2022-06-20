@@ -571,6 +571,19 @@ dd {
     background-color: #f54141 !important;
 }
 
+.programareAcceptataBtn {
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+    margin: 4px;
+    padding: 7px 23px;
+    border-radius: 16px;
+    align-items: center;
+    min-height: 32px;
+    height: 1px;
+    position: relative;
+    border: none;
+    background-color: #7f43a1 !important;
+}
+
 .show_stocInternBlock {
     display: block;
     z-index: 11;

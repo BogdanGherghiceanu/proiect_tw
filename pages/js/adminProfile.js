@@ -46,7 +46,33 @@ async function modalProgramariHandle() {
         text += "<tr id = \"" + programariResponseArray[i].id + "\">";
         text += "<td>" + programariResponseArray[i].tip_vehicul + "<\/td>" //tip vehicul
         text += "<td>" + programariResponseArray[i].model + "<\/td>" // model/serie
-        text += "<td>" + "<button class=\"programareInregBtn\"><span>" + "Inregistrata" + "<\/span>" + "<\/button>" + "<\/td>" // de actualizat status
+
+        console.log(programariResponseArray[i].status)
+
+        var buttonStyleClass = ""
+        var statusValue = ""
+
+        if (programariResponseArray[i].status === null) {
+            buttonStyleClass = "programareInregBtn"
+            statusValue = "Inregistrata"
+        } else if (programariResponseArray[i].status === "inregistrata") {
+            buttonStyleClass = "programareInregBtn"
+            statusValue = "Inregistrata"
+        } else if (programariResponseArray[i].status === "acceptata") {
+            buttonStyleClass = "programareAcceptataBtn"
+            statusValue = "Acceptata"
+        } else if (programariResponseArray[i].status === "finalizata") {
+            buttonStyleClass = "programareFinalizataBtn"
+            statusValue = "Finalizata"
+        } else if (programariResponseArray[i].status === "inLucru") {
+            buttonStyleClass = "programareInLucruBtn"
+            statusValue = "In Lucru"
+        } else if (programariResponseArray[i].status === "respinsa") {
+            buttonStyleClass = "programareAnulataBtn"
+            statusValue = "Respinsa"
+        }
+
+        text += "<td>" + "<button class=\"" + buttonStyleClass + "\"><span>" + statusValue + "<\/span>" + "<\/button>" + "<\/td>" // de actualizat status
         creationDateArr = programariResponseArray[i].creation_date.split('/')
         creationDate = creationDateArr[0] + ':' + creationDateArr[1] + ' ' + creationDateArr[2] + '-' + creationDateArr[3] + '-' + creationDateArr[4]
         text += "<td>" + "<input type=\"text\" value=\"" + creationDate + "\" readonly>" + "<\/td>" // de actualizat data programarii
