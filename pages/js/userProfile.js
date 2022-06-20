@@ -57,7 +57,7 @@ async function modalProgramariHandle() {
     text = "";
     var count = 0
     for (let i = 0; i < programariResponseArray.length; i++) {
-        // console.log(programariResponseArray[i])
+        console.log(programariResponseArray[i])
         count += 1
         text += "<tr id = \"" + programariResponseArray[i].id + "\">";
         text += "<td>" + programariResponseArray[i].tip_vehicul + "<\/td>" //tip vehicul
@@ -122,15 +122,15 @@ async function modalProgramariHandle2() {
             })
         });
 
-        $('.stergereButton').click(function () {
-            console.log("Apas stergere")
+        // $('.stergereButton').click(function () {
+            // console.log("Apas stergere")
             // location.reload();
 
             // if ($("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).attr("hidden"))
             //     $("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).removeAttr("hidden")
             // else
             //     $("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).attr("hidden", true);
-        });
+        // });
     });
 }
 
@@ -211,7 +211,6 @@ function openProgramareNouaModal() {
 
     window.onclick = function (event) {
         if (event.target == modal) {
-            console.log("dasfsa")
             modal.style.display = "none";
         }
 
@@ -275,7 +274,6 @@ var programareDescriere = document.querySelector('#Descriere')
 programareNouaModalForm.addEventListener('submit', modalProgramareNouaHandle)
 
 function ProgrameazaResponse(headerMsg, msg, customClass) {
-    console.log("Afisez")
     headerprogramareResponseModal.textContent = headerMsg
 
     if (!headerClassprogramareResponseModal.classList.contains('success') || !headerClassprogramareResponseModal.classList.contains('error'))
