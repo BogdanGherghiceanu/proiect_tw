@@ -817,6 +817,11 @@ footer {
     .usernameBlock {
         display: none;
     }
+
+    .tabele table {
+        overflow-y: scroll;
+        overflow-x: scroll;
+    }
 }
 
 /* Programeaza Response Modal */
@@ -865,3 +870,15 @@ footer {
 }
 
 /* Programeaza Response Modal */
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    /* border: 2px solid yellow; */
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+} 

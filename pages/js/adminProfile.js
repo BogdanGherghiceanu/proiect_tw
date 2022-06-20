@@ -1,10 +1,12 @@
+// const { text } = require("stream/consumers");
+
 function openNavBarMenu() {
     document.getElementById("mydropdown").classList.toggle('show');
 }
 
 loginData = localStorage.getItem("loginData");
 loginDataJson = JSON.parse(loginData)
-console.log(loginDataJson)
+// console.log(loginDataJson)
 
 const usernameBlockSpan = document.getElementById('usernameBlock');
 usernameBlockSpan.innerHTML = "Hi " + loginDataJson.username
@@ -44,31 +46,57 @@ async function modalProgramariHandle() {
         text += "<td>" + programariResponseArray[i].tip_vehicul + "<\/td>" //tip vehicul
         text += "<td>" + programariResponseArray[i].model + "<\/td>" // model/serie
         text += "<td>" + "<button class=\"programareInregBtn\"><span>" + "Inregistrata" + "<\/span>" + "<\/button>" + "<\/td>" // de actualizat status
-        text += "<td>" + "<input type=\"date\" value=\"" + "2017-06-01" + "\" readonly>" + "<\/td>" // de actualizat data programarii
-        text += "<td>" + "<input type=\"datetime-local\" id=\"meeting-time132\" name=\"meeting-time\" value=\"" + "2018-06-12T19:30" + "\" min=\"2018-06-07T00:00\" max=\"2018-06-14T00:00\" readonly><\/input>" + "<\/td>" // de actualizat
-        text += "<td>" + "<button class=\"detailsButton\">Detalii<\/button>" + "<\/td>"
+        creationDateArr = programariResponseArray[i].creation_date.split('/')
+        creationDate = creationDateArr[0] + ':' + creationDateArr[1] + ' ' + creationDateArr[2] + '-' + creationDateArr[3] + '-' + creationDateArr[4]
+        text += "<td>" + "<input type=\"text\" value=\"" + creationDate + "\" readonly>" + "<\/td>" // de actualizat data programarii
+        // text += "<td>" + "<input type=\"datetime-local\" id=\"meeting-time132\" name=\"meeting-time\" value=\"" + "2018-06-12T19:30" + "\" min=\"2018-06-07T00:00\" max=\"2018-06-14T00:00\" readonly><\/input>" + "<\/td>" // de actualizat
+        text += "<td>" + "<button class=\"detailsButton\" id = \"" + programariResponseArray[i].id + "\">Detalii<\/button>" + "<\/td>"
         text += "<\/tr>"
 
         count += 1
+        // text += "<div class=\"flex-container\">"
+        // text += "<div class=\"flex-child magenta\">"
+
         text += "<tr id=\"hidden_row" + (count) + "\" class=\"hidden_row\">"
         text += "<td colspan=\"6\">"
-        text += "<div class=\"detailsDiv\">"
+        text += "<div class=\"flex-container\">"
+        text += "<div class=\"flex-child magenta\">"
         text += "<p>Detalii: " + programariResponseArray[i].titlu + "<\/p>"
         text += "<dl>"
         text += "<dt>ID Fisa:<\/dt>"
         text += "<dd>" + programariResponseArray[i].id + "<\/dd>"
         text += "<dt>Descriere:<\/dt>"
         text += "<dd>"
-        text += "<textarea id=\"story\" name=\"story\" rows=\"5\" cols=\"60\">" + programariResponseArray[i].descriere + "<\/textarea>"
+        text += "<textarea id=\"story\" name=\"story\" rows=\"5\" cols=\"40\" readonly>" + programariResponseArray[i].descriere + "<\/textarea>"
         text += "<\/dd>"
-        text += "<dt>Stare programare:<\/dt>"
-        text += "<dd>das<\/dd>"
+        text += "<dt>Actualizari:<\/dt>"
+        text += "<dd>"
+        text += "<textarea id=\"story\" name=\"textarea_" + programariResponseArray[i].id + "\" rows=\"5\" cols=\"40\" readonly><\/textarea>"
+        text += "<\/dd>"
         text += "<dt>Actiuni:<\/dt>"
-        text += "<dd><button class=\"stergereButton\" id = \"" + programariResponseArray[i].id + "\">Sterge<\/button><button class=\"actualizeazaButton\" id=\"" + programariResponseArray[i].id + "\">Actualizeaza<\/button><\/dd>"
+        text += "<dd><button class=\"stergereButton\" id = \"" + programariResponseArray[i].id + "\">Sterge<\/button><\/dd>"
         text += "<\/dl>"
+        text += "<\/div>"
+
+        text += "<div class=\"flex-child magenta\">"
+        text += "<p>Actualizari: " + programariResponseArray[i].titlu + "<\/p>"
+        text += "<dl>"
+        text += "<dt>Status<\/dt>"
+        text += "<dd>" + "<select name=\"status\" id=\"status_" + programariResponseArray[i].id + "\"><option value=\"default\"></option><option value=\"inregistrata\">Inregistrata</option><option value=\"acceptata\">Acceptata</option><option value=\"finalizata\">Finalizata</option><option value=\"inLucru\">In Lucru</option></select>" + "<\/dd>"
+        text += "<dt>Descriere:<\/dt>"
+        text += "<dd>"
+        text += "<textarea id=\"story\" name=\"updateTextarea_" + programariResponseArray[i].id + "\" rows=\"5\" cols=\"40\"><\/textarea>"
+        text += "<\/dd>"
+        text += "<dt>Actiuni:<\/dt>"
+        text += "<dd><button class=\"actualizeazaButton\" id=\"" + programariResponseArray[i].id + "\">Actualizeaza<\/button><\/dd>"
+        text += "<\/dl>"
+        text += "<\/div>"
         text += "<\/div>"
         text += "<\/td>"
         text += "<\/tr>"
+
+        // text += "<\/div>"
+        // text += "<\/div>"
     }
 
     document.getElementById("programarile_mele_continut").innerHTML = text;
@@ -108,6 +136,52 @@ async function stergeProgramare(id) {
     }
 }
 
+async function actualizeazaProgramare(id) {
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var minutes = today.getMinutes();
+    var hour = today.getHours();
+
+    today = hour + '/' + minutes + '/' + dd + '/' + mm + '/' + yyyy;
+
+    var programariHeaders = new Headers();
+    programariHeaders.append("token", loginDataJson.password);
+    programariHeaders.append("id_fisa", id);
+    programariHeaders.append("id_user", loginDataJson.id);
+    programariHeaders.append("status", document.querySelector('#status_' + id).value);
+    programariHeaders.append("titlu", "Modificare status");
+    programariHeaders.append("descriere", "update");
+    programariHeaders.append("dataProgramare", today);
+
+    var requestprogramariOptions = {
+        method: 'POST',
+        headers: programariHeaders
+    };
+
+    var programariResp = await fetch('http://127.0.0.1:80/actualizareFisaService/inregistrare', requestprogramariOptions)
+        .then(response => {
+            return response
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    if (programariResp.status === 200) {
+        var responseModal = document.querySelector('.modal-response')
+        var headerModal = document.querySelector('.header-msg')
+        var headerClassModal = document.querySelector('.modal-header')
+        var bodyModal = document.querySelector('.body-msg')
+
+        ProgrameazaResponse("Success!", "Actualizare realizata cu success.", "success", responseModal, headerModal, headerClassModal, bodyModal)
+    }
+    else {
+        ProgrameazaResponse("Something went wrong. . .", "Ceva nu a functionat ok....", "error")
+    }
+}
+
 function ProgrameazaResponse(headerMsg, msg, customClass, responseModal, headerModal, headerClassModal, bodyModal) {
 
     headerModal.textContent = headerMsg
@@ -133,6 +207,19 @@ function ProgrameazaResponse(headerMsg, msg, customClass, responseModal, headerM
     setTimeout(() => { location.reload(); }, 1000);
 }
 
+function addUpdateStatus(obj, idFisa) {
+    text = ''
+    for (i = 0; i < obj.length; i++) {
+        text += "Titlu: " + obj[i].titlu + "\r\n"
+        text += "Status: " + obj[i].status + "\r\n"
+        text += "Descriere: " + obj[i].descriere + "\r\n"
+        text += "Data Actualizarii: " + obj[i].dataActualizarii + "\r\n"
+        text += "________________" + "\r\n"
+    }
+
+    document.getElementsByName("textarea_" + idFisa)[0].value = text
+}
+
 async function modalProgramariHandle2() {
     $(".hidden_row").map(function () {
         $(".hidden_row").attr("hidden", true);
@@ -140,18 +227,27 @@ async function modalProgramariHandle2() {
 
     $(document).ready(function () {
         $('.detailsButton').click(function () {
-            console.log("apas")
+            idFisa = this.id
 
-            if ($("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).attr("hidden"))
+            if ($("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).attr("hidden")) {
+                $.ajax({
+                    type: "GET",
+                    beforeSend: function (request) {
+                        request.setRequestHeader("token", loginDataJson.password);
+                        request.setRequestHeader("documentId", idFisa);
+
+                    },
+                    url: "http://127.0.0.1:80/actualizareFisaService/actualizari",
+                    success: function (result) {
+                        var obj = JSON.parse(result);
+                        addUpdateStatus(obj, idFisa)
+                    }
+                });
+
                 $("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).removeAttr("hidden")
+            }
             else
                 $("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).attr("hidden", true);
-
-            // // console.log("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1))
-            // if ($("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).attr("hidden"))
-            //     $("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).removeAttr("hidden")
-            // else
-            //     $("#hidden_row" + (this.parentNode.parentNode.rowIndex + 1)).attr("hidden", true);
         });
 
         $('.stergereButton').click(function () {
@@ -159,13 +255,12 @@ async function modalProgramariHandle2() {
         });
 
         $('.actualizeazaButton').click(function () {
-            console.log("Apas actualizare")
-            console.log(this.id)
+            actualizeazaProgramare(this.id)
         });
     });
 }
 
-setTimeout(modalProgramariHandle2, 1000);
+setTimeout(modalProgramariHandle2, 1500);
 // Populare tabel programari
 
 
@@ -546,5 +641,5 @@ function toggleLoading() {
     }
 }
 
-setTimeout(toggleLoading, 2000);
+setTimeout(toggleLoading, 2500);
 //loading
