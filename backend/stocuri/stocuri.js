@@ -39,14 +39,14 @@ class StocuriAPI {
     comandaFurnizorinregistrareAPI(req, res, mySQLStocuri) {
         try {
             //verificam metoda de apelare
-            if (req.method != 'POST' || req.headers.dataComanda == null || req.headers.detalii == null || req.headers.numeFurnizor == null) {
+            if (req.method != 'POST' || req.headers.datacomanda == null || req.headers.detalii == null || req.headers.numefurnizor == null) {
                 throw 'bad request'
             }
             //extragem datele 
             var comandaFurnizor = new ComandaFurnizor()
-            comandaFurnizor.dataComanda = req.headers.dataComanda
+            comandaFurnizor.dataComanda = req.headers.datacomanda
             comandaFurnizor.detalii = req.headers.detalii
-            comandaFurnizor.numeFurnizor = req.headers.numeFurnizor
+            comandaFurnizor.numeFurnizor = req.headers.numefurnizor
             mySQLStocuri.comandaFurnizorinregistrare(comandaFurnizor, (result) => {
                 if (result == 1) {
                     res.writeHead(200);
@@ -60,6 +60,7 @@ class StocuriAPI {
             });
         }
         catch (e) {
+            console.log(e);
             console.log('[comanda furnizor]nu a putut fii creata, nu au fost completate toate campurile');
 
             errorRequest.err400(res);

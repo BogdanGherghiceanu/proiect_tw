@@ -12,7 +12,7 @@ class MySQLStocuri {
         });
     }
 
-    comandaFurnizorinregistrareComandaFurnizor(comandaFurnizor, callback) {
+    comandaFurnizorinregistrare(comandaFurnizor, callback) {
 
         try {
             var curentDateString = new DateSimplified();
