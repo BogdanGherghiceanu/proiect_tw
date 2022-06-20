@@ -1,4 +1,6 @@
 var mysql = require('mysql')
+const { DateSimplified } = require('../plugins/dateProccesing')
+const { FisaService } = require('../fisaService/fisaService')
 class MySQLStocuri {
 
     constructor() {
@@ -14,7 +16,7 @@ class MySQLStocuri {
 
         try {
             var curentDateString = new DateSimplified();
-            fisaService.setCreationDate(curentDateString.getCurrentString());
+        
             var sql = ` \
                 INSERT INTO comandaFurnizor ( \
                     numeFurnizor, detalii, dataComanda) \
@@ -85,13 +87,13 @@ class MySQLStocuri {
     adaugareStocuri(stocuri, callback) {
 
         try {
-            var curentDateString = new DateSimplified();
-            fisaService.setCreationDate(curentDateString.getCurrentString());
+
+
             var sql = ` \
                 INSERT INTO stocuri ( \
-                    unitatemasura, detalii, descriere,nume,pret) \
+                    cantitate_ramasa,unitatemasura,  descriere,nume,pret) \
                   VALUES \
-                  ('${stocuri.cantitate_ramasa}','${stocuri.unitatemasura}','${stocuri.descriere}','${stocuri.nume}',${stocuri.pret})`;
+                  (${stocuri.cantitate_ramasa},'${stocuri.unitatemasura}','${stocuri.descriere}','${stocuri.nume}',${stocuri.pret})`;
 
 
             this.con.query(sql, function (err, result) {

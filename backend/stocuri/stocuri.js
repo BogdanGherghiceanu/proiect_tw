@@ -1,3 +1,4 @@
+const errorRequest = require('../requests/errorRequest');
 class ComandaFurnizor {
 
     constructor() {
