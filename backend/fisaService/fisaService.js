@@ -56,6 +56,7 @@ class FisaServiceAPI {
                             req.headers.descriere,
                             req.headers.dataProgramare
                         )
+                    
 
                         //verificam antisqlinjection
                         if (sqlInjection.protectionFisaService(fisaService)) {

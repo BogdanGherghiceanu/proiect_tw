@@ -33,11 +33,9 @@ class MiscariStocuri {
 
 class StocuriAPI {
 
-    constructor() {
+   
 
-    }
-
-    inregistrareAPI(req, res, mySQLStocuri) {
+    comandaFurnizorinregistrareAPI(req, res, mySQLStocuri) {
         try {
             //verificam metoda de apelare
             if (req.method != 'POST' || req.headers.dataComanda == null || req.headers.detalii == null || req.headers.numeFurnizor == null) {
@@ -48,7 +46,7 @@ class StocuriAPI {
             comandaFurnizor.dataComanda = req.headers.dataComanda
             comandaFurnizor.detalii = req.headers.detalii
             comandaFurnizor.numeFurnizor = req.headers.numeFurnizor
-            mySQLStocuri.inregistrare(comandaFurnizor, (result) => {
+            mySQLStocuri.comandaFurnizorinregistrare(comandaFurnizor, (result) => {
                 if (result == 1) {
                     res.writeHead(200);
                     res.write('comanda furnizor a fost inregistrata')
@@ -68,7 +66,7 @@ class StocuriAPI {
         }
     }
 
-    getById(req, res, mySQLStocuri) {
+    comandaFurnizorgetById(req, res, mySQLStocuri) {
         //daca utilizatorul este angajat poate vizualiza toate fisele
         //                      -client poate vizualiza doar fisele sale
 
@@ -79,7 +77,7 @@ class StocuriAPI {
             }
 
 
-            mySQLStocuri.getByIdAngajat(req.headers.comandaid, (found, fisaService) => {
+            mySQLStocuri.comandaFurnizorgetByIdAngajat(req.headers.comandaid, (found, fisaService) => {
                 switch (found) {
                     case 1:
                         res.writeHead(200, 'text/json');
@@ -102,18 +100,18 @@ class StocuriAPI {
     }
 
 
-    getAllDocuments(req, res, mySQLStocuri) {
+    comandaFurnizorgetAllDocuments(req, res, mySQLStocuri) {
         //daca utilizatorul este angajat poate vizualiza toate fisele
         //                      -client poate vizualiza doar fisele sale
 
         try {
             //verificam metoda de apelare
-            if (req.method != 'GET' || req.headers.comandaid == null) {
+            if (req.method != 'GET' ) {
                 throw 'bad request'
             }
 
 
-            mySQLStocuri.getById(req.headers.comandaid, (found, fisaService) => {
+            mySQLStocuri.comandaFurnizorgetAllDocuments( (found, fisaService) => {
                 switch (found) {
                     case 1:
                         res.writeHead(200, 'text/json');
@@ -137,3 +135,6 @@ class StocuriAPI {
 
 
 }
+
+
+module.exports.StocuriAPI=StocuriAPI

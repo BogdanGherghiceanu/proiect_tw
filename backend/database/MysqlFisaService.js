@@ -18,9 +18,9 @@ class MySQLFisaService {
         fisaService.setCreationDate(curentDateString.getCurrentString());
         var sql = ` \
             INSERT INTO fisaService ( \
-                id_client,tip_vehicul,marca ,model ,titlu,descriere,dataProgramare,creation_date) \
+                id_client,tip_vehicul,marca ,model ,titlu,descriere,dataProgramare,creation_date,status) \
               VALUES \
-              (${fisaService.id_client},'${fisaService.tip_vehicul}','${fisaService.marca}','${fisaService.model}','${fisaService.titlu}','${fisaService.descriere}','${fisaService.dataProgramare}','${fisaService.creation_date}')`;
+              (${fisaService.id_client},'${fisaService.tip_vehicul}','${fisaService.marca}','${fisaService.model}','${fisaService.titlu}','${fisaService.descriere}','${fisaService.dataProgramare}','${fisaService.creation_date}','inregistrata')`;
 
      
         this.con.query(sql, function (err, result) {
@@ -44,7 +44,7 @@ class MySQLFisaService {
     }
 
     getById(userid, document_id,callbackGetById){
-        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date FROM fisaService WHERE id = ${document_id} AND id_client = ${userid}`, function (err, result, fields) {
+        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date,status FROM fisaService WHERE id = ${document_id} AND id_client = ${userid}`, function (err, result, fields) {
             if (err) throw err;
 
             var resultString = JSON.stringify(result)
@@ -64,11 +64,25 @@ class MySQLFisaService {
                 fisaService.descriere=resultJson[0].descriere;
                 fisaService.setCreationDate(resultJson[0].creation_date);
                 fisaService.dataProgramare=resultJson[0].dataProgramare;
+                fisaService.status=resultJson[0].status;
                 found=1
             } catch {
                 console.log("[MySQLFisaService]fisa service inexistenta sau userul nu acces sa o vizualizeze");
             }
             callbackGetById(found, fisaService)
+        });
+    }
+    updateStatus(status,document_id,callback){
+        this.con.query(`UPDATE fisaService SET status = '${status}' WHERE id = ${document_id}`, function (err, result, fields) {
+            if (err) throw err;
+            if (result.affectedRows) {
+                console.log(`[FisaService] statusul documentului id: ${document_id} a fost modificata`);
+                callback(1)
+            } else {
+
+                console.log(`[FisaService] Documentul cu id: ${document_id} nu exista`);
+                callback(0)
+            }
         });
     }
 
@@ -88,7 +102,7 @@ class MySQLFisaService {
     }
 
     getByIdAngajat( document_id,callbackGetById){
-        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date,dataProgramare FROM fisaService WHERE id = ${document_id} `, function (err, result, fields) {
+        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date,dataProgramare,status FROM fisaService WHERE id = ${document_id} `, function (err, result, fields) {
             if (err) throw err;
 
             var resultString = JSON.stringify(result)
@@ -110,6 +124,7 @@ class MySQLFisaService {
                 fisaService.setCreationDate(resultJson[0].creation_date);
                 found=1
                 fisaService.dataProgramare=resultJson[0].dataProgramare;
+                fisaService.status=resultJson[0].status;
             } catch {
                 console.log("[MySQLFisaService]fisa service inexistenta");
             }
@@ -118,7 +133,7 @@ class MySQLFisaService {
     }
 
     getAllDocumentsAngajat( callbackGetDocuments){
-        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date FROM fisaService `, function (err, result, fields) {
+        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date, status FROM fisaService `, function (err, result, fields) {
             if (err) throw err;
 
             var resultString = JSON.stringify(result)
@@ -129,7 +144,7 @@ class MySQLFisaService {
         });
     }
     getAllDocumentsClient( user_id,callbackGetDocuments){
-        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date FROM fisaService where id_client=${user_id}`, function (err, result, fields) {
+        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date , statusFROM fisaService where id_client=${user_id}`, function (err, result, fields) {
             if (err) throw err;
 
             var resultString = JSON.stringify(result)

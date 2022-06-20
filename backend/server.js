@@ -120,7 +120,7 @@ var server = httpModule.createServer((req, res) => {
                 //401 nu aveti acces (token invalid).
 
                 case 'inregistrare':
-                    actualizareFisaServiceAPI.inregistrareAPI(req, res, mySQLActualizareFisaService, mySQLAccountManager);
+                    actualizareFisaServiceAPI.inregistrareAPI(req, res, mySQLActualizareFisaService, mySQLAccountManager,mySQLFisaService);
                     break;
                 case 'actualizari':
                     actualizareFisaServiceAPI.getById(req, res, mySQLActualizareFisaService, mySQLAccountManager)

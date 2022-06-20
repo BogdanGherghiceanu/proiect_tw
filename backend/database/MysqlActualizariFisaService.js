@@ -42,21 +42,20 @@ class MySQLActualizariFisaService {
         }
     }
 
-    getActualizariForDocumentID(id_fisa, callbackGetDocuments){
-  
-            this.con.query(`SELECT id_fisa,id_user,titlu ,descriere ,status,dataActualizarii FROM detaliiFisaService WHERE id_fisa=${id_fisa} `, function (err, result, fields) {
-                if (err) 
-                {   
-                    callback(0,'')
-                    throw err;
-                }
-                var resultString = JSON.stringify(result)
-                var resultJson = JSON.parse(resultString)
-                
-                
-                callbackGetDocuments(1, resultJson)
-            });
-        
+    getActualizariForDocumentID(id_fisa, callbackGetDocuments) {
+
+        this.con.query(`SELECT id_fisa,id_user,titlu ,descriere ,status,dataActualizarii FROM detaliiFisaService WHERE id_fisa=${id_fisa} `, function (err, result, fields) {
+            if (err) {
+                callback(0, '')
+                throw err;
+            }
+            var resultString = JSON.stringify(result)
+            var resultJson = JSON.parse(resultString)
+
+
+            callbackGetDocuments(1, resultJson)
+        });
+
     }
 
     createTable() {

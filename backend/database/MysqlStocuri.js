@@ -10,7 +10,7 @@ class MySQLStocuri {
         });
     }
 
-    inregistrareComandaFurnizor(comandaFurnizor, callback) {
+    comandaFurnizorinregistrareComandaFurnizor(comandaFurnizor, callback) {
 
         try {
             var curentDateString = new DateSimplified();
@@ -44,7 +44,7 @@ class MySQLStocuri {
     }
 
 
-    getById(document_id, callbackGetById) {
+    comandaFurnizorgetById(document_id, callbackGetById) {
         this.con.query(`SELECT * FROM comandaFurnizor WHERE id = ${document_id}`, function (err, result, fields) {
             if (err) throw err;
 
@@ -66,7 +66,7 @@ class MySQLStocuri {
         });
     }
 
-    getAllDocuments(callbackGetDocuments) {
+    comandaFurnizorgetAllDocuments(callbackGetDocuments) {
         var found = 1
         this.con.query(`SELECT * FROM comandaFurnizor `, function (err, result, fields) {
 

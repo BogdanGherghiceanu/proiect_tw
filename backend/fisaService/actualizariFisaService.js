@@ -31,7 +31,7 @@ class ActualizareFisaService {
 
 class ActualizareFisaServiceAPI {
 
-    inregistrareAPI(req, res, mySQLActualizareFisaService, mySQLAccountManager) {
+    inregistrareAPI(req, res, mySQLActualizareFisaService, mySQLAccountManager,mySQLFisaService) {
         try {
             //verificam metoda de apelare
             if (req.method != 'POST' || req.headers.token == null) {
@@ -48,7 +48,7 @@ class ActualizareFisaServiceAPI {
                         errorRequest.err401(res)
                     }
                     else {
-                     
+                        
                         //extragem datele 
                         var actualizareFisaService = new ActualizareFisaService();
                         actualizareFisaService.setData(req.headers.id_fisa, req.headers.id_user, req.headers.titlu, req.headers.descriere, req.headers.status);
@@ -59,9 +59,14 @@ class ActualizareFisaServiceAPI {
                             //inregistram fisa service
                             mySQLActualizareFisaService.insertActualizare(actualizareFisaService, (result) => {
                                 if (result == 1) {
-                                    res.writeHead(200);
-                                    res.write('fisa a fost inregistrata')
-                                    res.end();
+
+                                    mySQLFisaService.updateStatus(req.headers.status, req.headers.id_fisa, (result2) => {
+                                        
+                                        res.writeHead(200);
+                                        res.write('fisa a fost inregistrata')
+                                        res.end();
+                                    })
+                                   
                                 } else {
                                     if (result == -1) {
                                         errorRequest.err400(res);
@@ -108,6 +113,7 @@ class ActualizareFisaServiceAPI {
                     }
                     else {
                         mySQLActualizareFisaService.getActualizariForDocumentID(documentid, (found, fisaService) => {
+                            
                             switch (found) {
                                 case 1:
                                     console.log('[Actualizari]au fost trimise');
