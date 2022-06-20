@@ -31,15 +31,7 @@ async function modalSignupHandle(e) {
     console.log(resp)
 
     if (resp.status === 200) {
-        // response = await resp.json()
-
-        // console.log(response)
         signupResponse("Success!", "Inregistrat cu succes!", "success")
-
-        // if (response.grad === 2) { // client
-        //     localStorage.setItem('loginData', JSON.stringify(response))
-        //     window.location.href = 'http://127.0.0.1:81/pages/userProfile.html';
-        // }
     }
     else {
         console.log("eroare")
