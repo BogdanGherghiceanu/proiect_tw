@@ -13,19 +13,11 @@ route_get = (url, action, middleware) => {
     routes["GET"][url] = action;
 }
 
-route_post = (url, action, middleware) => {
-    routes["POST"][url] = action;
-};
-
 //GET routes
 route_get("/", homeController);
 route_get("/pages/index.html", homeController);
 route_get("/pages/userProfile.html", userProfileController);
 route_get("/pages/adminProfile.html", adminProfileController);
-
-//POST routes
-// route_post("/pages/userProfile.html", userProfileController);
-
 
 //STATIC FILES
 //CSS
