@@ -98,6 +98,24 @@
         <img src="../pages/resources/index/3.png" class="image-motorcycle" alt="motorcycle">
     </div>
 
+    <div class="loading">
+        <div class='uil-ring-css' style='transform:scale(0.79);'>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Programeaza Modal Response-->
+    <div class="modal-response">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="header-msg"></h1>
+            </div>
+            <div class="modal-body">
+                <p class="body-msg"></p>
+            </div>
+        </div>
+    </div>
+
     <div id="programarileMeleBlock">
         <div class="chenar-text">
             <br>
@@ -106,237 +124,56 @@
             <br>
         </div>
         <div class="tabele">
-            <div class="tabel_programarile_mele">
-                <table id="tabel_programarileMele">
-                    <thead>
-                        <tr>
-                            <th>Tip vehicul</th>
-                            <th>Serie</th>
-                            <th>Status programare</th>
-                            <th>Data programării</th>
-                            <th>Ultima actualizare</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+            <table id="tabel_programarileMele" class="equal-width">
+                <thead>
+                    <tr>
+                        <th>Tip vehicul</th>
+                        <th>Serie</th>
+                        <th>Status programare</th>
+                        <th>Data programării</th>
+                        <th>Ultima actualizare</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareInregBtn"><span>Inregistrata</span></button>
-                            </td>
-                            <td>
-                                <input type="date" value="2017-06-01" readonly>
-                            </td>
-                            <td>
-                                <input type="datetime-local" id="meeting-time132" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                <tbody id="programarile_mele_continut">
+                    <!-- <tr>
+                        <td>Zhang Yanquan</td>
+                        <td>18</td>
+                        <td>
+                            <button class="programareInregBtn"><span>Inregistrata</span></button>
+                        </td>
+                        <td>
+                            <input type="date" value="2017-06-01" readonly>
+                        </td>
+                        <td>
+                            <input type="datetime-local" id="meeting-time132" name="meeting-time"
+                                value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                        </td>
+                        <td>
+                            <button class="detailsButton">Detalii</button>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareInLucruBtn"><span>In lucru</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time2765" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>Zhang Yanquan</td>
+                        <td>18</td>
+                        <td>
+                            <button class="programareInLucruBtn"><span>In lucru</span></button>
+                        </td>
+                        <td><input type="date" value="2017-06-01" readonly></td>
+                        <td><input type="datetime-local" id="meeting-time2765" name="meeting-time"
+                                value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
+                        </td>
+                        <td>
+                            <button class="detailsButton">Detalii</button>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
 
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time3" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareAnulataBtn"><span>Anulata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time4" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareAnulataBtn"><span>Anulata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time5" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time6" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time7" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time8" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time9" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Zhang Yanquan</td>
-                            <td>18</td>
-                            <td>
-                                <button class="programareFinalizataBtn"><span>Finalizata</span></button>
-                            </td>
-                            <td><input type="date" value="2017-06-01" readonly></td>
-                            <td><input type="datetime-local" id="meeting-time1032" name="meeting-time"
-                                    value="2018-06-12T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00" readonly>
-                            </td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- Pagination -->
-                <div class="pagination-container">
+            <!-- Pagination -->
+            <!-- <div class="pagination-container">
                     <div class="pagination-group">
                         <select class="pagination-control" name="state" id="maxRows">
                             <option value="5000">Show ALL Rows</option>
@@ -361,9 +198,8 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-                <!-- Pagination -->
-            </div>
+                </div> -->
+            <!-- Pagination -->
         </div>
     </div>
 

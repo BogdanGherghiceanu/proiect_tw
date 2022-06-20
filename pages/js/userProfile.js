@@ -72,7 +72,7 @@ async function modalProgramariHandle() {
         text += "<tr id=\"hidden_row" + (count) + "\" class=\"hidden_row\">"
         text += "<td colspan=\"6\">"
         text += "<div class=\"detailsDiv\">"
-        text += "<p>Detalii:<\/p>"
+        text += "<p>Detalii: " + programariResponseArray[i].titlu + "<\/p>"
         text += "<dl>"
         text += "<dt>ID Fisa:<\/dt>"
         text += "<dd>" + programariResponseArray[i].id + "<\/dd>"
@@ -94,7 +94,6 @@ async function modalProgramariHandle() {
     document.getElementById("programarile_mele_continut").innerHTML = text;
     // console.log(document.getElementById("programarile_mele").getElementsByTagName("tbody"))
 }
-// Populare programarile mele
 
 async function modalProgramariHandle2() {
     $(".hidden_row").map(function () {
@@ -136,7 +135,7 @@ async function modalProgramariHandle2() {
 }
 
 setTimeout(modalProgramariHandle2, 1000);
-
+// Populare programarile mele
 
 window.onclick = function (event) {
     if (!event.target.matches('.navbar-icon')) {
