@@ -344,30 +344,6 @@ div.loading {
     padding: 12px;
 }
 
-.tabele_stocIntern,
-.tabele_comenzi {
-    padding: 12px;
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
-
-/* ::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-} */
-
-.tabel_tabele_stocIntern,
-.tabel_tabele_comenzi {
-    display: block;
-    padding: 10px;
-    box-sizing: border-box;
-    background: #fff;
-    border-color: rgba(0, 0, 0, .12);
-    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
-    overflow: scroll;
-    z-index: 10;
-    border-radius: 10px;
-}
-
 .tabele table {
     display: block;
     padding: 10px;
@@ -391,20 +367,6 @@ table {
     display: grid;
     border-collapse: collapse;
     overflow-x: auto;
-}
-
-.tabel_tabele_stocIntern table {
-    display: grid;
-    border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: auto auto auto auto auto auto auto;
-}
-
-.tabel_tabele_comenzi table {
-    display: grid;
-    border-collapse: collapse;
-    min-width: 100%;
-    grid-template-columns: auto auto auto auto auto auto;
 }
 
 thead tr th:first-child,
@@ -611,7 +573,8 @@ footer {
 
 /* Modal */
 
-.ProfileModal {
+.ProfileModal,
+.StocInternModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -625,7 +588,8 @@ footer {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.myProfileModal-content {
+.myProfileModal-content,
+.myStocInternModal-content {
     background-color: #ffffff;
     margin: auto;
     padding: 10px;
@@ -633,7 +597,8 @@ footer {
     width: 80%;
 }
 
-.chenar-text-mmyProfileModal {
+.chenar-text-mmyProfileModal,
+.chenar-text-mmyStocInternModal {
     height: 3vmax;
     text-align: center;
     margin: auto;
@@ -650,14 +615,16 @@ footer {
 
 /* Form */
 
-.form-myProfile {
+.form-myProfile,
+.form-myStocIntern {
     display: grid;
     place-content: center;
     font-family: sans-serif;
     color: #6b6b6b;
 }
 
-.form-myProfile form {
+.form-myProfile form,
+.form-myStocIntern form {
     width: 50vw;
     border: 1px solid rgb(255, 255, 255);
     padding: 3vw;
@@ -667,7 +634,8 @@ footer {
     background-color: #ffffff;
 }
 
-.form-myProfile label {
+.form-myProfile label,
+.form-myStocIntern label {
     margin-bottom: 15px;
     position: relative;
     /*  */
@@ -675,7 +643,8 @@ footer {
     border: 2px solid #dbdbdb;
 }
 
-.form-myProfile input {
+.form-myProfile input,
+.form-myStocIntern input {
     width: 49vw;
     padding: 10px 0px;
     margin-top: 20px;
@@ -684,11 +653,13 @@ footer {
     text-indent: 20px;
 }
 
-.form-myProfile input::placeholder {
+.form-myProfile input::placeholder,
+.form-myStocIntern input::placeholder {
     opacity: 0;
 }
 
-.form-myProfile span {
+.form-myProfile span,
+.form-myStocIntern span {
     position: absolute;
     top: 0;
     left: 10px;
@@ -698,7 +669,8 @@ footer {
     transition-duration: 300ms;
 }
 
-.form-myProfile button {
+.form-myProfile button,
+.form-myStocIntern button {
     padding: 15px 0px;
     margin-top: 20px;
     background: rgb(27, 27, 27);
@@ -712,6 +684,14 @@ footer {
 
 .form-myProfile label:focus-within>span,
 .form-myProfile input:not(:placeholder-shown)+span {
+    background-color: white;
+    font-weight: 600;
+    color: rgb(27, 27, 27);
+    transform: translateY(-9px);
+}
+
+.form-myStocIntern label:focus-within>span,
+.form-myStocIntern input:not(:placeholder-shown)+span {
     background-color: white;
     font-weight: 600;
     color: rgb(27, 27, 27);
@@ -774,6 +754,16 @@ footer {
 }
 
 .exportJSONButton {
+    margin-left: 10px;
+    background: rgb(163, 47, 47);
+    border: 1px solid rgb(27, 27, 27);
+    color: #fff;
+    cursor: pointer;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size: 18px;
+}
+
+.adaugaProdusButton {
     margin-left: 10px;
     background: rgb(163, 47, 47);
     border: 1px solid rgb(27, 27, 27);
@@ -910,11 +900,11 @@ footer {
 .flex-child {
     flex: 1;
     /* border: 2px solid yellow; */
-}  
+}
 
 .flex-child:first-child {
     margin-right: 20px;
-} 
+}
 
 input[type="file"] {
     display: none;
