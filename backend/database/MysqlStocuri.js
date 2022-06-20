@@ -80,7 +80,78 @@ class MySQLStocuri {
             callbackGetDocuments(found, resultJson)
         });
     }
+    //stocuri
 
+    adaugareStocuri(stocuri, callback) {
+
+        try {
+            var curentDateString = new DateSimplified();
+            fisaService.setCreationDate(curentDateString.getCurrentString());
+            var sql = ` \
+                INSERT INTO stocuri ( \
+                    unitatemasura, detalii, descriere,nume,pret) \
+                  VALUES \
+                  ('${stocuri.cantitate_ramasa}','${stocuri.unitatemasura}','${stocuri.descriere}','${stocuri.nume}',${stocuri.pret})`;
+
+
+            this.con.query(sql, function (err, result) {
+
+                if (err) {
+                    console.log(err);
+                    callback(-1)
+
+                    throw 'err';
+                } else {
+
+                    console.log(`[stoc] stoc: ${stocuri.nume} a fost inregistrat `);
+                    callback(1)
+                }
+            });
+        } catch (e) {
+            console.log(e);
+            callback(-1)
+        }
+
+
+    }
+
+
+    stocgetById(stoc_id, callbackGetById) {
+        this.con.query(`SELECT * FROM stocuri WHERE id = ${stoc_id}`, function (err, result, fields) {
+            if (err) throw err;
+
+            var resultString = JSON.stringify(result)
+            var resultJson = JSON.parse(resultString)
+
+            var comandaFurnizor = new ComandaFurnizor();
+            var found = 0
+            try {
+                comandaFurnizor.dataComanda = resultJson[0].dataComanda
+                comandaFurnizor.detalii = resultJson[0].detalii
+                comandaFurnizor.numeFurnizor = resultJson[0].numeFurnizor
+
+                found = 1
+            } catch {
+                console.log("[stocuri] inexistenta");
+            }
+            callbackGetById(found, fisaService)
+        });
+    }
+
+    comandaFurnizorgetAllDocuments(callbackGetDocuments) {
+        var found = 1
+        this.con.query(`SELECT * FROM stocuri `, function (err, result, fields) {
+
+            if (err) {
+                found = 0
+                throw err;
+
+            }
+            var resultString = JSON.stringify(result)
+            var resultJson = JSON.parse(resultString)
+            callbackGetDocuments(found, resultJson)
+        });
+    }
     createTablecomandaFurnizor() {
         var sql = " \
       CREATE TABLE `comandaFurnizor` ( \

@@ -120,7 +120,7 @@ var server = httpModule.createServer((req, res) => {
                 //401 nu aveti acces (token invalid).
 
                 case 'inregistrare':
-                    actualizareFisaServiceAPI.inregistrareAPI(req, res, mySQLActualizareFisaService, mySQLAccountManager,mySQLFisaService);
+                    actualizareFisaServiceAPI.inregistrareAPI(req, res, mySQLActualizareFisaService, mySQLAccountManager, mySQLFisaService);
                     break;
                 case 'actualizari':
                     actualizareFisaServiceAPI.getById(req, res, mySQLActualizareFisaService, mySQLAccountManager)
@@ -135,19 +135,41 @@ var server = httpModule.createServer((req, res) => {
         case 'comandaFurnizor':
             switch (path.path2) {
                 case 'inregistrare':
-                //post  headers dataComanda detalii numeFurnizor 
-                stocuriAPI.comandaFurnizorinregistrareAPI();
+                    //post  headers dataComanda detalii numeFurnizor 
+                    stocuriAPI.comandaFurnizorinregistrareAPI(req, res, mySQLStocuri);
                     break;
 
                 case 'getById':
                     //get, headers= documentid
-                    stocuriAPI.comandaFurnizorgetById();
+                    stocuriAPI.comandaFurnizorgetById(req, res, mySQLStocuri);
                     break;
 
                 case 'getAllDocuments':
 
                     //Get fara parametri
-                    stocuriAPI.comandaFurnizorgetAllDocuments();
+                    stocuriAPI.comandaFurnizorgetAllDocuments(req, res, mySQLStocuri);
+                    break;
+
+            }
+            break;
+
+        case 'stocuri':
+            switch (path.path2) {
+                case 'inregistrare':
+                    //post  headers  int cantitate_ramasa pret string unitatemasura descriere nume
+            
+                    stocuriAPI.adaugareStocuri(req, res, mySQLStocuri);
+                    break;
+
+                case 'getById':
+                    //get, headers= stocid
+                    stocuriAPI.stocgetById(req, res, mySQLStocuri);
+                    break;
+
+                case 'getAllDocuments':
+
+                    //Get fara parametri
+                    stocuriAPI.stocGetALL(req, res, mySQLStocuri);
                     break;
 
             }
