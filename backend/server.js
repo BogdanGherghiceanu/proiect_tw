@@ -13,6 +13,8 @@ const { FisaServiceAPI } = require('./fisaService/fisaService');
 const { fromClientToAngajat, fromAngajatToClient, getListaClienti, deleteUserById } = require('./accountManager/levelOfAccesControl');
 const { MySQLActualizariFisaService } = require('./database/MysqlActualizariFisaService');
 const { ActualizareFisaServiceAPI } = require('./fisaService/actualizariFisaService');
+const { MySQLStocuri } = require('./database/MysqlStocuri');
+const { StocuriAPI } = require('./stocuri/stocuri');
 require('./user/User');
 
 
@@ -21,9 +23,11 @@ require('./user/User');
 //tabelele users, tokensLogin
 var mySQLAccountManager = new MySQLAccountManager()
 var mySQLFisaService = new MySQLFisaService()
+var mySQLStocuri = new MySQLStocuri()
 var fisaServiceAPI = new FisaServiceAPI()
 var mySQLActualizareFisaService = new MySQLActualizariFisaService()
 var actualizareFisaServiceAPI = new ActualizareFisaServiceAPI()
+var stocuriAPI = new StocuriAPI()
 
 // server router
 var server = httpModule.createServer((req, res) => {
@@ -96,7 +100,7 @@ var server = httpModule.createServer((req, res) => {
                         break;
 
                     case 'modificareProgramare':
-                        fisaServiceAPI.modificareProgramare(req,res,mySQLFisaService,mySQLAccountManager);
+                        fisaServiceAPI.modificareProgramare(req, res, mySQLFisaService, mySQLAccountManager);
                         break;
                     default:
                         errorRequest.err400(res);
@@ -120,14 +124,33 @@ var server = httpModule.createServer((req, res) => {
                     break;
                 case 'actualizari':
                     actualizareFisaServiceAPI.getById(req, res, mySQLActualizareFisaService, mySQLAccountManager)
-                break;
-                    default:
+                    break;
+                default:
                     errorRequest.err400(res);
                     console.log(`[400] ${req.url} pagina nu a fost gasita`);
                     break;
             }
+            break;
 
+        case 'comandaFurnizor':
+            switch (path.path2) {
+                case 'inregistrare':
+                //post  headers dataComanda detalii numeFurnizor 
+                stocuriAPI.comandaFurnizorinregistrareAPI();
+                    break;
 
+                case 'getById':
+                    //get, headers= documentid
+                    stocuriAPI.comandaFurnizorgetById();
+                    break;
+
+                case 'getAllDocuments':
+
+                    //Get fara parametri
+                    stocuriAPI.comandaFurnizorgetAllDocuments();
+                    break;
+
+            }
             break;
         case 'administrator':
             switch (path.path2) {
