@@ -18,9 +18,9 @@ class MySQLFisaService {
         fisaService.setCreationDate(curentDateString.getCurrentString());
         var sql = ` \
             INSERT INTO fisaService ( \
-                id_client,tip_vehicul,marca ,model ,titlu,descriere,creation_date) \
+                id_client,tip_vehicul,marca ,model ,titlu,descriere,dataProgramare,creation_date) \
               VALUES \
-              (${fisaService.id_client},'${fisaService.tip_vehicul}','${fisaService.marca}','${fisaService.model}','${fisaService.titlu}','${fisaService.descriere}','${fisaService.creation_date}')`;
+              (${fisaService.id_client},'${fisaService.tip_vehicul}','${fisaService.marca}','${fisaService.model}','${fisaService.titlu}','${fisaService.descriere}','${fisaService.dataProgramare}','${fisaService.creation_date}')`;
 
      
         this.con.query(sql, function (err, result) {
@@ -90,6 +90,7 @@ class MySQLFisaService {
                 fisaService.model=resultJson[0].model;
                 fisaService.titlu=resultJson[0].titlu;
                 fisaService.descriere=resultJson[0].descriere;
+                fisaService.dataProgramare=resultJson[0].dataProgramare;
                 fisaService.setCreationDate(resultJson[0].creation_date);
                 found=1
             } catch {
@@ -164,7 +165,7 @@ class MySQLFisaService {
     }
 
     alterTable() {
-        var sql = 'ALTER TABLE fisaService ADD creation_date varchar(50)';
+        var sql = 'ALTER TABLE fisaService ADD dataProgamare varchar(50)';
         this.con.query(sql, function (err, result) {
             if (err) throw err;
             console.log("adaugat");
@@ -176,7 +177,7 @@ class MySQLFisaService {
 
 // var test = new MySQLFisaService()
 // test.alterTable();
-// test.describe()
+
 
 
 module.exports.MySQLFisaService = MySQLFisaService

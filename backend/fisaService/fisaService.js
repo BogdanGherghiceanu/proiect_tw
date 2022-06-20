@@ -6,13 +6,14 @@ const { defaultMaxListeners } = require('events');
 
 class FisaService {
 
-    constructor(id_client, tip_vehicul, marca, model, titlu, descriere) {
+    constructor(id_client, tip_vehicul, marca, model, titlu, descriere,dataProgramare) {
         this.id_client = id_client;
         this.tip_vehicul = tip_vehicul;
         this.marca = marca;
         this.model = model;
         this.titlu = titlu;
         this.descriere = descriere;
+        this.dataProgramare=dataProgramare
     }
     setCreationDate(date) {
         this.creation_date = date
@@ -53,6 +54,7 @@ class FisaServiceAPI {
                             req.headers.model,
                             req.headers.titlu,
                             req.headers.descriere,
+                            req.headers.dataProgramare
                         )
 
                         //verificam antisqlinjection
