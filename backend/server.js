@@ -136,9 +136,12 @@ var server = httpModule.createServer((req, res) => {
             switch (path.path2) {
                 case 'inregistrare':
                     //post  headers dataComanda detalii numeFurnizor 
+                    
                     stocuriAPI.comandaFurnizorinregistrareAPI(req, res, mySQLStocuri);
                     break;
-
+                case 'inregistrareJSON':
+                    stocuriAPI.comandaFurnizorinregistrareJSONAPI(req,res,mySQLStocuri);
+                    break;
                 case 'getById':
                     //get, headers= documentid
                     stocuriAPI.comandaFurnizorgetById(req, res, mySQLStocuri);
@@ -157,7 +160,7 @@ var server = httpModule.createServer((req, res) => {
             switch (path.path2) {
                 case 'inregistrare':
                     //post  headers  int cantitate_ramasa pret string unitatemasura descriere nume
-            
+
                     stocuriAPI.adaugareStocuri(req, res, mySQLStocuri);
                     break;
 

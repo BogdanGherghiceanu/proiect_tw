@@ -34,7 +34,7 @@ class MiscariStocuri {
 
 class StocuriAPI {
 
-   
+
 
     comandaFurnizorinregistrareAPI(req, res, mySQLStocuri) {
         try {
@@ -58,6 +58,44 @@ class StocuriAPI {
                     }
                 }
             });
+        }
+        catch (e) {
+            console.log(e);
+            console.log('[comanda furnizor]nu a putut fii creata, nu au fost completate toate campurile');
+
+            errorRequest.err400(res);
+
+        }
+    }
+
+
+    comandaFurnizorinregistrareJSONAPI(req, res, mySQLStocuri) {
+        try {
+            //verificam metoda de apelare
+            if (req.method != 'POST') {
+                throw 'bad request'
+            }
+            //extragem datele 
+            var data;
+            req.on('data', load => {
+                data += load;
+            })
+            req.on('end', () => {
+                console.log((data)); 
+
+
+                mySQLStocuri.comandaFurnizorinregistrareJSON(data, (result) => {
+                    if (result == 1) {
+                        res.writeHead(200);
+                        res.write('JSON comanda furnizor a fost inregistrata')
+                        res.end();
+                    } else {
+                        if (result == -1) {
+                            errorRequest.err400(res);
+                        }
+                    }
+                });
+            })
         }
         catch (e) {
             console.log(e);
@@ -108,12 +146,12 @@ class StocuriAPI {
 
         try {
             //verificam metoda de apelare
-            if (req.method != 'GET' ) {
+            if (req.method != 'GET') {
                 throw 'bad request'
             }
 
 
-            mySQLStocuri.comandaFurnizorgetAllDocuments( (found, fisaService) => {
+            mySQLStocuri.comandaFurnizorgetAllDocuments((found, fisaService) => {
                 switch (found) {
                     case 1:
                         res.writeHead(200, 'text/json');
@@ -141,8 +179,8 @@ class StocuriAPI {
     adaugareStocuri(req, res, mySQLStocuri) {
         try {
             //verificam metoda de apelare
-            if (req.method != 'POST' || req.headers.cantitate_ramasa == null || req.headers.unitatemasura == null || req.headers.descriere == null 
-            || req.headers.nume == null || req.headers.pret == null) {
+            if (req.method != 'POST' || req.headers.cantitate_ramasa == null || req.headers.unitatemasura == null || req.headers.descriere == null
+                || req.headers.nume == null || req.headers.pret == null) {
                 throw 'bad request'
             }
             //extragem datele 
@@ -212,12 +250,12 @@ class StocuriAPI {
 
         try {
             //verificam metoda de apelare
-            if (req.method != 'GET' ) {
+            if (req.method != 'GET') {
                 throw 'bad request'
             }
 
 
-            mySQLStocuri.stocGetALL( (found, fisaService) => {
+            mySQLStocuri.stocGetALL((found, fisaService) => {
                 switch (found) {
                     case 1:
                         res.writeHead(200, 'text/json');
@@ -242,4 +280,4 @@ class StocuriAPI {
 }
 
 
-module.exports.StocuriAPI=StocuriAPI
+module.exports.StocuriAPI = StocuriAPI

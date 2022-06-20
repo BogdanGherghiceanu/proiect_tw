@@ -16,7 +16,7 @@ class MySQLStocuri {
 
         try {
             var curentDateString = new DateSimplified();
-        
+
             var sql = ` \
                 INSERT INTO comandaFurnizor ( \
                     numeFurnizor, detalii, dataComanda) \
@@ -34,6 +34,57 @@ class MySQLStocuri {
                 } else {
 
                     console.log(`[comandaFurnizor] Furnizor: ${comandaFurnizor.numeFurnizor} a fost inregistrat `);
+                    callback(1)
+                }
+            });
+        } catch (e) {
+            console.log(e);
+            callback(-1)
+        }
+
+
+    }
+
+    comandaFurnizorinregistrareJSON(bodyData, callback) {
+
+        try {
+            var curentDateString = new DateSimplified();
+            bodyData = bodyData.trim().replace('undefined', '');
+            var bodyDataJSON = JSON.parse(bodyData)
+           // console.log(bodyDataJSON);
+            var sql = ` INSERT INTO comandaFurnizor ( \
+                    numeFurnizor, detalii, dataComanda) \
+                  VALUES `;
+            var virgula = 0
+            bodyDataJSON.comenzi[1]
+            
+            var i=0;
+           
+            while(i<(Object.keys(bodyDataJSON.comenzi).length)){
+                
+                var comanda = bodyDataJSON.comenzi[i]
+             
+                if (virgula == 0) {
+                    virgula += 1;
+                }
+                else {
+                    sql += ', '
+                }
+                sql += ` ('${comanda.numeFurnizor}','${comanda.detalii}','${comanda.dataComanda}')`;
+                i++;
+            }
+           // console.log(sql);
+
+            this.con.query(sql, function (err, result) {
+
+                if (err) {
+                    console.log(err);
+                    callback(-1)
+
+                    throw 'err';
+                } else {
+
+                    console.log(`[comandaFurnizorJSON] Fisierul a fost inregistrat `);
                     callback(1)
                 }
             });
