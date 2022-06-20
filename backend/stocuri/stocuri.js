@@ -133,6 +133,109 @@ class StocuriAPI {
 
     }
 
+    //stocuri
+
+
+    adaugareStocuri(req, res, mySQLStocuri) {
+        try {
+            //verificam metoda de apelare
+            if (req.method != 'POST' || req.headers.cantitate_ramasa == null || req.headers.unitatemasura == null || req.headers.descriere == null 
+            || req.headers.nume == null || req.headers.pret == null) {
+                throw 'bad request'
+            }
+            //extragem datele 
+            var stocuri = new Stocuri()
+            stocuri.cantitate_ramasa = req.headers.cantitate_ramasa
+            stocuri.unitatemasura = req.headers.unitatemasura
+            stocuri.descriere = req.headers.descriere
+            stocuri.nume = req.headers.nume
+            stocuri.pret = req.headers.pret
+            mySQLStocuri.adaugareStocuri(stocuri, (result) => {
+                if (result == 1) {
+                    res.writeHead(200);
+                    res.write('a fost adaugat un produs nou in stoc')
+                    res.end();
+                } else {
+                    if (result == -1) {
+                        errorRequest.err400(res);
+                    }
+                }
+            });
+        }
+        catch (e) {
+            console.log('[stoc]nu a putut fii creata, nu au fost completate toate campurile');
+
+            errorRequest.err400(res);
+
+        }
+    }
+
+    stocgetById(req, res, mySQLStocuri) {
+        //daca utilizatorul este angajat poate vizualiza toate fisele
+        //                      -client poate vizualiza doar fisele sale
+
+        try {
+            //verificam metoda de apelare
+            if (req.method != 'GET' || req.headers.stocid == null) {
+                throw 'bad request'
+            }
+
+
+            mySQLStocuri.stocgetById(req.headers.stocid, (found, fisaService) => {
+                switch (found) {
+                    case 1:
+                        res.writeHead(200, 'text/json');
+                        res.write(JSON.stringify(fisaService));
+                        res.end();
+                        break;
+
+                    default:
+                        errorRequest.err400(res)
+                        break;
+                }
+            })
+        }
+        catch (e) {
+            console.log(e);
+            errorRequest.err400(res);
+            console.log(`[stoc] Nu au fost completate toate campurile`);
+        }
+
+    }
+
+
+    stocGetALL(req, res, mySQLStocuri) {
+        //daca utilizatorul este angajat poate vizualiza toate fisele
+        //                      -client poate vizualiza doar fisele sale
+
+        try {
+            //verificam metoda de apelare
+            if (req.method != 'GET' ) {
+                throw 'bad request'
+            }
+
+
+            mySQLStocuri.stocGetALL( (found, fisaService) => {
+                switch (found) {
+                    case 1:
+                        res.writeHead(200, 'text/json');
+                        res.write(JSON.stringify(fisaService));
+                        res.end();
+                        break;
+
+                    default:
+                        errorRequest.err400(res)
+                        break;
+                }
+            })
+        }
+        catch (e) {
+            console.log(e);
+            errorRequest.err400(res);
+            console.log(`[stoc] Nu au fost completate toate campurile`);
+        }
+
+    }
 
 }
 
