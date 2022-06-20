@@ -127,7 +127,7 @@
 
             <label for="file-upload" class="custom-file-upload">
                 <i class="fa fa-cloud-upload"></i>Import JSON</label>
-            <input id="file-upload" type="file" accept=".json"/>
+            <input id="file-upload" type="file" accept=".json" />
 
         </div>
         <div class="tabele">
@@ -186,363 +186,68 @@
             <img src="../pages/resources/adminProfile/warehouse_icon.png" class="warehouse_icon" alt="warehouseIcon">
             <p>Stoc intern</p>
             <br>
+            <button class="adaugaProdusButton" id="adaugaProdusModal" onclick="openAdaugaProdusModalModal()">Adauga
+                Produs</button>
         </div>
 
-        <div class="tabele_stocIntern">
-            <div class="tabel_tabele_stocIntern">
-                <table id="tabel_stocIntern">
-                    <thead>
-                        <tr>
-                            <th>Cod Produs</th>
-                            <th>Marca</th>
-                            <th>Cod</th>
-                            <th>Denumire</th>
-                            <th>Pret</th>
-                            <th>Stoc</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+        <div class="tabele">
+            <table id="tabel_stocIntern" class="equal-width">
+                <thead>
+                    <tr>
+                        <th>Cod Produs</th>
+                        <th>Marca</th>
+                        <th>Stoc</th>
+                        <th>Unitate masura</th>
+                        <th>Pret</th>
+                        <th>Descriere</th>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button class="detailsButton">Detalii</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <tbody id="stocIntern_continut">
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-                <!-- Pagination -->
-                <div class="pagination-container">
-                    <div class="pagination-group">
-                        <select class="pagination-control" name="state" id="maxRows">
-                            <option value="5000">Show ALL Rows</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                            <option value="70">70</option>
-                            <option value="100">100</option>
-                        </select>
-                    </div>
+    <div id="myStocInternModal" class="StocInternModal">
+        <div class="myStocInternModal-content">
+            <!-- <span class="close">&times;</span> -->
+            <div class="chenar-text-mmyStocInternModal">
+                <br>
+                <img src="../pages/resources/userProfile/calendar_icon.png" class="bikeProfile-icon" alt="calendarIcon">
+                <p>Adauga Produs</p>
+                <br>
+            </div>
 
-                    <div class="pagination-group2">
-                        <ul class="pagination-content pagination-content-hide">
-                            <li data-page="prev">
-                                <span> &laquo; <span class="sr-only"></span></span>
-                            </li>
+            <div id="StocInternModalForm" class="form-myStocIntern">
+                <form>
+                    <label for="Marca">
+                        <input type="text" id="Marca" placeholder="Marca">
+                        <span>Marca *</span>
+                    </label>
 
-                            <li data-page="next" id="prev">
-                                <span> &raquo; <span class="sr-only"></span></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Pagination -->
+                    <label for="Stoc">
+                        <input type="text" id="Stoc" placeholder="Stoc">
+                        <span>Stoc *</span>
+                    </label>
+
+                    <label for="Unitate_masura">
+                        <input type="text" id="Unitate_masura" placeholder="Unitate_masura">
+                        <span>Unitate masura *</span>
+                    </label>
+
+                    <label for="Pret">
+                        <input type="text" id="Pret" placeholder="Pret">
+                        <span>Pret * </span>
+                    </label>
+
+                    <label for="Descriere">
+                        <input type="text" id="DescriereStocIntern" placeholder="Descriere">
+                        <span>Descriere * </span>
+                    </label>
+
+                    <button type="submit">Adauga</button>
+                </form>
             </div>
         </div>
     </div>

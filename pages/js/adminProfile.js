@@ -45,7 +45,7 @@ async function modalProgramariHandle() {
         count += 1
         text += "<tr id = \"" + programariResponseArray[i].id + "\">";
         text += "<td>" + programariResponseArray[i].tip_vehicul + "<\/td>" //tip vehicul
-        text += "<td>" + programariResponseArray[i].marca + "<\/td>" //tip vehicul
+        text += "<td>" + programariResponseArray[i].marca + "<\/td>" //marca vehicul
         text += "<td>" + programariResponseArray[i].model + "<\/td>" // model/serie
 
         var buttonStyleClass = ""
@@ -129,6 +129,42 @@ async function modalProgramariHandle() {
 
 }
 
+async function modalStocHandle() {
+
+    var requestStocOptions = {
+        method: 'GET',
+    };
+
+    var stocResp = await fetch('http://127.0.0.1:80/stocuri/getAllDocuments', requestStocOptions)
+        .then(response => {
+            return response
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    stocResponseArray = await stocResp.json()
+    stocResponseArray = stocResponseArray.reverse();
+    stocResponseArray = stocResponseArray;
+
+    text = "";
+    var count = 0
+    for (let i = 0; i < stocResponseArray.length; i++) {
+        // console.log(stocResponseArray[i])
+        count += 1
+        text += "<tr id = \"" + stocResponseArray[i].cod_produs + "\">";
+        text += "<td>" + stocResponseArray[i].cod_produs + "<\/td>" //Cod Produs
+        text += "<td>" + stocResponseArray[i].nume + "<\/td>" //Marca
+        text += "<td>" + stocResponseArray[i].cantitate_ramasa + "<\/td>" //Stoc
+        text += "<td>" + stocResponseArray[i].unitatemasura + "<\/td>" // Unitate masura
+        text += "<td>" + stocResponseArray[i].pret + " Lei<\/td>" // Pret
+        text += "<td>" + stocResponseArray[i].descriere + "<\/td>" // Descriere
+        text += "<\/tr>"
+    }
+
+    document.getElementById("stocIntern_continut").innerHTML = text;
+}
+
 async function stergeProgramare(id) {
     var programariHeaders = new Headers();
     programariHeaders.append("token", loginDataJson.password);
@@ -147,18 +183,16 @@ async function stergeProgramare(id) {
             console.error('Error:', error);
         });
 
+    var responseModal = document.querySelector('.modal-response')
+    var headerModal = document.querySelector('.header-msg')
+    var headerClassModal = document.querySelector('.modal-header')
+    var bodyModal = document.querySelector('.body-msg')
+
     if (programariResp.status === 200) {
-        var responseModal = document.querySelector('.modal-response')
-        var headerModal = document.querySelector('.header-msg')
-        var headerClassModal = document.querySelector('.modal-header')
-        var bodyModal = document.querySelector('.body-msg')
-
-
-
         ProgrameazaResponse("Success!", "Stergere realizata cu success.", "success", responseModal, headerModal, headerClassModal, bodyModal)
     }
     else {
-        ProgrameazaResponse("Something went wrong. . .", "Nu ai permisiunea pentru a sterge programari.", "error")
+        ProgrameazaResponse("Something went wrong. . .", "Nu ai permisiunea pentru a sterge programari.", "error", responseModal, headerModal, headerClassModal, bodyModal)
     }
 }
 
@@ -194,17 +228,18 @@ async function actualizeazaProgramare(id) {
         .catch((error) => {
             console.error('Error:', error);
         });
+    var responseModal = document.querySelector('.modal-response')
+    var headerModal = document.querySelector('.header-msg')
+    var headerClassModal = document.querySelector('.modal-header')
+    var bodyModal = document.querySelector('.body-msg')
 
     if (programariResp.status === 200) {
-        var responseModal = document.querySelector('.modal-response')
-        var headerModal = document.querySelector('.header-msg')
-        var headerClassModal = document.querySelector('.modal-header')
-        var bodyModal = document.querySelector('.body-msg')
+
 
         ProgrameazaResponse("Success!", "Actualizare realizata cu success.", "success", responseModal, headerModal, headerClassModal, bodyModal)
     }
     else {
-        ProgrameazaResponse("Something went wrong. . .", "Ceva nu a functionat ok....", "error")
+        ProgrameazaResponse("Something went wrong. . .", "Ceva nu a functionat ok....", "error", responseModal, headerModal, headerClassModal, bodyModal)
     }
 }
 
@@ -317,13 +352,82 @@ async function modalProgramariHandle2() {
                 console.log(reader.error);
             };
         });
-
     });
 }
 
 setTimeout(modalProgramariHandle2, 1500);
 // Populare tabel programari
 
+//Adauga produs stoc
+function openAdaugaProdusModalModal() {
+    var modal = document.getElementById("myStocInternModal");
+
+    $('#mydropdown').toggleClass('show');
+    modal.style.display = "block";
+    document.querySelector('.myStocInternModal-content').classList.remove('hidden')
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+
+        if (!event.target.matches('.navbar-icon')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+}
+
+async function modalAdaugaProdusHandle(e) {
+    e.preventDefault();
+
+    var myHeaders = new Headers();
+    myHeaders.append("cantitate_ramasa", stocInternStoc.value);
+    myHeaders.append("unitatemasura", stocInternUnitate_masura.value);
+    myHeaders.append("descriere", stocInternDescriere.value);
+    myHeaders.append("nume", stocInternMarca.value);
+    myHeaders.append("pret", stocInternPret.value);
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders
+    };
+
+    var resp = await fetch('http://127.0.0.1:80/stocuri/inregistrare', requestOptions)
+        .then(response => {
+            return response
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    var responseModal = document.querySelector('.modal-response')
+    var headerModal = document.querySelector('.header-msg')
+    var headerClassModal = document.querySelector('.modal-header')
+    var bodyModal = document.querySelector('.body-msg')
+
+    if (resp.status === 200) {
+        ProgrameazaResponse("Success!", "Stoc actualizat", "success", responseModal, headerModal, headerClassModal, bodyModal)
+    }
+    else {
+        ProgrameazaResponse("Something went wrong. . .", "Ceva nu a functionat ok....", "error", responseModal, headerModal, headerClassModal, bodyModal)
+    }
+}
+
+var stocInternModalForm = document.querySelector('#StocInternModalForm form')
+var stocInternMarca = document.querySelector('#Marca')
+var stocInternStoc = document.querySelector('#Stoc')
+var stocInternUnitate_masura = document.querySelector('#Unitate_masura')
+var stocInternPret = document.querySelector('#Pret')
+var stocInternDescriere = document.querySelector('#DescriereStocIntern')
+
+stocInternModalForm.addEventListener('submit', modalAdaugaProdusHandle)
+//Adauga produs stoc
 
 window.onclick = function (event) {
     if (!event.target.matches('.navbar-icon')) {
@@ -341,6 +445,7 @@ window.onclick = function (event) {
 window.onload = function () {
 
     modalProgramariHandle();
+    modalStocHandle();
 
     document.getElementById('stocInternButton').onclick = function () {
         var x_stocInternBlock = document.getElementById("stocInternBlock");
@@ -374,8 +479,8 @@ window.onload = function () {
 
     //de verificat paginarea
     // getPagination1('#tabel_programarileMele');
-    getPagination2('#tabel_stocIntern');
-    getPagination3('#tabel_comenzi');
+    // getPagination2('#tabel_stocIntern');
+    // getPagination3('#tabel_comenzi');
 
     function getPagination1(table) {
         var x = document.getElementById(table.split('#')[1]).parentNode;
