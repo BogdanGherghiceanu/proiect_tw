@@ -94,6 +94,10 @@ var server = httpModule.createServer((req, res) => {
                     case 'deleteDocument':
                         fisaServiceAPI.deleteDocument(req, res, mySQLFisaService, mySQLAccountManager);
                         break;
+
+                    case 'modificareProgramare':
+                        fisaServiceAPI.modificareProgramare(req,res,mySQLFisaService,mySQLAccountManager);
+                        break;
                     default:
                         errorRequest.err400(res);
                         console.log(`[400] ${req.url} pagina nu a fost gasita`);

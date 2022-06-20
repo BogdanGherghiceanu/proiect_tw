@@ -63,6 +63,7 @@ class MySQLFisaService {
                 fisaService.titlu=resultJson[0].titlu;
                 fisaService.descriere=resultJson[0].descriere;
                 fisaService.setCreationDate(resultJson[0].creation_date);
+                fisaService.dataProgramare=resultJson[0].dataProgramare;
                 found=1
             } catch {
                 console.log("[MySQLFisaService]fisa service inexistenta sau userul nu acces sa o vizualizeze");
@@ -71,8 +72,23 @@ class MySQLFisaService {
         });
     }
 
+    modificaProgramareFisaService(document_id,programareNoua, callback) {
+
+        this.con.query(`UPDATE fisaService SET dataProgramare = '${programareNoua}' WHERE id = ${document_id}`, function (err, result, fields) {
+            if (err) throw err;
+            if (result.affectedRows) {
+                console.log(`[FisaService] Programarea documentului id: ${document_id} a fost modificata`);
+                callback(1)
+            } else {
+
+                console.log(`[FisaService] Documentul cu id: ${user_id} nu exista`);
+                callback(0)
+            }
+        });
+    }
+
     getByIdAngajat( document_id,callbackGetById){
-        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date FROM fisaService WHERE id = ${document_id} `, function (err, result, fields) {
+        this.con.query(`SELECT id,id_client,tip_vehicul,marca ,model , titlu , descriere, creation_date,dataProgramare FROM fisaService WHERE id = ${document_id} `, function (err, result, fields) {
             if (err) throw err;
 
             var resultString = JSON.stringify(result)
@@ -93,6 +109,7 @@ class MySQLFisaService {
                 fisaService.dataProgramare=resultJson[0].dataProgramare;
                 fisaService.setCreationDate(resultJson[0].creation_date);
                 found=1
+                fisaService.dataProgramare=resultJson[0].dataProgramare;
             } catch {
                 console.log("[MySQLFisaService]fisa service inexistenta");
             }
@@ -172,11 +189,20 @@ class MySQLFisaService {
         });
     }
 
+    modifyname() {
+        var sql = 'ALTER TABLE fisaService CHANGE COLUMN dataProgamare dataProgramare varchar(50);';
+        this.con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("adaugat");
+        });
+    }
+
+
 }
 
 
 // var test = new MySQLFisaService()
-// test.alterTable();
+// test.modifyname();
 
 
 

@@ -87,6 +87,51 @@ class FisaServiceAPI {
             console.log(`[FisaService]Fisa nu a putut fii creata, nu au fost completate toate campurile`);
         }
     }
+
+    modificareProgramare(req, res, mySQLFisaService, mySQLAccountManager) {
+        try {
+            //verificam metoda de apelare
+            if (req.method != 'PUT' || req.headers.token == null) {
+                throw 'bad request'
+            }
+            var token = req.headers.token
+            if (sqlInjection.verificaToken(token)) {
+                //obtinem id-ul userului pe baza tokenului
+                mySQLAccountManager.getIdFromToken(token, (userid) => {
+                    //nu este un token valid
+                    if (userid == -1) {
+                        errorRequest.err401(res)
+                    }
+                    else {
+
+                        var documentID = req.headers.documentid;
+                        var programareNoua=req.headers.programarenoua;
+                           //inregistram fisa service
+                            mySQLFisaService.modificaProgramareFisaService(documentID,programareNoua, (result) => {
+                                if (result == 1) {
+                                    res.writeHead(200);
+                                    res.write('modificarea a fost inregistrata')
+                                    res.end();
+                                } else {
+                                    if (result == -1) {
+                                        errorRequest.err400(res);
+                                    }
+                                }
+                            });
+                        
+                       
+                    }
+                })
+            } else {
+                throw '[Modificarea]SqlInjection fail';
+            }
+        } catch (e) {
+            console.log(e);
+            errorRequest.err400(res);
+            console.log(`[ModificareFisa]Modificarea nu a putut fii inregistrata, nu au fost completate toate campurile`);
+        }
+    }
+
     getById(req, res, mySQLFisaService, mySQLAccountManager) {
         //daca utilizatorul este angajat poate vizualiza toate fisele
         //                      -client poate vizualiza doar fisele sale
