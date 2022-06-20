@@ -45,9 +45,8 @@ async function modalProgramariHandle() {
         count += 1
         text += "<tr id = \"" + programariResponseArray[i].id + "\">";
         text += "<td>" + programariResponseArray[i].tip_vehicul + "<\/td>" //tip vehicul
+        text += "<td>" + programariResponseArray[i].marca + "<\/td>" //tip vehicul
         text += "<td>" + programariResponseArray[i].model + "<\/td>" // model/serie
-
-        console.log(programariResponseArray[i].status)
 
         var buttonStyleClass = ""
         var statusValue = ""
