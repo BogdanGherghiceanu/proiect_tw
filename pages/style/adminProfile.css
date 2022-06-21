@@ -601,7 +601,7 @@ footer {
 
 .chenar-text-mmyProfileModal,
 .chenar-text-mmyStocInternModal,
-.chenar-text-mmyComenziModal  {
+.chenar-text-mmyComenziModal {
     height: 3vmax;
     text-align: center;
     margin: auto;
@@ -771,7 +771,9 @@ footer {
     font-size: 1em;
 }
 
-.exportJSONButton {
+.exportJSONButton,
+.exportJSONStocButton,
+.exportJSONComenziButton {
     margin-left: 10px;
     background: rgb(163, 47, 47);
     border: 1px solid rgb(27, 27, 27);

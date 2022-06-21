@@ -1,5 +1,8 @@
 // const { text } = require("stream/consumers");
 var globalProgramariResponseArray = ""
+var globalStocResponseArray = ""
+var globalComenziResponseArray = ""
+
 function openNavBarMenu() {
     document.getElementById("mydropdown").classList.toggle('show');
 }
@@ -31,7 +34,7 @@ async function modalProgramariHandle() {
             return response
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         });
 
     programariResponseArray = await programariResp.json()
@@ -140,12 +143,13 @@ async function modalStocHandle() {
             return response
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         });
 
     stocResponseArray = await stocResp.json()
     stocResponseArray = stocResponseArray.reverse();
     stocResponseArray = stocResponseArray;
+    globalStocResponseArray = stocResponseArray
 
     text = "";
     var count = 0
@@ -176,12 +180,13 @@ async function modalComenziHandle() {
             return response
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         });
 
     stocResponseArray = await stocResp.json()
     stocResponseArray = stocResponseArray.reverse();
     stocResponseArray = stocResponseArray;
+    globalComenziResponseArray = stocResponseArray
 
     text = "";
     var count = 0
@@ -219,7 +224,7 @@ async function stergeProgramare(id) {
             return response
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         });
 
     var responseModal = document.querySelector('.modal-response')
@@ -265,7 +270,7 @@ async function actualizeazaProgramare(id) {
             return response
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         });
     var responseModal = document.querySelector('.modal-response')
     var headerModal = document.querySelector('.header-msg')
@@ -364,11 +369,34 @@ async function modalProgramariHandle2() {
             a.href = URL.createObjectURL(new Blob([JSON.stringify(globalProgramariResponseArray, null, 2)], {
                 type: "text/plain"
             }));
-            a.setAttribute("download", "data.json");
+            a.setAttribute("download", "fiseService.json");
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
         });
+
+        $('.exportJSONStocButton').click(function () {
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(new Blob([JSON.stringify(stocResponseArray, null, 2)], {
+                type: "text/plain"
+            }));
+            a.setAttribute("download", "stoc.json");
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+
+        $('.exportJSONComenziButton').click(function () {
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(new Blob([JSON.stringify(globalComenziResponseArray, null, 2)], {
+                type: "text/plain"
+            }));
+            a.setAttribute("download", "comenzi.json");
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+
 
         // $('.importJSONButton').click(function () {
         //     console.log("importJSONButton")

@@ -1,3 +1,7 @@
+var today = new Date().toISOString().slice(0, 16);
+document.getElementsByName("Data")[0].min = today;
+
+
 function openNavBarMenu() {
     $('#mydropdown').toggleClass('show');
 }
@@ -47,7 +51,7 @@ async function modalProgramariHandle() {
             return response
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         });
 
     programariResponseArray = await programariResp.json()
@@ -56,7 +60,7 @@ async function modalProgramariHandle() {
     text = "";
     var count = 0
     for (let i = 0; i < programariResponseArray.length; i++) {
-        console.log(programariResponseArray[i])
+        // console.log(programariResponseArray[i])
         count += 1
         text += "<tr id = \"" + programariResponseArray[i].id + "\">";
         text += "<td>" + programariResponseArray[i].tip_vehicul + "<\/td>" //tip vehicul
@@ -275,14 +279,9 @@ function openProgramareNouaModal() {
 async function modalProgramareNouaHandle(e) {
     e.preventDefault();
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    var minutes = today.getMinutes();
-    var hour = today.getHours();
-
-    today = hour + '/' + minutes + '/' + dd + '/' + mm + '/' + yyyy;
+    date = programareData.value.split('T')
+    date_year = date[0].split('-')[2] + '/' + date[0].split('-')[1] + '/' + date[0].split('-')[0]
+    today = date[1].replace(':', '/') + '/' + date_year
 
     var myHeaders = new Headers();
     myHeaders.append("token", loginDataJson.password);
@@ -325,6 +324,7 @@ var programareMarca = document.querySelector('#Marca')
 var programareModel = document.querySelector('#Model')
 var programareTitlu = document.querySelector('#Titlu')
 var programareDescriere = document.querySelector('#Descriere')
+var programareData = document.querySelector('#Data')
 
 programareNouaModalForm.addEventListener('submit', modalProgramareNouaHandle)
 
