@@ -22,13 +22,17 @@
 </head>
 
 
-<nav>
+<!-- <nav>
     <a class="navbar-text" href="../pages/index.html">2 Wheels</a>
     <img src="../pages/resources/navbar/tyre.png" class="navbar-icon" alt="tyre">
-</nav>
+</nav> -->
 
 
 <body>
+    <nav>
+        <a class="navbar-text" href="../pages/index.html">2 Wheels</a>
+        <img src="../pages/resources/navbar/tyre.png" class="navbar-icon" alt="tyre">
+    </nav>
     <div class="imagesDiv">
         <img src="../pages/resources/index/1.png" class="image-cycle" alt="cycle">
         <img src="../pages/resources/index/2.png" class="image-logo" alt="logo">
@@ -45,10 +49,11 @@
         </div>
         <div class="trapezium1"></div>
         <div class="trapezium2">
-            <a class="programeaza" id="inregistreaza_font" onclick="openLoginModal()">Am cont</a>
+            <a class="programeaza" id="inregistreaza_font1" onclick="openLoginModal()">Am cont</a>
         </div>
         <div class="trapezium3">
-            <a id="inregistreaza_font" class="programeaza" onclick="openProgrameazaModal()">&#206;nregistrez&#259;-te</a>
+            <a id="inregistreaza_font2" class="programeaza"
+                onclick="openProgrameazaModal()">&#206;nregistrez&#259;-te</a>
         </div>
     </div>
 
@@ -64,12 +69,12 @@
 
             <div id="loginModalForm" class="form-myProfile">
                 <form>
-                    <label for="email">
+                    <label for="login_email">
                         <input type="text" id="login_email" name="email" placeholder="Email">
                         <span>Username * </span>
                     </label>
 
-                    <label for="parola">
+                    <label for="login_password">
                         <input type="password" id="login_password" name="password" placeholder="Parola">
                         <span>Parola * </span>
                     </label>
@@ -84,7 +89,7 @@
         <div class="login-modal-response">
             <div class="login-modal-content">
                 <div class="modal-header">
-                    <h1 class="header-msg"></h1>
+                    <h1 class="header-msg">.</h1>
                 </div>
                 <div class="modal-body">
                     <p class="body-msg"></p>
@@ -120,7 +125,7 @@
                         <span>Prenume *</span>
                     </label>
 
-                    <label for="email">
+                    <label for="programeaza_email">
                         <input type="email" id="programeaza_email" placeholder="Email">
                         <span>Email * </span>
                     </label>
@@ -135,7 +140,7 @@
                         <span>Detalii</span>
                     </label> -->
 
-                    <label for="parola">
+                    <label for="programeaza_password">
                         <input type="password" id="programeaza_password" name="password" placeholder="Parola">
                         <span>Parola * </span>
                     </label>
@@ -162,7 +167,7 @@
     <div class="signup-modal-response">
         <div class="signup-modal-content">
             <div class="signup-modal-header">
-                <h1 class="signup-header-msg"></h1>
+                <h1 class="signup-header-msg">.</h1>
             </div>
             <div class="signup-modal-body">
                 <p class="signup-body-msg"></p>
@@ -173,6 +178,12 @@
 
     <footer>
         <p>Contact us at: contact@2Wheels.com</p>
+        <p>
+            <a href="http://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
+                    alt="Valid CSS!" />
+            </a>
+        </p>
     </footer>
 </body>
 

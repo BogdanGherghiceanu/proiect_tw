@@ -326,6 +326,34 @@ function addUpdateStatus(obj, idFisa) {
     document.getElementsByName("textarea_" + idFisa)[0].value = text
 }
 
+async function importJson(jsonFile) {
+
+    var requestprogramariOptions = {
+        method: 'POST',
+        body: jsonFile
+    };
+
+    var programariResp = await fetch('http://127.0.0.1:80/comandaFurnizor/inregistrareJSON', requestprogramariOptions)
+        .then(response => {
+            return response
+        })
+        .catch((error) => {
+            // console.error('Error:', error);
+        });
+
+    var responseModal = document.querySelector('.modal-response')
+    var headerModal = document.querySelector('.header-msg')
+    var headerClassModal = document.querySelector('.modal-header')
+    var bodyModal = document.querySelector('.body-msg')
+
+    if (programariResp.status === 200) {
+        ProgrameazaResponse("Success!", "Importare realizata cu success.", "success", responseModal, headerModal, headerClassModal, bodyModal)
+    }
+    else {
+        ProgrameazaResponse("Something went wrong. . .", "Ceva nu a functionat...", "error", responseModal, headerModal, headerClassModal, bodyModal)
+    }
+}
+
 async function modalProgramariHandle2() {
     $(".hidden_row").map(function () {
         $(".hidden_row").attr("hidden", true);
@@ -412,7 +440,10 @@ async function modalProgramariHandle2() {
             reader.readAsText(this.files[0]);
 
             reader.onload = function () {
-                console.log(reader.result);
+                // console.log(reader.result);
+                let finalJson = "{ \"comenzi\" : " + reader.result + " }"
+                console.log(finalJson);
+                importJson(finalJson)
             };
 
             reader.onerror = function () {
